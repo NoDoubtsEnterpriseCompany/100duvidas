@@ -4,5 +4,9 @@
     <string name="app_name">100duvidas</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="login_message">Login</string>
+    <string name="register_message">Register</string>
+    <string name ="password_hint">******</string>
+    <string name ="email_hint">example@mail.com </string>
 
 </resources>
