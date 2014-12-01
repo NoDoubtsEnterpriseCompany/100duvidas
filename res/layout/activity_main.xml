@@ -9,16 +9,6 @@
     tools:context="com.nodoubts.MainActivity" >
 
     <Button
-        android:id="@+id/loginbtn"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:text="@string/login_message"
-        android:textAlignment="center"
-        android:textColor="#ffffff" />
-
-    <Button
         android:id="@+id/registerbtn"
         android:layout_width="340dp"
         android:layout_height="50dp"
@@ -27,17 +17,6 @@
         android:text="@string/register_message"
         android:textAlignment="center"
         android:textColor="#ffffff" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/registerbtn"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/password"
@@ -51,5 +30,36 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:text="@string/login_message"
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:ems="10" 
+        android:text="@string/app_name"/>
 
 </RelativeLayout>

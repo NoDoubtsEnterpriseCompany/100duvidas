@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TeacherProfileActivity"
+            android:label="@string/title_activity_teacher_profile" >
+        </activity>
+        <activity
+            android:name=".StudentProfileActivity"
+            android:label="@string/title_activity_student_profile" >
+        </activity>
     </application>
 
 </manifest>

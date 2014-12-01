@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.nodoubts.StudentProfileActivity" >
+
+    <ImageView
+        android:id="@+id/img_view_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:src="@drawable/avatar" />
+
+    <EditText
+        android:id="@+id/courses_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email_text_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:ems="10"
+        android:text="@string/starred_teachers" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/img_view_teacher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="NAME" />
+
+    <EditText
+        android:id="@+id/email_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/img_view_teacher"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="94dp"
+        android:ems="10"
+        android:text="EMAIL" />
+
+</RelativeLayout>
