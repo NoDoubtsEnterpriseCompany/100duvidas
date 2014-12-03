@@ -17,16 +17,6 @@
         android:layout_toLeftOf="@+id/textView1"
         android:src="@drawable/avatar" />
 
-    <EditText
-        android:id="@+id/courses_text_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/email_text_field"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:ems="10"
-        android:text="@string/starred_teachers" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -36,15 +26,24 @@
         android:layout_marginTop="70dp"
         android:text="NAME" />
 
-    <EditText
+    <TextView
+        android:id="@+id/courses_text_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_view_teacher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp"
+        android:ems="10"
+        android:text="@string/starred_teachers" />
+
+
+    <TextView
         android:id="@+id/email_text_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/img_view_teacher"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="94dp"
-        android:ems="10"
+        android:layout_above="@+id/courses_text_field"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_marginBottom="62dp"
         android:text="EMAIL" />
 
 </RelativeLayout>
