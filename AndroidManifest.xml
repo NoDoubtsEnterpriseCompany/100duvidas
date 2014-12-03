@@ -33,6 +33,10 @@
             android:name=".StudentProfileActivity"
             android:label="@string/title_activity_student_profile" >
         </activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:label="@string/title_activity_edit_profile" >
+        </activity>
     </application>
 
 </manifest>
