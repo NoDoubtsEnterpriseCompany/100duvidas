@@ -11,7 +11,7 @@ import com.nodoubts.serverclient.ServerService;
 public class UserController implements UserService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://192.168.1.4:3000/users/";
+	private final String URL_USER = "http://192.168.1.4:3000/users";
 
 	public UserController() {
 		serverService = new ServerController();
@@ -28,7 +28,6 @@ public class UserController implements UserService {
 			JSONObject jsonObject = new JSONObject(json);
 			user = gson.fromJson(jsonObject.getString("result"), User.class);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return user;

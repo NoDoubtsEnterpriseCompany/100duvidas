@@ -28,6 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name=".RegisterUserActivity"
+            android:label="@string/title_activity_register_user">
+        </activity>
         <activity
             android:name=".TeacherProfileActivity"
             android:label="@string/title_activity_teacher_profile" >
@@ -40,6 +44,7 @@
             android:name=".EditProfileActivity"
             android:label="@string/title_activity_edit_profile" >
         </activity>
+        
     </application>
-
+    
 </manifest>
