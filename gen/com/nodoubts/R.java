@@ -26,18 +26,24 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000b;
-        public static final int adress_text_field=0x7f08000a;
-        public static final int courses_text_field=0x7f080008;
-        public static final int editText1=0x7f080004;
-        public static final int email=0x7f080003;
-        public static final int email_text_field=0x7f080007;
-        public static final int img_view_teacher=0x7f080006;
-        public static final int loginbtn=0x7f080001;
-        public static final int password=0x7f080002;
-        public static final int ratingBar1=0x7f080009;
-        public static final int registerbtn=0x7f080000;
-        public static final int textView1=0x7f080005;
+        public static final int action_settings=0x7f080011;
+        public static final int adress_text_field=0x7f080010;
+        public static final int city_edit_text=0x7f080003;
+        public static final int courses_text_field=0x7f08000d;
+        public static final int email=0x7f080008;
+        public static final int email_edit_text=0x7f080002;
+        public static final int email_text_field=0x7f08000e;
+        public static final int img_view_teacher=0x7f08000c;
+        public static final int login_btn=0x7f080009;
+        public static final int name_edit_text=0x7f080001;
+        public static final int number_edit_text=0x7f080005;
+        public static final int passwordEditText=0x7f08000b;
+        public static final int ratingBar1=0x7f08000f;
+        public static final int register_btn=0x7f08000a;
+        public static final int save_btn=0x7f080006;
+        public static final int street_edit_text=0x7f080004;
+        public static final int textView1=0x7f080000;
+        public static final int welcome_mesage=0x7f080007;
     }
     public static final class layout {
         public static final int activity_edit_profile=0x7f030000;
@@ -46,23 +52,38 @@ public final class R {
         public static final int activity_teacher_profile=0x7f030003;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
-        public static final int student_profile=0x7f070001;
-        public static final int teacher_profile=0x7f070002;
+        public static final int edit_profile=0x7f070000;
+        public static final int main=0x7f070001;
+        public static final int student_profile=0x7f070002;
+        public static final int teacher_profile=0x7f070003;
     }
     public static final class string {
-        public static final int action_settings=0x7f050004;
-        public static final int address=0x7f050009;
-        public static final int app_name=0x7f050000;
-        public static final int email_hint=0x7f050008;
-        public static final int hello_world=0x7f050003;
-        public static final int login_message=0x7f050005;
-        public static final int offered_courses=0x7f05000a;
-        public static final int password_hint=0x7f050007;
-        public static final int register_message=0x7f050006;
-        public static final int starred_teachers=0x7f05000b;
-        public static final int title_activity_student_profile=0x7f050001;
-        public static final int title_activity_teacher_profile=0x7f050002;
+        public static final int action_settings=0x7f05000e;
+        public static final int address=0x7f05000f;
+        /**  others 
+         */
+        public static final int app_name=0x7f05000a;
+        public static final int city=0x7f050006;
+        public static final int email=0x7f050005;
+        public static final int email_hint=0x7f050009;
+        public static final int hello_world=0x7f05000d;
+        /**  button text 
+         */
+        public static final int login_message=0x7f050000;
+        public static final int name=0x7f050004;
+        public static final int number=0x7f050008;
+        public static final int offered_courses=0x7f050010;
+        /**  hints text 
+         */
+        public static final int password_hint=0x7f050003;
+        public static final int personal_inf=0x7f050013;
+        public static final int register_message=0x7f050001;
+        public static final int save_btn=0x7f050002;
+        public static final int starred_teachers=0x7f050011;
+        public static final int street=0x7f050007;
+        public static final int title_activity_edit_profile=0x7f050012;
+        public static final int title_activity_student_profile=0x7f05000b;
+        public static final int title_activity_teacher_profile=0x7f05000c;
     }
     public static final class style {
         /** 

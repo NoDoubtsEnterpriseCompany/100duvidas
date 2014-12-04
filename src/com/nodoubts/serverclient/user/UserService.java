@@ -9,4 +9,6 @@ public interface UserService {
 	public String actualizeUser(User user);
 	
 	public String saveUser(User user);
+	
+	public String authenticateUser(String jsonTransaction);
 }
