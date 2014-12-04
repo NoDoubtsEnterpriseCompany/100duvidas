@@ -30,11 +30,12 @@ public class ServerController implements ServerService{
 			response = EntityUtils.toString(httpEntity);
 
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
+			System.err.println(e.getMessage());
 		} catch (ClientProtocolException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 
 		return response;
@@ -65,11 +66,11 @@ public class ServerController implements ServerService{
 			response = EntityUtils.toString(httpEntity);
 
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		} catch (ClientProtocolException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 		return response;
 	}
@@ -98,11 +99,11 @@ public class ServerController implements ServerService{
 			response = EntityUtils.toString(httpEntity);
 
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		} catch (ClientProtocolException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 		return response;
 	}
