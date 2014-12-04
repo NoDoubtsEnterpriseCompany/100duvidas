@@ -29,6 +29,7 @@ public class TeacherProfileActivity extends Activity {
 		
 		name.setText(user.getProfile().getName());
 		
+		
 		editBtn.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {

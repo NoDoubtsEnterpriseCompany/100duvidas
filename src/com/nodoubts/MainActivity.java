@@ -105,7 +105,6 @@ public class MainActivity extends Activity {
 
 			if (resultCode == 200) {
 				User user = userController.findUser(userNameEditText.getText().toString());
-				user.getProfile().setName("tiaraju");
 				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
 				profileScreen.putExtra("user", user);
 				startActivity(profileScreen);

@@ -11,14 +11,17 @@ public class Profile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String age;
+	private String city;
 	private String profilePic;
 	private String degree;
 	private String speciality;
 	private List<Subject> subjects;
 	
-	public Profile(String name, String age) {
+	public Profile (){
+	}
+	
+	public Profile(String name) {
 		this.name = name;
-		this.age=age;
 	}
 	public String getAge() {
 		return age;
@@ -64,5 +67,11 @@ public class Profile implements Serializable {
 	
 	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
 	}
 }

@@ -17,7 +17,14 @@ public class User implements Serializable{
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.profile = new Profile("tiaraju","21");
+		this.profile = new Profile("tiaraju");
+	}
+	
+	public User(String username,String password,String email,String name){
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.profile = new Profile(name);
 	}
 	
 	public String getEmail() {

@@ -49,7 +49,7 @@ public class RegisterUserActivity extends Activity{
 				String name = ((EditText) findViewById(R.id.register_name)).getText().toString();
 				String password = ((EditText) findViewById(R.id.register_passwordToRegister)).getText().toString();
 				String email = ((EditText) findViewById(R.id.register_email)).getText().toString();
-				User user = new User(username, password, email);
+				User user = new User(username, password, email,name);
 				user.getProfile().setName(name);
 				return user;
 			}
