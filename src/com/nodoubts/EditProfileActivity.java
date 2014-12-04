@@ -1,6 +1,7 @@
 package com.nodoubts;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ public class EditProfileActivity extends Activity {
 	Button saveBtn;
 	EditText name,email,city,street,number;
 	TextView t;
+	Intent returnIntent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,9 @@ public class EditProfileActivity extends Activity {
 		    		userProfile.setCity(city.getText().toString());
 		    	if(email.getText() != null && !email.getText().toString().equals(getResources().getString(R.string.email)))		    	
 		    		
-		    	
+		    	returnIntent = new Intent();
+		    	returnIntent.putExtra("result", user);
+		    	setResult(RESULT_OK,returnIntent);
 		    	finish();
 		    }
 		});
