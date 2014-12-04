@@ -67,4 +67,13 @@
         android:text="@string/edit_btn"
          />
 
+    <TextView
+        android:id="@+id/name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_profilebtn"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="14dp"
+        android:text="@string/name" />
+
 </RelativeLayout>

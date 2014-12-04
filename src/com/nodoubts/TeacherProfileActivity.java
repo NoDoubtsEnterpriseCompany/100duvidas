@@ -8,10 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.nodoubts.core.User;
 
 public class TeacherProfileActivity extends Activity {
 	
 	Button editBtn;
+	TextView name;
+	User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +24,21 @@ public class TeacherProfileActivity extends Activity {
 		setContentView(R.layout.activity_teacher_profile);
 		
 		editBtn = (Button) findViewById(R.id.edit_profilebtn);
+		name = (TextView) findViewById(R.id.name_text_view);
+		user = (User) getIntent().getSerializableExtra("user");
+		
+		name.setText(user.getProfile().getName());
 		
 		editBtn.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
 		    	Intent editScreen = new Intent(getApplicationContext(),EditProfileActivity.class);
+		    	editScreen.putExtra("user", user);
 		    	startActivity(editScreen);
 		    }
 		});
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,9 +1,14 @@
 package com.nodoubts.core;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Profile {
+public class Profile implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String age;
 	private String profilePic;
@@ -11,6 +16,10 @@ public class Profile {
 	private String speciality;
 	private List<Subject> subjects;
 	
+	public Profile(String name, String age) {
+		this.name = name;
+		this.age=age;
+	}
 	public String getAge() {
 		return age;
 	}

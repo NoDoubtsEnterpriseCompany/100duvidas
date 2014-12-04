@@ -1,8 +1,14 @@
 package com.nodoubts.core;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	
-	 private String username;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String username;
 	 private String password;
 	 private String email;
 	 private Profile profile;
@@ -11,7 +17,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.profile = new Profile();
+		this.profile = new Profile("tiaraju","21");
 	}
 	
 	public String getEmail() {

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.gson.JsonObject;
+import com.nodoubts.core.User;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
@@ -76,6 +77,8 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
 
 	private class LoginAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -101,8 +104,10 @@ public class MainActivity extends Activity {
 			}
 
 			if (resultCode == 200) {
-				Intent profileScreen = new Intent(getApplicationContext(),
-						TeacherProfileActivity.class);
+				User user = userController.findUser(userNameEditText.getText().toString());
+				user.getProfile().setName("tiaraju");
+				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
+				profileScreen.putExtra("user", user);
 				startActivity(profileScreen);
 			}
 			return response;
