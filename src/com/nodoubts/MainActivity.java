@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -18,14 +19,16 @@ import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
 
+
+
 public class MainActivity extends Activity {
-	
+
 	UserController userController;
 	ServerService serverController;
-	EditText userNameEditText; 
+	EditText userNameEditText;
 	EditText passEditText;
 	Button loginBtn;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,13 +38,23 @@ public class MainActivity extends Activity {
 		serverController= new ServerController();
 		userNameEditText = (EditText) findViewById(R.id.email);
 		passEditText = (EditText) findViewById(R.id.passwordEditText);
-		loginBtn = (Button) findViewById(R.id.login_btn);
+		loginBtn = (Button) findViewById(R.id.loginbtn);
 		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 		    @Override
 		    public void onClick(View v) {
 		    	new LoginAsyncTask().execute();
 		    }
+		});
+		    
+		Button registerBtn = (Button) findViewById(R.id.registerbtn);
+		
+		registerBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
+				startActivity(intent);
+			}
 		});
 	}
 
@@ -63,34 +76,37 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
-	private class LoginAsyncTask extends AsyncTask<String, Void, String>{
+
+	private class LoginAsyncTask extends AsyncTask<String, Void, String> {
 
 		@Override
 		protected String doInBackground(String... params) {
 			JsonObject jsonTransaction = new JsonObject();
-			jsonTransaction.addProperty("login", userNameEditText.getText().toString());
-			jsonTransaction.addProperty("password", passEditText.getText().toString());
-			
-			String response = userController.authenticateUser(jsonTransaction.toString());
+			jsonTransaction.addProperty("login", userNameEditText.getText()
+					.toString());
+			jsonTransaction.addProperty("password", passEditText.getText()
+					.toString());
+
+			String response = userController.authenticateUser(jsonTransaction
+					.toString());
 			int resultCode = -1;
 			try {
 				JSONObject jsonResponse = new JSONObject(response);
-				JSONObject code = new JSONObject( jsonResponse.getString("result"));
-				resultCode= code.getInt("code");
-				
+				JSONObject code = new JSONObject(
+						jsonResponse.getString("result"));
+				resultCode = code.getInt("code");
+
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			
-			if(resultCode == 200){
-				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
+
+			if (resultCode == 200) {
+				Intent profileScreen = new Intent(getApplicationContext(),
+						TeacherProfileActivity.class);
 				startActivity(profileScreen);
 			}
 			return response;
 		}
-		
-		
+
 	}
 }

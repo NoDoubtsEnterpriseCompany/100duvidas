@@ -30,7 +30,6 @@ public class UserController implements UserService {
 			JSONObject jsonObject = new JSONObject(json);
 			user = gson.fromJson(jsonObject.getString("result"), User.class);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return user;

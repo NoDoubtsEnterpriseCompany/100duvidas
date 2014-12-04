@@ -8,18 +8,20 @@
     <string name="save_btn">Save</string>
 
     <!-- hints text -->
-    <string name="password_hint">******</string>
+    <string name="password_hint">Password</string>
+    <string name="username">Username</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="city">City</string>
     <string name="street">Street</string>
     <string name="number">Number</string>
-     <string name="email_hint">example@mail.com </string>
+    <string name="email_hint">example@mail.com </string>
 
     <!-- others -->
-    <string name="app_name">100duvidas</string>
+    <string name="app_name">100Dúvidas</string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
     <string name="title_activity_teacher_profile">TeacherProfileActivity</string>
+    <string name="title_activity_register_user">TeacherProfileActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
    
@@ -28,5 +30,6 @@
     <string name="starred_teachers">Starred Teachers</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="personal_inf">Personal Information</string>
+    <string name="user_registered_ok">User saved successfully</string>
 
 </resources>

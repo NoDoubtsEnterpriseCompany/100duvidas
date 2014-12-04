@@ -8,60 +8,56 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nodoubts.MainActivity" >
 
-    
-    <TextView
+        <TextView
         android:id="@+id/welcome_mesage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/email"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:textSize="20sp"
-		android:gravity="center"
-        android:ems="14" 
-        android:text="@string/app_name"/>
-    
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/register_btn"
-        android:layout_alignLeft="@+id/register_btn"
-        android:text="@string/login_message"
-        android:textAlignment="center"
-        android:textColor="#ffffff" />
+        android:layout_marginBottom="57dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="50sp" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="340dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/login_btn"
-        android:layout_alignLeft="@+id/login_btn"
+        android:layout_above="@+id/registerbtn"
+        android:layout_alignLeft="@+id/registerbtn"
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword" />
-
-
-    <Button
-        android:id="@+id/register_btn"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
-        android:text="@string/register_message"
-        android:textAlignment="center"
-        android:textColor="#ffffff" />
+      
 
     <EditText
         android:id="@+id/email"
         android:layout_width="340dp"
         android:layout_height="50dp"
         android:layout_above="@+id/passwordEditText"
-        android:layout_alignLeft="@+id/passwordEditText"
+        android:layout_alignLeft="@+id/welcome_mesage"
         android:ems="10"
         android:hint="@string/email_hint"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:paddingTop="50dp" />
 
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/email"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="79dp"
+        android:text="@string/login_message"
+        android:textColor="#ffffff" />
+    
+    <Button
+        android:id="@+id/registerbtn"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/loginbtn"
+        android:layout_alignLeft="@+id/loginbtn"
+        android:text="@string/register_message"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>

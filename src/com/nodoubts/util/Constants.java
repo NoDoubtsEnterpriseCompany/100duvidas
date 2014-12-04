@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+
 public class Constants {
 	
 	public static final String CONF_FILE_PATH = "conf" + File.separator + "conf.properties";
