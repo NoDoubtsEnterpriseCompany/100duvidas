@@ -28,7 +28,20 @@ public class RegisterUserActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				User user = extractUser();
-				new UserCreator().execute(user);
+				if (validateUser(user)) {
+					new UserCreator().execute(user);
+				}
+			}
+
+			private boolean validateUser(User user) {
+				if (user.getUsername().trim().equals("") ||
+						user.getEmail().trim().equals("") ||
+						user.getPassword().trim().equals("") ||
+						user.getProfile().getName().equals("")) {
+					Toast.makeText(RegisterUserActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+					return false;
+				}
+				return true;
 			}
 
 			private User extractUser() {

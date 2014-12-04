@@ -21,7 +21,7 @@
     <string name="app_name">100Dúvidas</string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
     <string name="title_activity_teacher_profile">TeacherProfileActivity</string>
-    <string name="title_activity_register_user">TeacherProfileActivity</string>
+    <string name="title_activity_register_user">Register</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
    
