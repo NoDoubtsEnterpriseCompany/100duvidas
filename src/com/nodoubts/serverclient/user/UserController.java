@@ -12,7 +12,7 @@ import com.nodoubts.util.Constants;
 public class UserController implements UserService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://192.168.25.28:3000/users/";
+	private final String URL_USER = "http://192.168.0.117:3000/users/";
 
 	public UserController() {
 		serverService = new ServerController();

@@ -6,6 +6,7 @@
     <string name="login_message">Login</string>
     <string name="register_message">Register</string>
     <string name="save_btn">Save</string>
+    <string name="edit_btn">Edit</string>
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
