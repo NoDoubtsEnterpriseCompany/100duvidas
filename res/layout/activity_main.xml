@@ -38,8 +38,7 @@
         android:layout_alignLeft="@+id/welcome_mesage"
         android:ems="10"
         android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
-        android:paddingTop="50dp" />
+        android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/loginbtn"
