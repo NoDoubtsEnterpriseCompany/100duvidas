@@ -29,4 +29,7 @@
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="personal_inf">Personal Information</string>
 
+    <!-- facebook -->
+    <string name="facebook_app_id">1561113250770242</string>
+
 </resources>
