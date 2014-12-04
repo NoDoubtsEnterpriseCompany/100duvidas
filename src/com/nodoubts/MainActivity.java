@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
 					.findFragmentById(android.R.id.content);
 		}
 
-		Button registerBtn = (Button) findViewById(R.id.registerbtn);
+		/*Button registerBtn = (Button) findViewById(R.id.registerbtn);
 		registerBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -37,7 +37,7 @@ public class MainActivity extends FragmentActivity {
 				Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 	}
 
 	@Override
