@@ -1,25 +1,9 @@
 package com.nodoubts;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-
-import com.google.gson.JsonObject;
-import com.nodoubts.core.User;
-import com.nodoubts.serverclient.ServerController;
-import com.nodoubts.serverclient.ServerService;
-import com.nodoubts.serverclient.user.UserController;
 
 public class MainActivity extends FragmentActivity {
 
@@ -40,16 +24,6 @@ public class MainActivity extends FragmentActivity {
 			mainFragment = (MainFragment) getSupportFragmentManager()
 					.findFragmentById(android.R.id.content);
 		}
-
-		/*Button registerBtn = (Button) findViewById(R.id.registerbtn);
-		registerBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, RegisterUserActivity.class);
-				startActivity(intent);
-			}
-		});*/
 	}
 
 	@Override
