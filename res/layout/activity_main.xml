@@ -26,7 +26,7 @@
             android:textColor="#ffffff" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordEditText"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_above="@+id/loginbtn"

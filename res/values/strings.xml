@@ -6,6 +6,7 @@
     <string name="login_message">Login</string>
     <string name="register_message">Register</string>
     <string name="save_btn">Save</string>
+    <string name="edit_btn">Edit</string>
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
@@ -21,7 +22,7 @@
     <string name="app_name">100Dúvidas</string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
     <string name="title_activity_teacher_profile">TeacherProfileActivity</string>
-    <string name="title_activity_register_user">TeacherProfileActivity</string>
+    <string name="title_activity_register_user">Register</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
    
