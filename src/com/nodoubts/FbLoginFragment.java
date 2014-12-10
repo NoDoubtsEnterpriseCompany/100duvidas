@@ -1,42 +1,26 @@
 package com.nodoubts;
 
-import android.support.v4.app.Fragment;
+import java.util.Arrays;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
-import com.google.gson.JsonObject;
-import com.nodoubts.core.User;
-import com.nodoubts.serverclient.ServerController;
-import com.nodoubts.serverclient.ServerService;
-import com.nodoubts.serverclient.user.UserController;
-
-import java.util.Arrays;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by jeymisson on 12/4/14.
  */
-public class MainFragment extends Fragment {
-    private static final String TAG = "MainFragment";
+public class FbLoginFragment extends Fragment {
+    private static final String TAG = "FbLoginFragment";
     private UiLifecycleHelper uiHelper;
-    UserController userController;
-	ServerService serverController;
-	EditText userNameEditText;
-	EditText passEditText;
-	Button loginBtn;
-	Button registerBtn;
 
     private Session.StatusCallback callback = new Session.StatusCallback() {
         @Override
@@ -56,30 +40,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_main, container, false);
-        
-        userController = new UserController();
-		serverController= new ServerController();
-		userNameEditText = (EditText) view.findViewById(R.id.email);
-		passEditText = (EditText) view.findViewById(R.id.passwordEditText);
-		loginBtn = (Button) view.findViewById(R.id.loginbtn);
-		loginBtn.setOnClickListener(new View.OnClickListener() {
-			
-			
-			public void onClick(View v) {
-		    	new LoginAsyncTask().execute();
-		    }
-		});
-		    
-		registerBtn = (Button) view.findViewById(R.id.registerbtn);
-		
-		registerBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(this, RegisterUserActivity.class);
-				startActivity(intent);
-			}
-		});
+        View view = inflater.inflate(R.layout.fbutton_layout, container, false);
 
         LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
         authButton.setReadPermissions(Arrays.asList("user_likes", "user_status"));
@@ -133,38 +94,5 @@ public class MainFragment extends Fragment {
         super.onSaveInstanceState(outState);
         uiHelper.onSaveInstanceState(outState);
     }
-    
-    private class LoginAsyncTask extends AsyncTask<String, Void, String> {
-
-		@Override
-		protected String doInBackground(String... params) {
-			JsonObject jsonTransaction = new JsonObject();
-			jsonTransaction.addProperty("login", userNameEditText.getText()
-					.toString());
-			jsonTransaction.addProperty("password", passEditText.getText()
-					.toString());
-
-			String response = userController.authenticateUser(jsonTransaction
-					.toString());
-			int resultCode = -1;
-			try {
-				JSONObject jsonResponse = new JSONObject(response);
-				JSONObject code = new JSONObject(
-						jsonResponse.getString("result"));
-				resultCode = code.getInt("code");
-
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-
-			if (resultCode == 200) {
-				User user = userController.findUser(userNameEditText.getText().toString());
-				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
-				profileScreen.putExtra("user", user);
-				startActivity(profileScreen);
-			}
-			return response;
-		}
-	}
 }
 
