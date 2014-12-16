@@ -1,8 +1,5 @@
 package com.nodoubts;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +12,7 @@ import android.widget.EditText;
 
 import com.google.gson.JsonObject;
 import com.nodoubts.core.User;
+import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
@@ -86,30 +84,24 @@ public class MainActivity extends FragmentActivity {
 
 		@Override
 		protected String doInBackground(String... params) {
+			String response = "";
 			JsonObject jsonTransaction = new JsonObject();
 			jsonTransaction.addProperty("login", userNameEditText.getText()
 					.toString());
 			jsonTransaction.addProperty("password", passEditText.getText()
 					.toString());
 
-			String response = userController.authenticateUser(jsonTransaction
-					.toString());
-			int resultCode = -1;
 			try {
-				JSONObject jsonResponse = new JSONObject(response);
-				JSONObject code = new JSONObject(
-						jsonResponse.getString("result"));
-				resultCode = code.getInt("code");
-
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-
-			if (resultCode == 200) {
+				response = userController.authenticateUser(jsonTransaction
+						.toString());
+			
 				User user = userController.findUser(userNameEditText.getText().toString());
 				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
 				profileScreen.putExtra("user", user);
 				startActivity(profileScreen);
+			} catch (ApplicationViewException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 			}
 			return response;
 		}
