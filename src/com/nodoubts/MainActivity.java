@@ -3,6 +3,7 @@ package com.nodoubts;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.nodoubts.core.User;
@@ -83,6 +85,16 @@ public class MainActivity extends FragmentActivity {
 	}
 	
     private class LoginAsyncTask extends AsyncTask<String, Void, String> {
+    	
+    	ProgressDialog progressDialog;
+    	
+    	@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			this.progressDialog = new ProgressDialog(MainActivity.this);
+			this.progressDialog.setProgressStyle(progressDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			this.progressDialog.show();
+		}
 
 		@Override
 		protected String doInBackground(String... params) {
@@ -112,6 +124,12 @@ public class MainActivity extends FragmentActivity {
 				startActivity(homeScreen);
 			}
 			return response;
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			this.progressDialog.dismiss();
 		}
 	}
 }
