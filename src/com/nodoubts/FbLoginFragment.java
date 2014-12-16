@@ -60,55 +60,11 @@ public class FbLoginFragment extends Fragment {
 
 	private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (state.isOpened()) {
-            Log.i(TAG, "Logged in...");  
-            	Request.newMeRequest(session, new GraphUserCallback() {
-				
+            	Request.newMeRequest(session, new GraphUserCallback() {				
 				@Override
-				public void onCompleted(final GraphUser fbUser, Response response) {	
-					AsyncTask<Void, Void , Object> task = new AsyncTask<Void, Void, Object>() {
-						@Override
-						protected Object doInBackground(Void... arg0) {
-							User user;
-							UserController userController = new UserController();
-							String fbUserEmail = (String) fbUser.getProperty("email");
-							try {
-								user = userController.findUserByEmail(fbUserEmail);
-							} catch (ApplicationViewException e) {
-								user = new User();
-								user.setUsername(fbUserEmail);
-								user.setEmail(fbUserEmail);
-								user.setPassword(String.valueOf(fbUserEmail.hashCode())); //TODO: Improve this
-								Profile profile = new Profile();
-								profile.setName(fbUser.getName());
-								profile.setProfilePic((String)fbUser.getProperty("picture.url"));
-								user.setProfile(profile);
-								Log.i(TAG, profile.getProfilePic());
-								
-								try {
-									userController.saveUser(user);
-								} catch (ApplicationViewException e1) {
-									return e1;
-								}
-							}
-							return user;
-						}
-						protected void onPostExecute(Object result) {
-							if(result instanceof User){
-								Intent homeScreen = new Intent(
-										getActivity().getApplicationContext(),HomeActivity.class);
-								homeScreen.putExtra("user", (User)result);
-								startActivity(homeScreen);
-							
-							}else if(result instanceof Exception){
-								AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-								builder.setMessage(((Exception)result).getMessage());
-								builder.setTitle("Error");
-								AlertDialog dialog = builder.create();
-								dialog.show();
-							}
-					    }
-					};	
-				task.execute();
+				public void onCompleted(GraphUser fbUser, Response response) {
+					LoginTask fbLoginTask = new LoginTask();
+					fbLoginTask.execute(fbUser);
 				}
 			}).executeAsync();
             	
@@ -155,5 +111,50 @@ public class FbLoginFragment extends Fragment {
         super.onSaveInstanceState(outState);
         uiHelper.onSaveInstanceState(outState);
     }
+    
+    private class LoginTask extends AsyncTask<GraphUser, Void, Object>{
+		@Override
+		protected Object doInBackground(GraphUser... arg0) {
+			GraphUser fbUser = arg0[0];
+			User user;
+			UserController userController = new UserController();
+			String fbUserEmail = (String) fbUser.getProperty("email");
+			try {
+				user = userController.findUserByEmail(fbUserEmail);
+				Log.i(TAG, "picurl " + user.getProfile().getProfilePic());
+			}catch (ApplicationViewException e) {
+				user = new User();
+				user.setUsername(fbUserEmail);
+				user.setEmail(fbUserEmail);
+				user.setPassword(String.valueOf(fbUserEmail.hashCode())); //TODO: Improve this
+				Profile profile = new Profile();
+				profile.setName(fbUser.getName());
+				profile.setProfilePic("https://graph.facebook.com/"+fbUser.getId()+"/picture");
+				user.setProfile(profile);
+				try {
+					userController.saveUser(user);
+				} catch (ApplicationViewException e1) {
+					e1.printStackTrace();
+					return e1;
+				}
+			}
+			return user;
+		}
+		@Override
+		protected void onPostExecute(Object result) {
+			if(result instanceof User){
+				Intent homeScreen = new Intent(
+						getActivity().getApplicationContext(),HomeActivity.class);
+				homeScreen.putExtra("user", (User)result);
+				startActivity(homeScreen);
+			
+			}else if(result instanceof Exception){
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+				builder.setMessage(((Exception)result).getMessage());
+				builder.setTitle("Error");
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			}
+	    }
+	}
 }
-
