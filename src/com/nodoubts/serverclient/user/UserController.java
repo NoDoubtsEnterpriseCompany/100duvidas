@@ -1,10 +1,17 @@
 package com.nodoubts.serverclient.user;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.nodoubts.core.User;
+import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.util.Constants;
@@ -20,7 +27,7 @@ public class UserController implements UserService {
 	}
 
 	@Override
-	public  User findUser(String username) {
+	public  User findUser(String username) throws ApplicationViewException {
 		StringBuilder builder = new StringBuilder(URL_USER).append("/user/")
 				.append(username);
 		String json = serverService.get(builder.toString());
@@ -33,6 +40,26 @@ public class UserController implements UserService {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	
+	public User findUserByEmail(String email) throws ApplicationViewException{
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
+		params.add(new BasicNameValuePair("email", email));
+		String paramsStr = URLEncodedUtils.format(params, "utf-8");
+		
+		String query = URL_USER.concat("/user?").concat(paramsStr);
+		
+		String response = serverService.get(query.toString());
+		User user = null;
+		Gson gson = new Gson();
+		try {
+			JSONObject jsonObject = new JSONObject(response);
+			user = gson.fromJson(jsonObject.getString("result"), User.class);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return user;
+		
 	}
 
 	/*TODO Adaptar Put a mudança do password
@@ -47,16 +74,16 @@ public class UserController implements UserService {
 	}
 
 	@Override
-	public String saveUser(User user) {
+	public String saveUser(User user) throws ApplicationViewException {
 		StringBuilder builder = new StringBuilder(URL_USER)
-				.append("adduser");
+				.append("/adduser");
 		Gson gsonUser = new Gson();
 		return serverService.post(builder.toString(), gsonUser.toJson(user));
 	}
 
 	@Override
-	public String authenticateUser(String jsonTransaction) {
-		String URL_LOGIN = URL_USER+"login";
+	public String authenticateUser(String jsonTransaction) throws ApplicationViewException {
+		String URL_LOGIN = URL_USER+"/login";
 		System.out.println("URL: "+URL_LOGIN);
 		StringBuilder builder = new StringBuilder(URL_LOGIN);
 		return serverService.post(builder.toString(), jsonTransaction);

@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -12,11 +13,15 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.nodoubts.exceptions.ApplicationViewException;
 
 public class ServerController implements ServerService{
 
 	@Override
-	public String get(String url) {
+	public String get(String url) throws ApplicationViewException {
 		String response = null;
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -26,8 +31,11 @@ public class ServerController implements ServerService{
 			HttpGet httpGet = new HttpGet(url);
 
 			httpResponse = httpClient.execute(httpGet);
+			
 			httpEntity = httpResponse.getEntity();
 			response = EntityUtils.toString(httpEntity);
+			
+			checkGETResponse(httpResponse.getStatusLine().getStatusCode(), response);
 
 		} catch (UnsupportedEncodingException e) {
 			System.err.println(e.getMessage());
@@ -36,14 +44,40 @@ public class ServerController implements ServerService{
 			System.err.println(e.getMessage());
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
-		}
+		}		
 
 		return response;
 
 	}
 
+	private void checkGETResponse(
+			int responseStatusCode, String response) throws ApplicationViewException {
+		if(responseStatusCode != HttpStatus.SC_OK){
+			try {
+				JSONObject jsonObject = new JSONObject(response);
+				throw new ApplicationViewException(
+						jsonObject.getJSONObject("error").getString("message"));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+	
+	private void checkPOSTResponse(
+			int responseStatusCode, String response) throws ApplicationViewException {
+		if(responseStatusCode != HttpStatus.SC_CREATED){
+			try {
+				JSONObject jsonObject = new JSONObject(response);
+				throw new ApplicationViewException(
+						jsonObject.getJSONObject("error").getString("message"));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+
 	@Override
-	public String post(String url, String json) {
+	public String post(String url, String json) throws ApplicationViewException {
 		String response = null;
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -64,6 +98,8 @@ public class ServerController implements ServerService{
 			httpResponse = httpClient.execute(httpPost);
 			httpEntity = httpResponse.getEntity();
 			response = EntityUtils.toString(httpEntity);
+			
+			checkPOSTResponse(httpResponse.getStatusLine().getStatusCode(), response);
 
 		} catch (UnsupportedEncodingException e) {
 			System.err.println(e.getMessage());

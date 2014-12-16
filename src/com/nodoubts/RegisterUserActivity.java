@@ -1,6 +1,7 @@
 package com.nodoubts;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nodoubts.core.User;
+import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
 
@@ -56,7 +58,7 @@ public class RegisterUserActivity extends Activity{
 		});
 	}
 	
-	protected class UserCreator extends AsyncTask<User, Void, String> {
+	protected class UserCreator extends AsyncTask<User, Void, Object> {
 
 		UserService userService = new UserController();
 		ProgressDialog progressDialog;
@@ -70,21 +72,31 @@ public class RegisterUserActivity extends Activity{
 		}
 		
 		@Override
-		protected String doInBackground(User... params) {
-			String result = userService.saveUser(params[0]);
-			while (result==null) {}
-			return result;
+		protected Object doInBackground(User... params) {			
+			try {
+				return userService.saveUser(params[0]);
+			} catch (ApplicationViewException e) {
+				return e;
+			}
 		}
 		
 		@Override
-		protected void onPostExecute(String result) {
+		protected void onPostExecute(Object result) {
 			// TODO Auto-generated method stub
-			super.onPostExecute(result);
 			this.progressDialog.dismiss();
-			Toast.makeText(RegisterUserActivity.this, 
-					getResources().getString(R.string.user_registered_ok), Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(RegisterUserActivity.this, MainActivity.class);
-			startActivity(intent);
+			if(result instanceof String){
+				Toast.makeText(RegisterUserActivity.this, 
+						getResources().getString(R.string.user_registered_ok), Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(RegisterUserActivity.this, MainActivity.class);
+				startActivity(intent);
+			}else if(result instanceof Exception){
+				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserActivity.this);
+				builder.setMessage(((Exception)result).getMessage());
+				builder.setTitle("Error");
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			}
+
 		}
 	}
 }

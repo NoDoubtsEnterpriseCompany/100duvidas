@@ -1,14 +1,17 @@
 package com.nodoubts.serverclient.user;
 
 import com.nodoubts.core.User;
+import com.nodoubts.exceptions.ApplicationViewException;
 
 public interface UserService {
 
-	public User findUser(String username);
+	public User findUser(String username) throws ApplicationViewException;
 	
 	public String actualizeUser(User user);
 	
-	public String saveUser(User user);
+	public String saveUser(User user) throws ApplicationViewException;
 	
-	public String authenticateUser(String jsonTransaction);
+	public String authenticateUser(String jsonTransaction) throws ApplicationViewException;
+	
+	public User findUserByEmail(String email) throws ApplicationViewException;
 }
