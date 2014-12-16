@@ -1,5 +1,6 @@
 package com.nodoubts;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
