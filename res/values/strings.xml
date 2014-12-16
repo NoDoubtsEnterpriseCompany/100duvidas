@@ -7,6 +7,8 @@
     <string name="register_message">Register</string>
     <string name="save_btn">Save</string>
     <string name="edit_btn">Edit</string>
+    <string name="profile_btn">Profile</string>
+    <string name="search_professor_btn">Search a Professor</string>
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
@@ -25,7 +27,6 @@
     <string name="title_activity_register_user">Register</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-   
     <string name="address">Address</string>
     <string name="offered_courses">Offered Courses</string>
     <string name="starred_teachers">Starred Teachers</string>
@@ -35,5 +36,6 @@
 
     <!-- facebook -->
     <string name="facebook_app_id">1561113250770242</string>
+    <string name="title_activity_home">HomeActivity</string>
 
 </resources>

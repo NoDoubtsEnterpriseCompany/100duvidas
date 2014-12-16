@@ -12,7 +12,7 @@ import com.nodoubts.util.Constants;
 public class UserController implements UserService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://192.168.0.117:3000/users/";
+	private final String URL_USER = "http://192.168.1.8:3000/users/";
 
 	public UserController() {
 		serverService = new ServerController();
@@ -49,7 +49,7 @@ public class UserController implements UserService {
 	@Override
 	public String saveUser(User user) {
 		StringBuilder builder = new StringBuilder(URL_USER)
-				.append("/adduser");
+				.append("adduser");
 		Gson gsonUser = new Gson();
 		return serverService.post(builder.toString(), gsonUser.toJson(user));
 	}

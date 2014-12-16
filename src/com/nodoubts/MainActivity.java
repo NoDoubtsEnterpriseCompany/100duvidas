@@ -107,9 +107,9 @@ public class MainActivity extends FragmentActivity {
 
 			if (resultCode == 200) {
 				User user = userController.findUser(userNameEditText.getText().toString());
-				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
-				profileScreen.putExtra("user", user);
-				startActivity(profileScreen);
+				Intent homeScreen = new Intent(getApplicationContext(),HomeActivity.class);
+				homeScreen.putExtra("user", user);
+				startActivity(homeScreen);
 			}
 			return response;
 		}

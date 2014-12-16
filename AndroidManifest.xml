@@ -8,7 +8,7 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -16,9 +16,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-                   android:value="@string/facebook_app_id" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -28,9 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
+        <activity
             android:name=".RegisterUserActivity"
-            android:label="@string/title_activity_register_user">
+            android:label="@string/title_activity_register_user" >
         </activity>
         <activity
             android:name=".TeacherProfileActivity"
@@ -44,11 +45,14 @@
             android:name=".EditProfileActivity"
             android:label="@string/title_activity_edit_profile" >
         </activity>
-        
-        <activity android:name="com.facebook.LoginActivity"
-          android:theme="@android:style/Theme.Translucent.NoTitleBar"
-          android:label="@string/app_name" />
-        
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
     </application>
-    
+
 </manifest>
