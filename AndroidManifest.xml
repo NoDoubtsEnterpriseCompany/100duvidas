@@ -53,6 +53,10 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".RegisterSubjectActivity"
+            android:label="@string/title_activity_register_subject" >
+        </activity>
     </application>
 
 </manifest>
