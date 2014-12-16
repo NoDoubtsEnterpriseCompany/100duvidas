@@ -94,10 +94,10 @@ public class FbLoginFragment extends Fragment {
 						}
 						protected void onPostExecute(Object result) {
 							if(result instanceof User){
-								Intent profileScreen = new Intent(
-										getActivity().getApplicationContext(), TeacherProfileActivity.class);
-								profileScreen.putExtra("user", (User)result);
-								startActivity(profileScreen);
+								Intent homeScreen = new Intent(
+										getActivity().getApplicationContext(),HomeActivity.class);
+								homeScreen.putExtra("user", (User)result);
+								startActivity(homeScreen);
 							
 							}else if(result instanceof Exception){
 								AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
