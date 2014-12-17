@@ -63,13 +63,11 @@ public class ServerController implements ServerService{
 		}		
 	}
 	
-	private void checkPOSTResponse(
-			int responseStatusCode, String response) throws ApplicationViewException {
+	private void checkPOSTResponse(int responseStatusCode, String response) throws ApplicationViewException {
 		if(responseStatusCode != HttpStatus.SC_CREATED){
 			try {
 				JSONObject jsonObject = new JSONObject(response);
-				throw new ApplicationViewException(
-						jsonObject.getJSONObject("error").getString("message"));
+				throw new ApplicationViewException(jsonObject.getJSONObject("error").getString("message"));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

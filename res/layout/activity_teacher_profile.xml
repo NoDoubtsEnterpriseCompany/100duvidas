@@ -5,15 +5,6 @@
     android:orientation="vertical"
     tools:context="com.nodoubts.TeacherProfileActivity" >
 
-    <Button
-        android:id="@+id/edit_profilebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:text="@string/edit_btn" />
-
     <TextView
         android:id="@+id/courses_text_field"
         android:layout_width="wrap_content"
@@ -86,5 +77,23 @@
             android:numStars="5"
             android:stepSize="0.5" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/add_subjectbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edit_profilebtn"
+        android:layout_alignBottom="@+id/edit_profilebtn"
+        android:layout_alignParentRight="true"
+        android:text="@string/add_subject" />
+
+    <Button
+        android:id="@+id/edit_profilebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="14dp"
+        android:text="@string/edit_btn" />
 
 </RelativeLayout>

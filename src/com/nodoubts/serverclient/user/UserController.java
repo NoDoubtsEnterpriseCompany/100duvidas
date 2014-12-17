@@ -19,7 +19,7 @@ import com.nodoubts.util.Constants;
 public class UserController implements UserService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://192.168.1.8:3000/users/";
+	private final String URL_USER = "http://192.168.25.5:3000/users/";
 
 	public UserController() {
 		serverService = new ServerController();
@@ -84,7 +84,6 @@ public class UserController implements UserService {
 	@Override
 	public String authenticateUser(String jsonTransaction) throws ApplicationViewException {
 		String URL_LOGIN = URL_USER+"/login";
-		System.out.println("URL: "+URL_LOGIN);
 		StringBuilder builder = new StringBuilder(URL_LOGIN);
 		return serverService.post(builder.toString(), jsonTransaction);
 	}
