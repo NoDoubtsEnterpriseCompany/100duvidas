@@ -27,5 +27,15 @@ public class HomeActivity extends Activity {
 				startActivity(profileScreen);
 			}
 		});
+		
+		Button buttonSearch = (Button) findViewById(R.id.btn_search);
+		buttonSearch.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent searchScreen = new Intent(getApplicationContext(), SearchProfessorActivity.class);
+				startActivity(searchScreen);
+			}
+		});
 	}
 }

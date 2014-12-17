@@ -2,6 +2,7 @@ package com.nodoubts.serverclient;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -49,6 +50,26 @@ public class ServerController implements ServerService{
 		return response;
 
 	}
+	
+	@Override
+	public String get(String url, Map<String, String> parametros) throws ApplicationViewException {
+		StringBuilder builder = new StringBuilder(url);
+		if (parametros != null) {
+			builder.append("?");
+			int count = 0;
+			for (String key : parametros.keySet()) {
+				builder.append(key);
+				builder.append(":");
+				builder.append(parametros.get(key));
+				if (count < parametros.size() - 1) {
+					builder.append("&&");
+				}
+				count++;
+			}
+		}
+		return get(builder.toString());
+	}
+
 
 	private void checkGETResponse(
 			int responseStatusCode, String response) throws ApplicationViewException {

@@ -57,6 +57,10 @@
             android:name=".RegisterSubjectActivity"
             android:label="@string/title_activity_register_subject" >
         </activity>
+        <activity
+            android:name=".SearchProfessorActivity"
+            android:label="@string/title_activity_search_professor" >
+        </activity>
     </application>
 
 </manifest>

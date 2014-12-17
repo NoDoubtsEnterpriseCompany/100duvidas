@@ -1,11 +1,13 @@
 package com.nodoubts.serverclient.user;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,7 +21,7 @@ import com.nodoubts.util.Constants;
 public class UserController implements UserService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://192.168.25.5:3000/users/";
+	private final String URL_USER = "http://192.168.1.2:3000/users/";
 
 	public UserController() {
 		serverService = new ServerController();
@@ -86,5 +88,29 @@ public class UserController implements UserService {
 		String URL_LOGIN = URL_USER+"/login";
 		StringBuilder builder = new StringBuilder(URL_LOGIN);
 		return serverService.post(builder.toString(), jsonTransaction);
+	}
+	
+	@Override
+	public List<User> searchForUsers(String subject) throws ApplicationViewException {
+		StringBuilder builder = new StringBuilder(URL_USER);
+		if (subject!=null && !subject.equals("")) {
+			builder.append("?subject=");
+			builder.append(subject);
+		}
+		System.out.println(builder.toString());
+		String json = serverService.get(builder.toString());
+		List<User> users = new ArrayList<User>();
+		Gson gson = new Gson();
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			JSONArray jsonArray = jsonObject.getJSONArray("result");
+			for (int i=0; i<jsonArray.length();  i++) {
+				JSONObject explrObject = jsonArray.getJSONObject(i);
+				users.add((User)gson.fromJson(explrObject.toString(), User.class));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return users;
 	}
 }
