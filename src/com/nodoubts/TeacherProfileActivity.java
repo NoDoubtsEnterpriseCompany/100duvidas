@@ -35,7 +35,7 @@ import com.nodoubts.core.User;
 
 public class TeacherProfileActivity extends Activity {
 	
-	Button editBtn;
+	Button editBtn,addSubjectBtn;
 	TextView name;
 	User user;
 	ImageView profilePicture;
@@ -50,10 +50,11 @@ public class TeacherProfileActivity extends Activity {
 		waitSpinner = (ProgressBar) findViewById(R.id.singleSpinner);
 		profilePicture = (ImageView) findViewById(R.id.img_view_teacher);
 		editBtn = (Button) findViewById(R.id.edit_profilebtn);
+		addSubjectBtn = (Button) findViewById(R.id.add_subjectbtn);
 		name = (TextView) findViewById(R.id.name_text_view);
-		user = (User) getIntent().getSerializableExtra("user");
+		//user = (User) getIntent().getSerializableExtra("user");
 		
-		name.setText(user.getProfile().getName());
+		//name.setText(user.getProfile().getName());
 		
 		
 		editBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,8 +66,18 @@ public class TeacherProfileActivity extends Activity {
 		    }
 		});
 		
-		SetProfilePicture setPictureTask = new SetProfilePicture();
-		setPictureTask.execute(user.getProfile().getProfilePic());
+		addSubjectBtn.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	Intent addSubjectScreen = new Intent(getApplicationContext(),RegisterSubjectActivity.class);
+		    	startActivity(addSubjectScreen);
+		    }
+		});
+		
+		
+		
+		//SetProfilePicture setPictureTask = new SetProfilePicture();
+		//setPictureTask.execute(user.getProfile().getProfilePic());
 
 	}
 

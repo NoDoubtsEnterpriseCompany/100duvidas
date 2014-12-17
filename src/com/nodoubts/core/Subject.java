@@ -8,15 +8,20 @@ public class Subject implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private String name;
+	
+	
+	public Subject(String subjectName){
+		this.name = subjectName;
+	}
+	
 
-	public String getName() {
+	public String getSubjectName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSubjectName(String subjectName) {
+		this.name = subjectName;
 	}
 	
 	
