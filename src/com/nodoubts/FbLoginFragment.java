@@ -69,7 +69,7 @@ public class FbLoginFragment extends Fragment {
 			}).executeAsync();
             	
         } else if (state.isClosed()) {
-            Log.i(TAG, "Logged out...");
+            Log.i(TAG, "Facebook logged out...");
         }
     }
 
@@ -121,7 +121,6 @@ public class FbLoginFragment extends Fragment {
 			String fbUserEmail = (String) fbUser.getProperty("email");
 			try {
 				user = userController.findUserByEmail(fbUserEmail);
-				Log.i(TAG, "picurl " + user.getProfile().getProfilePic());
 			}catch (ApplicationViewException e) {
 				user = new User();
 				user.setUsername(fbUserEmail);
@@ -134,7 +133,7 @@ public class FbLoginFragment extends Fragment {
 				try {
 					userController.saveUser(user);
 				} catch (ApplicationViewException e1) {
-					e1.printStackTrace();
+					Log.i(TAG, "Error: " +e1.getMessage());
 					return e1;
 				}
 			}
@@ -146,7 +145,9 @@ public class FbLoginFragment extends Fragment {
 				Intent homeScreen = new Intent(
 						getActivity().getApplicationContext(),HomeActivity.class);
 				homeScreen.putExtra("user", (User)result);
+				homeScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(homeScreen);
+				getActivity().finish();
 			
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
