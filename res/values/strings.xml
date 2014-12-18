@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- app configuration -->
+    
+    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+    <string name="port">443</string>
+        
     <!-- button text -->
 
     <string name="login_message">Login</string>

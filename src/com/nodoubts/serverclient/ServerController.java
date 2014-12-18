@@ -17,13 +17,34 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.nodoubts.NoDoubts;
+import com.nodoubts.R;
 import com.nodoubts.exceptions.ApplicationViewException;
 
 public class ServerController implements ServerService{
+	
+	private static ServerController instance = null;
+	private String HOST_URL;
+	
+	private ServerController(){
+		String host_name = NoDoubts.getAppContext().getString(R.string.host_name);
+		String port = NoDoubts.getAppContext().getString(R.string.port);
+		HOST_URL = host_name.concat(":").concat(port);
+	}
+	
+
+	public static ServerController getInstance(){
+		if(instance == null){
+			instance = new ServerController();
+		}
+		return instance;
+	}
 
 	@Override
-	public String get(String url) throws ApplicationViewException {
+	public String get(String uri) throws ApplicationViewException {
 		String response = null;
+		String url = HOST_URL.concat(uri);
+		System.out.println(url);
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpEntity httpEntity = null;
@@ -52,7 +73,8 @@ public class ServerController implements ServerService{
 	}
 	
 	@Override
-	public String get(String url, Map<String, String> parametros) throws ApplicationViewException {
+	public String get(String uri, Map<String, String> parametros) throws ApplicationViewException {
+		String url = HOST_URL.concat(uri);
 		StringBuilder builder = new StringBuilder(url);
 		if (parametros != null) {
 			builder.append("?");
@@ -96,7 +118,8 @@ public class ServerController implements ServerService{
 	}
 
 	@Override
-	public String post(String url, String json) throws ApplicationViewException {
+	public String post(String uri, String json) throws ApplicationViewException {
+		String url = HOST_URL.concat(uri);
 		String response = null;
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -131,7 +154,8 @@ public class ServerController implements ServerService{
 	}
 
 	@Override
-	public String put(String url, String json) {
+	public String put(String uri, String json) {
+		String url = HOST_URL.concat(uri);
 		String response = null;
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -164,7 +188,7 @@ public class ServerController implements ServerService{
 	}
 
 	@Override
-	public String delete(String url) {
+	public String delete(String uri) {
 		return null;
 	}
 }

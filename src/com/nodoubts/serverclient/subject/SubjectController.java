@@ -17,23 +17,22 @@ import com.nodoubts.util.Constants;
 public class SubjectController implements SubjectService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://10.0.0.104:3000/subjects";
 
 	public SubjectController() {
-		serverService = new ServerController();
+		serverService = ServerController.getInstance();
 		Constants.init();
 	}
 
 	@Override
 	public String addSubject(Subject subject) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder(URL_USER).append("/addsubject");
+		StringBuilder builder = new StringBuilder("/subjects/addsubject");
 		Gson gsonSubject= new Gson();
 		return serverService.post(builder.toString(), gsonSubject.toJson(subject));
 	}
 
 	@Override
 	public Subject getSubject(String subjectName) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder(URL_USER).append("?name=").append(subjectName);
+		StringBuilder builder = new StringBuilder("/subjects?name=").append(subjectName);
 		String json = serverService.get(builder.toString());
 		Subject subject = null;
 		Gson gson = new Gson();
@@ -49,7 +48,7 @@ public class SubjectController implements SubjectService {
 	//TODO verificar como receber uma lista
 	@Override
 	public List<Subject> getSubjects() throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder(URL_USER);
+		StringBuilder builder = new StringBuilder("/subjects");
 		String json = serverService.get(builder.toString());
 		List<Subject> subjects = new ArrayList<Subject>();
 		Gson gson = new Gson();

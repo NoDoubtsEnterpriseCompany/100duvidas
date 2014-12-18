@@ -38,7 +38,7 @@ public class MainActivity extends FragmentActivity {
 		}
         
         userController = new UserController();
-		serverController= new ServerController();
+		serverController= ServerController.getInstance();
 		userNameEditText = (EditText) findViewById(R.id.email);
 		passEditText = (EditText) findViewById(R.id.passwordEditText);
 		loginBtn = (Button) findViewById(R.id.loginbtn);

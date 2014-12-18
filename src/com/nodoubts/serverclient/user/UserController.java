@@ -21,16 +21,15 @@ import com.nodoubts.util.Constants;
 public class UserController implements UserService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://10.0.0.104:3000/users/";
 
 	public UserController() {
-		serverService = new ServerController();
+		serverService = ServerController.getInstance();
 		Constants.init();
 	}
 
 	@Override
 	public  User findUser(String username) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder(URL_USER).append("/user/")
+		StringBuilder builder = new StringBuilder("/users/user/")
 				.append(username);
 		String json = serverService.get(builder.toString());
 		User user = null;
@@ -49,7 +48,7 @@ public class UserController implements UserService {
 		params.add(new BasicNameValuePair("email", email));
 		String paramsStr = URLEncodedUtils.format(params, "utf-8");
 		
-		String query = URL_USER.concat("/user?").concat(paramsStr);
+		String query = "/users/user?".concat(paramsStr);
 		
 		String response = serverService.get(query.toString());
 		User user = null;
@@ -69,30 +68,28 @@ public class UserController implements UserService {
 	 */
 	@Override
 	public String actualizeUser(User user) {
-		StringBuilder builder = new StringBuilder(URL_USER)
-				.append("/updateuser/").append(user.getUsername());
+		StringBuilder builder = new StringBuilder("/users/updateuser/").append(user.getUsername());
 		Gson gsonUser = new Gson();
 		return serverService.put(builder.toString(), gsonUser.toJson(user));
 	}
 
 	@Override
 	public String saveUser(User user) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder(URL_USER)
-				.append("/adduser");
+		StringBuilder builder = new StringBuilder("/users/adduser");
 		Gson gsonUser = new Gson();
 		return serverService.post(builder.toString(), gsonUser.toJson(user));
 	}
 
 	@Override
 	public String authenticateUser(String jsonTransaction) throws ApplicationViewException {
-		String URL_LOGIN = URL_USER+"/login";
+		String URL_LOGIN = "/users/login";
 		StringBuilder builder = new StringBuilder(URL_LOGIN);
 		return serverService.post(builder.toString(), jsonTransaction);
 	}
 	
 	@Override
 	public List<User> searchForUsers(String subject) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder(URL_USER);
+		StringBuilder builder = new StringBuilder();
 		if (subject!=null && !subject.equals("")) {
 			builder.append("?subject=");
 			builder.append(subject);
