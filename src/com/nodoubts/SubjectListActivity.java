@@ -114,8 +114,13 @@ public class SubjectListActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			self.populateList(subjectList);
+			
 			return 1L;
+		}
+		
+		@Override
+		protected void onPostExecute(Long result) {
+			self.populateList(subjectList);
 		}
 	}
 	
