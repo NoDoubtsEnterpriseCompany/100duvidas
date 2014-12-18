@@ -44,6 +44,7 @@
     <string name="user_registered_ok">User saved successfully</string>
     <string name="add_new_subject">Add new Subject</string>
      <string name="subject_registered_ok">Subject registred successfully</string>
+     <string name="existing_subject"> Subject already exists	</string>
 
     <!-- facebook -->
     <string name="facebook_app_id">1561113250770242</string>

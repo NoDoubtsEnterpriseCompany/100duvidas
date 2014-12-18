@@ -109,7 +109,12 @@ public class RegisterSubjectActivity extends Activity {
 				startActivity(intent);
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterSubjectActivity.this);
-				builder.setMessage(((Exception)result).getMessage());
+				if(((Exception) result).getMessage().contains("11000")){
+					builder.setMessage(R.string.existing_subject);
+				}else{
+					builder.setMessage(((Exception)result).getMessage());
+				}
+				System.out.println();
 				builder.setTitle("Error");
 				AlertDialog dialog = builder.create();
 				dialog.show();

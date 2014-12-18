@@ -51,7 +51,12 @@ public class TeacherProfileActivity extends Activity {
 		profilePicture = (ImageView) findViewById(R.id.img_view_teacher);
 		editBtn = (Button) findViewById(R.id.edit_profilebtn);
 		addSubjectBtn = (Button) findViewById(R.id.add_subjectbtn);
-		name = (TextView) findViewById(R.id.name_text_view);	
+		name = (TextView) findViewById(R.id.name_text_view);
+		
+		if(getIntent().getSerializableExtra("user") != null ){
+			user = (User) getIntent().getSerializableExtra("user");
+			name.setText(user.getProfile().getName());
+		}
 		
 		editBtn.setOnClickListener(new View.OnClickListener() {
 		    @Override
