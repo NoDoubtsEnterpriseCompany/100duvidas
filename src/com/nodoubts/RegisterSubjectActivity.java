@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nodoubts.core.Subject;
+import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
@@ -23,6 +24,7 @@ public class RegisterSubjectActivity extends Activity {
 	
 	Button addButton;
 	SubjectService subjectService;
+	User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class RegisterSubjectActivity extends Activity {
 		
 		subjectService = new SubjectController();
 		addButton = (Button) findViewById(R.id.btn_add_subject);
+		if(getIntent().getSerializableExtra("user") != null ){
+			user = (User) getIntent().getSerializableExtra("user");
+		}
 		
 		
 		addButton.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +111,7 @@ public class RegisterSubjectActivity extends Activity {
 				Toast.makeText(RegisterSubjectActivity.this, 
 						getResources().getString(R.string.subject_registered_ok), Toast.LENGTH_LONG).show();
 				Intent intent = new Intent(RegisterSubjectActivity.this, TeacherProfileActivity.class);
+				intent.putExtra("user", user);
 				startActivity(intent);
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterSubjectActivity.this);

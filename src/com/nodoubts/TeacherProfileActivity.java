@@ -56,6 +56,10 @@ public class TeacherProfileActivity extends Activity {
 		if(getIntent().getSerializableExtra("user") != null ){
 			user = (User) getIntent().getSerializableExtra("user");
 			name.setText(user.getProfile().getName());
+			if(user.getProfile().getProfilePic() != null){
+				SetProfilePicture setPictureTask = new SetProfilePicture();
+				setPictureTask.execute(user.getProfile().getProfilePic());
+			}
 		}
 		
 		editBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,15 +75,12 @@ public class TeacherProfileActivity extends Activity {
 		    @Override
 		    public void onClick(View v) {
 		    	Intent addSubjectScreen = new Intent(getApplicationContext(),RegisterSubjectActivity.class);
+		    	addSubjectScreen.putExtra("user", user);
 		    	startActivity(addSubjectScreen);
 		    }
 		});
 		
 		
-		if(user.getProfile().getProfilePic() != null){
-			SetProfilePicture setPictureTask = new SetProfilePicture();
-			setPictureTask.execute(user.getProfile().getProfilePic());
-		}
 
 	}
 
