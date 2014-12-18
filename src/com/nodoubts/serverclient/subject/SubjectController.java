@@ -1,5 +1,9 @@
 package com.nodoubts.serverclient.subject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,7 +17,7 @@ import com.nodoubts.util.Constants;
 public class SubjectController implements SubjectService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://192.168.25.5:3000/subjects";
+	private final String URL_USER = "http://10.0.0.104:3000/subjects";
 
 	public SubjectController() {
 		serverService = new ServerController();
@@ -44,18 +48,22 @@ public class SubjectController implements SubjectService {
 
 	//TODO verificar como receber uma lista
 	@Override
-	public Subject getSubjects() throws ApplicationViewException {
+	public List<Subject> getSubjects() throws ApplicationViewException {
 		StringBuilder builder = new StringBuilder(URL_USER);
 		String json = serverService.get(builder.toString());
-		Subject subject = null;
+		List<Subject> subjects = new ArrayList<Subject>();
 		Gson gson = new Gson();
 		try {
 			JSONObject jsonObject = new JSONObject(json);
-			subject = gson.fromJson(jsonObject.getString("result"), Subject.class);
+			JSONArray jsonArray = jsonObject.getJSONArray("result");
+			for (int i=0; i<jsonArray.length();  i++) {
+				JSONObject explrObject = jsonArray.getJSONObject(i);
+				subjects.add((Subject)gson.fromJson(explrObject.toString(), Subject.class));
+			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return subject;
+		return subjects;
 	}
 
 }

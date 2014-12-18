@@ -37,5 +37,16 @@ public class HomeActivity extends Activity {
 				startActivity(searchScreen);
 			}
 		});
+		
+		
+		Button buttonSearchSubject = (Button) findViewById(R.id.btn_search_subject);
+		buttonSearchSubject.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent searchScreen = new Intent(getApplicationContext(), SubjectListActivity.class);
+				startActivity(searchScreen);
+			}
+		});
 	}
 }

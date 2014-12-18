@@ -24,6 +24,10 @@ public class Subject implements Serializable {
 		this.name = subjectName;
 	}
 	
+	@Override
+	public String toString() {
+		return name;
+	}
 	
 
 }

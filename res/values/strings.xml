@@ -45,6 +45,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_register_subject">RegisterSubjectActivity</string>
     <string name="title_activity_search_professor">SearchProfessorActivity</string>
+    <string name="search_subject">Search for Subjects</string>
     
 
 </resources>
