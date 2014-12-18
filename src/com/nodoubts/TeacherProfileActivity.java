@@ -52,10 +52,11 @@ public class TeacherProfileActivity extends Activity {
 		editBtn = (Button) findViewById(R.id.edit_profilebtn);
 		addSubjectBtn = (Button) findViewById(R.id.add_subjectbtn);
 		name = (TextView) findViewById(R.id.name_text_view);
-		//user = (User) getIntent().getSerializableExtra("user");
 		
-		//name.setText(user.getProfile().getName());
-		
+		if(getIntent().getSerializableExtra("user") != null ){
+			user = (User) getIntent().getSerializableExtra("user");
+			name.setText(user.getProfile().getName());
+		}
 		
 		editBtn.setOnClickListener(new View.OnClickListener() {
 		    @Override
@@ -76,8 +77,8 @@ public class TeacherProfileActivity extends Activity {
 		
 		
 		
-		//SetProfilePicture setPictureTask = new SetProfilePicture();
-		//setPictureTask.execute(user.getProfile().getProfilePic());
+		SetProfilePicture setPictureTask = new SetProfilePicture();
+		setPictureTask.execute(user.getProfile().getProfilePic());
 
 	}
 

@@ -17,7 +17,7 @@ import com.nodoubts.util.Constants;
 public class SubjectController implements SubjectService {
 
 	private ServerService serverService;
-	private final String URL_USER = "http://10.0.0.104:3000/subjects";
+	private final String URL_USER = "http://192.168.25.5:3000/subjects";
 
 	public SubjectController() {
 		serverService = new ServerController();
