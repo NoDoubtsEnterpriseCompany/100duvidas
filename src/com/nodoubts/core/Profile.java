@@ -15,7 +15,7 @@ public class Profile implements Serializable {
 	private String profilePic;
 	private String degree;
 	private String speciality;
-	private List<Subject> subjects;
+	private List<String> subjects;
 	
 	public Profile (){
 	}
@@ -41,7 +41,7 @@ public class Profile implements Serializable {
 		return speciality;
 	}
 	
-	public List<Subject> getSubjects() {
+	public List<String> getSubjects() {
 		return subjects;
 	}
 	
@@ -65,7 +65,7 @@ public class Profile implements Serializable {
 		this.speciality = speciality;
 	}
 	
-	public void setSubjects(List<Subject> subjects) {
+	public void setSubjects(List<String> subjects) {
 		this.subjects = subjects;
 	}
 	public String getCity() {

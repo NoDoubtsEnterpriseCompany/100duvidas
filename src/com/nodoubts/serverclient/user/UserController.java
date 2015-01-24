@@ -12,6 +12,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
@@ -94,7 +96,6 @@ public class UserController implements UserService {
 			builder.append("?subject=");
 			builder.append(subject);
 		}
-		System.out.println(builder.toString());
 		String json = serverService.get(builder.toString());
 		List<User> users = new ArrayList<User>();
 		Gson gson = new Gson();
@@ -109,5 +110,13 @@ public class UserController implements UserService {
 			e.printStackTrace();
 		}
 		return users;
+	}
+
+	@Override
+	public String addSubjectToUser(String jsonTransaction)
+			throws ApplicationViewException {
+		
+		StringBuilder builder = new StringBuilder("/users/addsubject");
+		return serverService.post(builder.toString(), jsonTransaction);
 	}
 }

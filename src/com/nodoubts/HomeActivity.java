@@ -45,6 +45,7 @@ public class HomeActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent searchScreen = new Intent(getApplicationContext(), SubjectListActivity.class);
+				searchScreen.putExtra("user", (User) getIntent().getSerializableExtra("user"));
 				startActivity(searchScreen);
 			}
 		});

@@ -1,13 +1,11 @@
 package com.nodoubts;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.nodoubts.core.Subject;
+import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
@@ -33,6 +33,10 @@ public class SubjectListActivity extends Activity {
 	private SubjectListActivity self;
 
 	ListView listView;
+	
+	ListAdapter myAdpater;
+	
+	User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,7 @@ public class SubjectListActivity extends Activity {
 		listView = (ListView) findViewById(R.id.listView_subjectList);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, final View view,
-					int position, long id) {
+					final int position, long id) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						self);
 
@@ -62,9 +66,18 @@ public class SubjectListActivity extends Activity {
 											int id) {
 										// if this button is clicked, close
 										// current activity
-										Toast.makeText(getApplicationContext(),
-												((TextView) view).getText(),
-												Toast.LENGTH_SHORT).show();
+										
+										if(getIntent().getSerializableExtra("user") != null ){
+											user = (User) getIntent().getSerializableExtra("user");
+										}
+										
+										Subject subject = (Subject) myAdpater.getItem(position);
+										
+										JsonObject jsonTransaction = new JsonObject();
+										jsonTransaction.addProperty("name", subject.getSubjectName());
+										jsonTransaction.addProperty("username", user.getUsername());
+										
+										new AddSubjectAsyncTask(jsonTransaction).execute();
 									}
 								})
 						.setNegativeButton("No",
@@ -97,9 +110,15 @@ public class SubjectListActivity extends Activity {
 	}
 
 	public void populateList(List<Subject> subjectList) {
-		ListAdapter myAdpater = new ArrayAdapter<Subject>(self,
+		myAdpater = new ArrayAdapter<Subject>(self,
 				android.R.layout.simple_list_item_1, subjectList);
 		listView.setAdapter(myAdpater);
+	}
+	
+	public void toast(String string){
+		Toast.makeText(getApplicationContext(),
+				string,
+				Toast.LENGTH_SHORT).show();
 	}
 
 	class SubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
@@ -124,21 +143,29 @@ public class SubjectListActivity extends Activity {
 		}
 	}
 	
-//	class AddSubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
-//		
-//		private Subject subject;
-//
-//		public AddSubjectAsyncTask(Subject subject) {
-//			this.subject = subject;
-//		}
-//
-//		UserService userService = new UserController();
-//
-//		protected Long doInBackground(URL... urls) {
-//			userService.addSubject(subject);
-//			// self.populateList(subjectList);
-//			return 1L;
-//		}
-//	}
+	class AddSubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
+		
+		private JsonObject jsonObject;
 
+		public AddSubjectAsyncTask(JsonObject jsonObject) {
+			this.jsonObject = jsonObject;
+		}
+		
+
+		UserService userService = new UserController();
+
+		protected Long doInBackground(URL... urls) {
+			try {
+				userService.addSubjectToUser(jsonObject.toString());
+			} catch (ApplicationViewException e) {
+				e.printStackTrace();
+			}
+			return 1L;
+		}
+		
+		@Override
+		protected void onPostExecute(Long result) {
+			self.toast("Subject successfully added");
+		}
+	}
 }

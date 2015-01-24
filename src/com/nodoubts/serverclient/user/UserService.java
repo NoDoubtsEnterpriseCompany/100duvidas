@@ -18,5 +18,6 @@ public interface UserService {
 	public User findUserByEmail(String email) throws ApplicationViewException;
 	
 	public List<User> searchForUsers(String disciplina) throws ApplicationViewException;
-
+	
+	public String addSubjectToUser(String jsonTransaction) throws ApplicationViewException;
 }
