@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -71,15 +72,15 @@ public class TeacherProfileActivity extends Activity {
 		    }
 		});
 		
-		addSubjectBtn.setOnClickListener(new View.OnClickListener() {
-		    @Override
-		    public void onClick(View v) {
-		    	Intent addSubjectScreen = new Intent(getApplicationContext(),RegisterSubjectActivity.class);
-		    	addSubjectScreen.putExtra("user", user);
-		    	startActivity(addSubjectScreen);
-		    }
+
+		addSubjectBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent searchScreen = new Intent(getApplicationContext(), SubjectListActivity.class);
+				searchScreen.putExtra("user", (User) getIntent().getSerializableExtra("user"));
+				startActivity(searchScreen);
+			}
 		});
-		
 		
 
 	}

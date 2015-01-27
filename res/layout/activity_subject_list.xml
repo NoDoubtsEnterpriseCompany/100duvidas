@@ -53,4 +53,13 @@
         android:layout_alignRight="@+id/listView_subjectList"
         android:text="Back" />
 
+    <Button
+        android:id="@+id/btn_create_new_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listView_subjectList"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="18dp"
+        android:text="@string/add_subject" />
+
 </RelativeLayout>

@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -97,6 +98,17 @@ public class SubjectListActivity extends Activity {
 				alertDialog.show();
 			}
 		});
+		
+		Button createSubjectBtn = (Button) findViewById(R.id.btn_create_new_subject);
+		createSubjectBtn.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	Intent addSubjectScreen = new Intent(getApplicationContext(),RegisterSubjectActivity.class);
+		    	addSubjectScreen.putExtra("user", user);
+		    	startActivity(addSubjectScreen);
+		    }
+		});
+		
 		
 		
 		Button buttonBack = (Button) findViewById(R.id.btn_search_subject_back);

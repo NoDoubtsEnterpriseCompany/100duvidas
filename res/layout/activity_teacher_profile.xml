@@ -85,7 +85,7 @@
         android:layout_alignBaseline="@+id/edit_profilebtn"
         android:layout_alignBottom="@+id/edit_profilebtn"
         android:layout_alignParentRight="true"
-        android:text="@string/add_subject" />
+        android:text="@string/add_subject_to_profile" />
 
     <Button
         android:id="@+id/edit_profilebtn"

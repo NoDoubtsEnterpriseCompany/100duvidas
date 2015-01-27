@@ -3,7 +3,7 @@
 
     <!-- app configuration -->
     
-    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+   <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
     <string name="port">443</string>
         
     <!-- button text -->
@@ -16,6 +16,7 @@
     <string name="search_professor_btn">Search a Professor</string>
     <string name="add">Add</string>
     <string name="add_subject">Create New Subject</string>
+      <string name="add_subject_to_profile">Add new Subject</string>
     
 
     <!-- hints text -->

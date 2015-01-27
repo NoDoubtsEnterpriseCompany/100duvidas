@@ -39,15 +39,6 @@ public class HomeActivity extends Activity {
 		});
 		
 		
-		Button buttonSearchSubject = (Button) findViewById(R.id.btn_search_subject);
-		buttonSearchSubject.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent searchScreen = new Intent(getApplicationContext(), SubjectListActivity.class);
-				searchScreen.putExtra("user", (User) getIntent().getSerializableExtra("user"));
-				startActivity(searchScreen);
-			}
-		});
+	
 	}
 }

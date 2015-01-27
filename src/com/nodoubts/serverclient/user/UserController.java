@@ -18,7 +18,6 @@ import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
-import com.nodoubts.util.Constants;
 
 public class UserController implements UserService {
 
@@ -26,7 +25,6 @@ public class UserController implements UserService {
 
 	public UserController() {
 		serverService = ServerController.getInstance();
-		Constants.init();
 	}
 
 	@Override

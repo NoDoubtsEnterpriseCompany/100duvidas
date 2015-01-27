@@ -12,7 +12,6 @@ import com.nodoubts.core.Subject;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
-import com.nodoubts.util.Constants;
 
 public class SubjectController implements SubjectService {
 
@@ -20,7 +19,6 @@ public class SubjectController implements SubjectService {
 
 	public SubjectController() {
 		serverService = ServerController.getInstance();
-		Constants.init();
 	}
 
 	@Override
