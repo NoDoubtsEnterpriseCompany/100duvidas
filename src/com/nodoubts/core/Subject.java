@@ -1,15 +1,13 @@
 package com.nodoubts.core;
 
-import java.io.Serializable;
+import java.util.List;
 
-public class Subject implements Serializable {
+import com.nodoubts.SubjectActivity;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Subject implements SearchType {
+	private static final long serialVersionUID = 8116536122442142507L;
 	private String name;
-	
+	private List<User> teachers;
 	
 	public Subject(String subjectName){
 		this.name = subjectName;
@@ -28,6 +26,26 @@ public class Subject implements Serializable {
 	public String toString() {
 		return name;
 	}
+
+
+	@Override
+	public Class<?> getActivityClass() {
+		return SubjectActivity.class;
+	}
+
+
+	@Override
+	public String getName() {
+		return getSubjectName();
+	}
+
+
+	public List<User> getProfessors() {
+		return teachers;
+	}
 	
+	public void setProfessors(List<User> professors){
+		this.teachers = professors;
+	}
 
 }

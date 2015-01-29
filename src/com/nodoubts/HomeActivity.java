@@ -33,7 +33,7 @@ public class HomeActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent searchScreen = new Intent(getApplicationContext(), SearchProfessorActivity.class);
+				Intent searchScreen = new Intent(getApplicationContext(), SearchActivity.class);
 				startActivity(searchScreen);
 			}
 		});

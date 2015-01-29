@@ -9,7 +9,7 @@
     tools:context="com.nodoubts.EditProfileActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/subject_name_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
         android:id="@+id/name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/subject_name_textview"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"

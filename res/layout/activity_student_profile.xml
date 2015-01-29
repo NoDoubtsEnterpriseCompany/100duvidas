@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginRight="15dp"
-        android:layout_toLeftOf="@+id/textView1"
+        android:layout_toLeftOf="@+id/subject_name_textview"
         android:src="@drawable/avatar" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/subject_name_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/img_view_teacher"
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/courses_text_field"
-        android:layout_alignRight="@+id/textView1"
+        android:layout_alignRight="@+id/subject_name_textview"
         android:layout_marginBottom="62dp"
         android:text="EMAIL" />
 

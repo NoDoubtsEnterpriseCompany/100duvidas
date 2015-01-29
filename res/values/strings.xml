@@ -2,10 +2,10 @@
 <resources>
 
     <!-- app configuration -->
-    
-   <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+
+    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
     <string name="port">443</string>
-        
+
     <!-- button text -->
 
     <string name="login_message">Login</string>
@@ -13,11 +13,10 @@
     <string name="save_btn">Save</string>
     <string name="edit_btn">Edit Profile</string>
     <string name="profile_btn">Profile</string>
-    <string name="search_professor_btn">Search a Professor</string>
+    <string name="search_professor_btn">Search</string>
     <string name="add">Add</string>
     <string name="add_subject">Create New Subject</string>
-      <string name="add_subject_to_profile">Add new Subject</string>
-    
+    <string name="add_subject_to_profile">Add new Subject</string>
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
@@ -44,15 +43,18 @@
     <string name="personal_inf">Personal Information</string>
     <string name="user_registered_ok">User saved successfully</string>
     <string name="add_new_subject">Add new Subject</string>
-     <string name="subject_registered_ok">Subject registred successfully</string>
-     <string name="existing_subject"> Subject already exists	</string>
+    <string name="subject_registered_ok">Subject registred successfully</string>
+    <string name="existing_subject"> Subject already exists	</string>
+    <string name="search_subject">Search for Subjects</string>
+    <string name="search">Search</string>
+    <string name="subject_description_label">Description:</string>
+    <string name="subject_teacher_label">Teachers:</string>
+    <string name="subject_description_content_label">Subject\'s description</string>
 
     <!-- facebook -->
     <string name="facebook_app_id">1561113250770242</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_register_subject">RegisterSubjectActivity</string>
     <string name="title_activity_search_professor">SearchProfessorActivity</string>
-    <string name="search_subject">Search for Subjects</string>
-    
 
 </resources>

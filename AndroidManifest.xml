@@ -62,6 +62,8 @@
             android:label="@string/title_activity_search_professor" >
         </activity>
         <activity android:name=".SubjectListActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SubjectActivity"></activity>
     </application>
 
 </manifest>
