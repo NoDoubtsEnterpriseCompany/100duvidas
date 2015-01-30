@@ -34,7 +34,7 @@ import android.widget.TextView;
 
 import com.nodoubts.core.User;
 
-public class TeacherProfileActivity extends Activity {
+public class ProfessorProfileActivity extends Activity {
 	
 	Button editBtn,addSubjectBtn;
 	TextView name;

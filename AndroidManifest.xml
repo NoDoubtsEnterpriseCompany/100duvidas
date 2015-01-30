@@ -34,7 +34,7 @@
             android:label="@string/title_activity_register_user" >
         </activity>
         <activity
-            android:name=".TeacherProfileActivity"
+            android:name=".ProfessorProfileActivity"
             android:label="@string/title_activity_teacher_profile" >
         </activity>
         <activity
@@ -64,6 +64,7 @@
         <activity android:name=".SubjectListActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".SubjectActivity"></activity>
+        <activity android:name=".ViewProfessorActivity"></activity>
     </application>
 
 </manifest>

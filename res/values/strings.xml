@@ -50,6 +50,9 @@
     <string name="subject_description_label">Description:</string>
     <string name="subject_teacher_label">Teachers:</string>
     <string name="subject_description_content_label">Subject\'s description</string>
+    <string name="curriculum_btn">Curriculum</string>
+    <string name="schedule_btn">Schedule lecture</string>
+    <string name="view_professor_comments_label">Comments:</string>
 
     <!-- facebook -->
     <string name="facebook_app_id">1561113250770242</string>

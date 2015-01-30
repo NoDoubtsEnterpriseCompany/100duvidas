@@ -22,7 +22,7 @@ public class HomeActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent profileScreen = new Intent(getApplicationContext(),TeacherProfileActivity.class);
+				Intent profileScreen = new Intent(getApplicationContext(),ProfessorProfileActivity.class);
 				profileScreen.putExtra("user", (User) getIntent().getSerializableExtra("user"));
 				startActivity(profileScreen);
 			}

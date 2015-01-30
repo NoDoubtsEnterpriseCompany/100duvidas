@@ -1,12 +1,11 @@
 package com.nodoubts.core;
 
-import java.io.Serializable;
+import com.nodoubts.ViewProfessorActivity;
 
-public class User implements Serializable{
-	/**
-	 * 
-	 */
+
+public class User implements SearchType{
 	private static final long serialVersionUID = -3587210382909215826L;
+	
 	private String username;
 	private String password;
 	private String email;
@@ -16,7 +15,7 @@ public class User implements Serializable{
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.profile = new Profile("tiaraju"); //TODO: remove this
+		this.profile = new Profile(""); //TODO: remove this
 	}
 
 	public User(){}
@@ -58,5 +57,19 @@ public class User implements Serializable{
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	@Override
+	public Class<?> getActivityClass() {
+		return ViewProfessorActivity.class; //TODO: Might have to refact this for common users
+	}
+
+	@Override
+	public String getName() {
+		return profile.getName();
+	}
+	
+	public String toString(){
+		return getName();
 	}
 }

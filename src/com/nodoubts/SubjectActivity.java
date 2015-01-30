@@ -2,14 +2,14 @@ package com.nodoubts;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nodoubts.core.ProfessorsAdapter;
+import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.Subject;
+import com.nodoubts.core.User;
 
 public class SubjectActivity extends Activity {
 	
@@ -31,8 +31,8 @@ public class SubjectActivity extends Activity {
 		
 		if(subject!=null){
 			subjectNameTextView.setText(subject.getName());
-			ProfessorsAdapter professorsAdapter = new ProfessorsAdapter(this, subject.getProfessors());
-			ProfessorsListView.setAdapter(professorsAdapter);
+			SearchAdapter<User> searchAdapter = new SearchAdapter<User>(this, subject.getProfessors());
+			ProfessorsListView.setAdapter(searchAdapter);
 		}
 	}
 }

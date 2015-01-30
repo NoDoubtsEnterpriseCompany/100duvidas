@@ -110,7 +110,7 @@ public class RegisterSubjectActivity extends Activity {
 			if(result instanceof String){
 				Toast.makeText(RegisterSubjectActivity.this, 
 						getResources().getString(R.string.subject_registered_ok), Toast.LENGTH_LONG).show();
-				Intent intent = new Intent(RegisterSubjectActivity.this, TeacherProfileActivity.class);
+				Intent intent = new Intent(RegisterSubjectActivity.this, ProfessorProfileActivity.class);
 				intent.putExtra("user", user);
 				startActivity(intent);
 			}else if(result instanceof Exception){

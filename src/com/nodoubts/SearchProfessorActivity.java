@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.nodoubts.core.ProfessorsAdapter;
+import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
@@ -69,7 +69,7 @@ public class SearchProfessorActivity extends Activity {
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			this.progressDialog.dismiss();
-			ProfessorsAdapter professorsAdapter = new ProfessorsAdapter(SearchProfessorActivity.this, users);
+			SearchAdapter<User> professorsAdapter = new SearchAdapter<User>(SearchProfessorActivity.this, users);
 			
 			ListView listView = (ListView) findViewById(R.id.list_professors);
 			listView.setAdapter(professorsAdapter);
