@@ -29,14 +29,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nodoubts.core.GroupLecture;
+import com.nodoubts.core.GroupLectureAdapter;
 import com.nodoubts.core.User;
 
 public class ProfessorProfileActivity extends Activity {
 	
-	Button editBtn,addSubjectBtn;
+	Button editBtn,addSubjectBtn, addGroupLectureBtn;
 	TextView name;
 	User user;
 	ImageView profilePicture;
@@ -52,6 +56,7 @@ public class ProfessorProfileActivity extends Activity {
 		profilePicture = (ImageView) findViewById(R.id.img_view_teacher);
 		editBtn = (Button) findViewById(R.id.edit_profilebtn);
 		addSubjectBtn = (Button) findViewById(R.id.add_subjectbtn);
+		addGroupLectureBtn = (Button) findViewById(R.id.add_grouplecturebtn);
 		name = (TextView) findViewById(R.id.name_text_view);
 		
 		if(getIntent().getSerializableExtra("user") != null ){
@@ -82,9 +87,25 @@ public class ProfessorProfileActivity extends Activity {
 			}
 		});
 		
-
+		addGroupLectureBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent createGroupScreen = new Intent(getApplicationContext(), RegisterGroupLectureActivity.class);
+				createGroupScreen.putExtra("user",  user);
+				startActivity(createGroupScreen);
+			}
+		});
+		
+		loadGroupLecturesCreatedList();
 	}
 
+	private void loadGroupLecturesCreatedList() {
+		Toast.makeText(ProfessorProfileActivity.this, String.valueOf(user.getProfile().getGroupLecturesCreated().size()), Toast.LENGTH_LONG).show();
+		ListView listView = (ListView) findViewById(R.id.list_group_lectures_created);
+		GroupLectureAdapter<GroupLecture> groupLectureAdapter = new GroupLectureAdapter<GroupLecture>(ProfessorProfileActivity.this, user.getProfile().getGroupLecturesCreated());
+		listView.setAdapter(groupLectureAdapter);
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

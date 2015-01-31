@@ -9,10 +9,8 @@
         android:id="@+id/courses_text_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="107dp"
-        android:ems="20"
+        android:layout_below="@+id/add_subjectbtn"
         android:gravity="left"
         android:text="@string/offered_courses" />
 
@@ -95,5 +93,37 @@
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="14dp"
         android:text="@string/edit_btn" />
+    
+    <RelativeLayout 
+        android:id="@+id/layout_groups_professor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/courses_text_field"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        
+        <TextView 
+            android:id="@+id/group_lectures_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/groupLectures"/>
+        
+        <Button 
+            android:id="@+id/add_grouplecturebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/createGroupLecture"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@+id/group_lectures_tv"/>
+        
+    </RelativeLayout>
+    
+    <ListView 
+        android:id="@+id/list_group_lectures_created"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_groups_professor">
+        
+    </ListView>
 
 </RelativeLayout>
