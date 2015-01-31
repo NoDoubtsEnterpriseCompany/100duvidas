@@ -57,7 +57,8 @@ public class RegisterSubjectActivity extends Activity {
 			
 			private Subject getSubject(){
 				String name = ((EditText) findViewById(R.id.new_subject_name)).getText().toString();
-				return new Subject(name);
+				String description = ((EditText) findViewById(R.id.new_subject_description)).getText().toString();
+				return new Subject(name, description);
 			}
 		});
 

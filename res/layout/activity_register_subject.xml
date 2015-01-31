@@ -28,16 +28,25 @@
         android:text="@string/add" />
 
     <EditText
+        android:id="@+id/new_subject_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/new_subject_name"
+        android:layout_below="@+id/new_subject_name"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:minLines="3"
+        android:inputType="textMultiLine" 
+        android:hint="@string/description"/>
+
+    <EditText
         android:id="@+id/new_subject_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/register_acitivity"
         android:layout_below="@+id/register_acitivity"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="62dp"
         android:ems="10"
-        android:hint="@string/name" >
-
-        <requestFocus />
-    </EditText>
+        android:hint="@string/name" />
 
 </RelativeLayout>
