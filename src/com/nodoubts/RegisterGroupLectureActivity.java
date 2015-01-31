@@ -137,8 +137,6 @@ public class RegisterGroupLectureActivity extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			if (result instanceof String) {
-				user.getProfile().getGroupLecturesCreated()
-						.add(this.groupLecture);
 				Toast.makeText(
 						RegisterGroupLectureActivity.this,
 						getResources()

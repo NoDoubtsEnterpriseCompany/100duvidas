@@ -16,7 +16,9 @@ public class Profile implements Serializable {
 	private String degree;
 	private String speciality;
 	private List<String> subjects;
-	private List<GroupLecture> groupLecturesCreated;
+	private List<String> groupLecturesCreated;
+	private List<String> groupLecturesRegistered;
+	private List<String> ratings;
 	
 	public Profile (){
 	}
@@ -76,11 +78,27 @@ public class Profile implements Serializable {
 		this.city = city;
 	}
 	
-	public void setGroupLecturesCreated(List<GroupLecture> groupLecturesCreated) {
+	public List<String> getGroupLecturesRegistered(){
+		return groupLecturesRegistered;
+	}
+	
+	public void setGroupLecturesRegistered(List<String> groupLectures){
+		this.groupLecturesRegistered = groupLectures;
+	}
+	
+	public List<String> getRatings(){
+		return ratings;
+	}
+	
+	public void setRatings(List<String> ratings){
+		this.ratings = ratings;
+	}
+	
+	public void setGroupLecturesCreated(List<String> groupLecturesCreated) {
 		this.groupLecturesCreated = groupLecturesCreated;
 	}
 	
-	public List<GroupLecture> getGroupLecturesCreated() {
+	public List<String> getGroupLecturesCreated() {
 		return groupLecturesCreated;
 	}
 }

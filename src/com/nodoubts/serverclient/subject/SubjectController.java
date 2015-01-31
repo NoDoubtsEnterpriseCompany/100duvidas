@@ -36,6 +36,7 @@ public class SubjectController implements SubjectService {
 		Gson gson = new Gson();
 		try {
 			JSONObject jsonObject = new JSONObject(json);
+			System.out.println(jsonObject);
 			subject = gson.fromJson(jsonObject.getString("result"), Subject.class);
 		} catch (JSONException e) {
 			e.printStackTrace();
