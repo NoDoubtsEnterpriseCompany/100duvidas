@@ -30,9 +30,11 @@ public class SubjectActivity extends Activity {
 	    
 	    subject = (Subject) getIntent().getExtras().get("searchObj");
 		TextView subjectNameTextView = (TextView) findViewById(R.id.subject_name_textview);
+		TextView subjectDescriptionTextView = (TextView) findViewById(R.id.subject_description_textview);
 		ListView professorsListView = (ListView) findViewById(R.id.subject_teachersListView);
 		
 		if(subject!=null){
+			subjectDescriptionTextView.setText(subject.getDescription());
 			subjectNameTextView.setText(subject.getName());
 			List<Lecture> lectures = new ArrayList<Lecture>();
 			List<User> users = subject.getProfessors();
@@ -45,4 +47,10 @@ public class SubjectActivity extends Activity {
 			professorsListView.setAdapter(searchAdapter);
 		}
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 }

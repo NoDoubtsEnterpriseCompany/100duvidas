@@ -50,6 +50,12 @@ public class SearchActivity extends Activity {
 		
 	}
 	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
+	
 	private class SearchAsyncTask extends AsyncTask<String, Void, Object> {
 		
 		SubjectService subjectService = new SubjectController();

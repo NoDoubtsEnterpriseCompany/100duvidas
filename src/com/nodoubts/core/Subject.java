@@ -29,8 +29,9 @@ public class Subject implements SearchType {
 
 	private List<User> teachers;
 	
-	public Subject(String subjectName){
+	public Subject(String subjectName, String description){
 		this.name = subjectName;
+		this.description = description;
 	}
 	
 

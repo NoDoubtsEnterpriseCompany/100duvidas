@@ -108,17 +108,6 @@ public class SubjectListActivity extends Activity {
 		    	startActivity(addSubjectScreen);
 		    }
 		});
-		
-		
-		
-		Button buttonBack = (Button) findViewById(R.id.btn_search_subject_back);
-		buttonBack.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
 	}
 
 	public void populateList(List<Subject> subjectList) {
@@ -132,6 +121,12 @@ public class SubjectListActivity extends Activity {
 				string,
 				Toast.LENGTH_SHORT).show();
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 
 	class SubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
 

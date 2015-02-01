@@ -3,8 +3,8 @@
 
     <!-- app configuration -->
 
-    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
-    <string name="port">443</string>
+	<string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+	<string name="port">443</string>
     
     <!-- button text -->
 
@@ -24,6 +24,7 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="city">City</string>
+    <string name="description">Description</string>
     <string name="street">Street</string>
     <string name="number">Number</string>
     <string name="email_hint">example@mail.com </string>
