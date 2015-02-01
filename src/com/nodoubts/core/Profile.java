@@ -19,8 +19,31 @@ public class Profile implements Serializable {
 	private List<String> groupLecturesCreated;
 	private List<String> groupLecturesRegistered;
 	private List<String> ratings;
+	private float totalScore;
+	private float mean;
+	
+	
+		
+	
+	public float getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(float totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	public float getMean() {
+		return mean;
+	}
+
+	public void setMean(float mean) {
+		this.mean = mean;
+	}
+
 	
 	public Profile (){
+		
 	}
 	
 	public Profile(String name) {
@@ -90,10 +113,6 @@ public class Profile implements Serializable {
 		return ratings;
 	}
 	
-	public void setRatings(List<String> ratings){
-		this.ratings = ratings;
-	}
-	
 	public void setGroupLecturesCreated(List<String> groupLecturesCreated) {
 		this.groupLecturesCreated = groupLecturesCreated;
 	}
@@ -101,4 +120,5 @@ public class Profile implements Serializable {
 	public List<String> getGroupLecturesCreated() {
 		return groupLecturesCreated;
 	}
+
 }
