@@ -27,10 +27,12 @@ public class SubjectActivity extends Activity {
 	    
 	    subject = (Subject) getIntent().getExtras().get("searchObj");
 		TextView subjectNameTextView = (TextView) findViewById(R.id.subject_name_textview);
+		TextView subjectDescriptionTextView = (TextView) findViewById(R.id.subject_description_textview);
 		ListView ProfessorsListView = (ListView) findViewById(R.id.subject_teachersListView);
 		
 		if(subject!=null){
 			subjectNameTextView.setText(subject.getName());
+			subjectDescriptionTextView.setText(subject.getDescription());
 			SearchAdapter<User> searchAdapter = new SearchAdapter<User>(this, subject.getProfessors());
 			ProfessorsListView.setAdapter(searchAdapter);
 		}

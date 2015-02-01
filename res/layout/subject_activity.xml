@@ -21,7 +21,7 @@
             android:id="@+id/subject_name_textview"
             android:layout_width="238dp"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
+            android:text="@string/subject_name"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
@@ -31,7 +31,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/subject_description_label"
             android:layout_width="306dp"
             android:layout_height="wrap_content"
             android:text="@string/subject_description_label"
