@@ -1,4 +1,4 @@
-package com.nodoubts.core;
+package com.nodoubts;
 
 import java.util.List;
 
@@ -8,19 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.nodoubts.R;
+import com.nodoubts.core.Lecture;
+import com.nodoubts.core.SearchAdapter;
 
-public class SearchAdapter<T extends SearchType> extends ArrayAdapter<T>{
-
-	protected Context context;
-	protected T searchObj;
+public class LectureListAdapter extends SearchAdapter<Lecture> {
 	
-	public SearchAdapter(Context context, List<T> searchObjects) {
-		super(context, 0, searchObjects);
-		this.context = context;
+	
+	public LectureListAdapter(Context context, List<Lecture> lectures) {
+		super(context, lectures);
 	}
 
 	@Override
@@ -28,12 +26,14 @@ public class SearchAdapter<T extends SearchType> extends ArrayAdapter<T>{
 		searchObj = getItem(position);
 		if (convertView == null) {
 			convertView = LayoutInflater.from(getContext()).inflate(
-					R.layout.search_adapter, parent, false);
+					R.layout.professors_list_adapter, parent, false);
 		}
 		TextView tv = (TextView) convertView.findViewById(R.id.search_obj_name);
 		tv.setText(searchObj.getName());
+		RatingBar professor_rating = (RatingBar) convertView.findViewById(R.id.professor_rating);
+		professor_rating.setRating(3);
+		
 		tv.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent searchScreen = new Intent(context, searchObj.getActivityClass());

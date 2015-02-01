@@ -1,5 +1,8 @@
 package com.nodoubts;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
@@ -7,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nodoubts.core.SearchAdapter;
+import com.nodoubts.core.Lecture;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 
@@ -27,12 +30,19 @@ public class SubjectActivity extends Activity {
 	    
 	    subject = (Subject) getIntent().getExtras().get("searchObj");
 		TextView subjectNameTextView = (TextView) findViewById(R.id.subject_name_textview);
-		ListView ProfessorsListView = (ListView) findViewById(R.id.subject_teachersListView);
+		ListView professorsListView = (ListView) findViewById(R.id.subject_teachersListView);
 		
 		if(subject!=null){
 			subjectNameTextView.setText(subject.getName());
-			SearchAdapter<User> searchAdapter = new SearchAdapter<User>(this, subject.getProfessors());
-			ProfessorsListView.setAdapter(searchAdapter);
+			List<Lecture> lectures = new ArrayList<Lecture>();
+			List<User> users = subject.getProfessors();
+			for(User user : users){
+				Lecture lecture = new Lecture();
+				lecture.setTeacher(user);
+				lecture.setSubject(subject.getId());
+			}
+			LectureListAdapter searchAdapter = new LectureListAdapter(this, lectures);
+			professorsListView.setAdapter(searchAdapter);
 		}
 	}
 }

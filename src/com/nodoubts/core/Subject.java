@@ -6,12 +6,22 @@ import com.nodoubts.SubjectActivity;
 
 public class Subject implements SearchType {
 	private static final long serialVersionUID = 8116536122442142507L;
+	
+	private String _id;
 	private String name;
 	private String description;
+	
+	public String getId() {
+		return _id;
+	}
+	
+	public void setId(String id) {
+		this._id = id;
+	}
+
 	public String getDescription() {
 		return description;
 	}
-
 
 	public void setDescription(String description) {
 		this.description = description;
