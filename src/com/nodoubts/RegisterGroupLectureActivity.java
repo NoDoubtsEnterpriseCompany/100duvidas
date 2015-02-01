@@ -105,6 +105,12 @@ public class RegisterGroupLectureActivity extends Activity {
 		String myFormat = "MM/dd/yy"; // In which you need put here
 		SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 
 	protected class RegisterNewGroupLecture extends
 			AsyncTask<GroupLecture, Void, Object> {

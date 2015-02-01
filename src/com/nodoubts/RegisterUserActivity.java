@@ -58,6 +58,12 @@ public class RegisterUserActivity extends Activity{
 		});
 	}
 	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
+	
 	protected class UserCreator extends AsyncTask<User, Void, Object> {
 
 		UserService userService = new UserController();

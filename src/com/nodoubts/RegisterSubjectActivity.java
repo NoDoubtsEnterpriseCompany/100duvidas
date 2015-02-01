@@ -4,6 +4,8 @@ package com.nodoubts;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -83,6 +85,11 @@ public class RegisterSubjectActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 	
 	protected class RegisterNewSubject extends AsyncTask<Subject,Void, Object>{
 		
@@ -114,6 +121,7 @@ public class RegisterSubjectActivity extends Activity {
 				Intent intent = new Intent(RegisterSubjectActivity.this, ProfessorProfileActivity.class);
 				intent.putExtra("user", user);
 				startActivity(intent);
+				finish();
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterSubjectActivity.this);
 				if(((Exception) result).getMessage().contains("11000")){
@@ -121,10 +129,16 @@ public class RegisterSubjectActivity extends Activity {
 				}else{
 					builder.setMessage(((Exception)result).getMessage());
 				}
-				System.out.println();
 				builder.setTitle("Error");
 				AlertDialog dialog = builder.create();
 				dialog.show();
+				dialog.setOnDismissListener(new OnDismissListener() {
+					
+					@Override
+					public void onDismiss(DialogInterface dialog) {
+						finish();
+					}
+				});
 			}
 		}
 		

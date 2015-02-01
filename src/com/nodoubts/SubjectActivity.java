@@ -37,4 +37,10 @@ public class SubjectActivity extends Activity {
 			ProfessorsListView.setAdapter(searchAdapter);
 		}
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 }

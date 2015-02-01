@@ -46,4 +46,10 @@ public class ViewProfessorActivity extends Activity {
 			});
 		}
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 }

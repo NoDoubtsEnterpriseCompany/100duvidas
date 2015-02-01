@@ -132,6 +132,12 @@ public class SubjectListActivity extends Activity {
 				string,
 				Toast.LENGTH_SHORT).show();
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 
 	class SubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
 
