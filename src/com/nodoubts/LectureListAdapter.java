@@ -31,7 +31,7 @@ public class LectureListAdapter extends SearchAdapter<Lecture> {
 		TextView tv = (TextView) convertView.findViewById(R.id.search_obj_name);
 		tv.setText(searchObj.getName());
 		RatingBar professor_rating = (RatingBar) convertView.findViewById(R.id.professor_rating);
-		professor_rating.setRating(3);
+		professor_rating.setRating(searchObj.getTeacher().getScore());
 		
 		tv.setOnClickListener(new OnClickListener() {
 			@Override

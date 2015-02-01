@@ -1,5 +1,7 @@
 package com.nodoubts.core;
 
+import java.util.List;
+
 import com.nodoubts.ViewProfessorActivity;
 
 
@@ -72,4 +74,17 @@ public class User implements SearchType{
 	public String toString(){
 		return getName();
 	}
+
+	public float getScore() {
+		return getProfile().getMean();
+	}
+	
+	public List<String> getRatings(){
+		return getProfile().getRatings();
+	}
+	
+	public void addRating(String rating){
+		getRatings().add(rating);
+	}
+
 }

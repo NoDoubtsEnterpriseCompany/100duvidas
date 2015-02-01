@@ -42,6 +42,7 @@ public class SubjectActivity extends Activity {
 				Lecture lecture = new Lecture();
 				lecture.setTeacher(user);
 				lecture.setSubject(subject.getId());
+				lectures.add(lecture);
 			}
 			LectureListAdapter searchAdapter = new LectureListAdapter(this, lectures);
 			professorsListView.setAdapter(searchAdapter);

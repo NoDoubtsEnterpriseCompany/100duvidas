@@ -2,6 +2,9 @@ package com.nodoubts.serverclient.user;
 
 import java.util.List;
 
+import org.json.JSONException;
+
+import com.nodoubts.core.Rating;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 
@@ -20,4 +23,6 @@ public interface UserService {
 	public List<User> searchForUsers(String disciplina) throws ApplicationViewException;
 	
 	public String addSubjectToUser(String jsonTransaction) throws ApplicationViewException;
+
+	String addRatingToUser(String teacherName, User user, Rating rating) throws ApplicationViewException, JSONException;
 }
