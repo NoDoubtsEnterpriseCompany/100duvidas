@@ -37,8 +37,11 @@ public class HomeActivity extends Activity {
 				startActivity(searchScreen);
 			}
 		});
-		
-		
-	
 	}
+	
+   @Override
+   public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+   }
 }

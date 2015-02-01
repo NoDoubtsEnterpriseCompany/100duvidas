@@ -39,19 +39,11 @@
         android:id="@+id/listView_subjectList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_search_subject_back"
+        android:layout_above="@+id/btn_create_new_subject"
         android:layout_alignLeft="@+id/button_createSubject"
         android:layout_below="@+id/button_createSubject" >
 
     </ListView>
-
-    <Button
-        android:id="@+id/btn_search_subject_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/listView_subjectList"
-        android:text="Back" />
 
     <Button
         android:id="@+id/btn_create_new_subject"
@@ -59,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/listView_subjectList"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="18dp"
+        android:layout_alignRight="@+id/listView_subjectList"
         android:text="@string/add_subject" />
 
 </RelativeLayout>

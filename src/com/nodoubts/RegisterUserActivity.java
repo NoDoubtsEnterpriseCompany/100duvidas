@@ -58,10 +58,17 @@ public class RegisterUserActivity extends Activity{
 		});
 	}
 	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
+	
 	protected class UserCreator extends AsyncTask<User, Void, Object> {
 
 		UserService userService = new UserController();
 		ProgressDialog progressDialog;
+		User user;
 		
 		@Override
 		protected void onPreExecute() {
@@ -74,7 +81,8 @@ public class RegisterUserActivity extends Activity{
 		@Override
 		protected Object doInBackground(User... params) {			
 			try {
-				return userService.saveUser(params[0]);
+				user = params[0];
+				return userService.saveUser(user);
 			} catch (ApplicationViewException e) {
 				return e;
 			}
@@ -87,8 +95,9 @@ public class RegisterUserActivity extends Activity{
 			if(result instanceof String){
 				Toast.makeText(RegisterUserActivity.this, 
 						getResources().getString(R.string.user_registered_ok), Toast.LENGTH_LONG).show();
-				Intent intent = new Intent(RegisterUserActivity.this, MainActivity.class);
-				startActivity(intent);
+				Intent homeScreen = new Intent(getApplicationContext(),HomeActivity.class);
+				homeScreen.putExtra("user", user);
+				startActivity(homeScreen);
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserActivity.this);
 				builder.setMessage(((Exception)result).getMessage());
