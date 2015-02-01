@@ -20,6 +20,7 @@ public class GroupLecture implements Serializable, SearchType {
 	private String name;
 	private float price;
 	private String address;
+	private String subject;
 	
 	public GroupLecture() {
 		this.professor = new User();
@@ -87,5 +88,13 @@ public class GroupLecture implements Serializable, SearchType {
 	
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String getSubject() {
+		return subject;
+	}
+	
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 }

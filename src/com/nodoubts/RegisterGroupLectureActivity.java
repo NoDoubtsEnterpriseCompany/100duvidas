@@ -11,16 +11,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.nodoubts.core.GroupLecture;
+import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.grouplecture.GroupLectureController;
@@ -31,6 +32,10 @@ public class RegisterGroupLectureActivity extends Activity {
 	User user;
 	Calendar myCalendar;
 	DatePickerDialog.OnDateSetListener date;
+	EditText subject;
+	String subjectId;
+	static final int RESULT_CODE_SUBJECT = 1212; 
+	static final String SUBJECT_GROUP_IDENTIFIER = "subjectGroup";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,18 @@ public class RegisterGroupLectureActivity extends Activity {
 			}
 
 		};
+		
+		subject = (EditText) findViewById(R.id.subject_group_lecture_ed);
+		
+		subject.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(RegisterGroupLectureActivity.this, SubjectListActivity.class); 
+				i.putExtra("user", user);
+				i.putExtra("isGroupLectureCreation", true);
+				startActivityForResult(i, RegisterGroupLectureActivity.RESULT_CODE_SUBJECT);
+			}
+		});
 
 		Button button = (Button) findViewById(R.id.register_group_bt);
 		button.setOnClickListener(new OnClickListener() {
@@ -69,6 +86,9 @@ public class RegisterGroupLectureActivity extends Activity {
 								.getText().toString());
 				float price = Float.parseFloat(((EditText) findViewById(R.id.price_group_lecture_ed))
 								.getText().toString());
+				TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker_group_lecture_ed);
+				myCalendar.set(Calendar.HOUR, timePicker.getCurrentHour());
+				myCalendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
 				GroupLecture groupLecture = new GroupLecture();
 				groupLecture.setNumMaxStudents(num);
 				groupLecture.setDate(myCalendar.getTime());
@@ -76,16 +96,55 @@ public class RegisterGroupLectureActivity extends Activity {
 				groupLecture.setProfessor(user);
 				groupLecture.setPrice(price);
 				groupLecture.setAddress(address);
-				new RegisterNewGroupLecture().execute(groupLecture);
+				groupLecture.setSubject(subjectId);
+				if (isGroupLectureValid(groupLecture)) {
+					new RegisterNewGroupLecture().execute(groupLecture);
+				}
+			}
+
+			private boolean isGroupLectureValid(GroupLecture groupLecture) {
+				if (isVazio(groupLecture.getAddress())) {
+					showToast(getResources().getString(R.string.addressEmpty));
+					return false;
+				} else if (isVazio(groupLecture.getName())) {
+					showToast(getResources().getString(R.string.nameEmpty));
+					return false;
+				} else if (isVazio(groupLecture.getSubject())) {
+					showToast(getResources().getString(R.string.subjectEmpty));
+					return false;
+				} else if (groupLecture.getPrice()<0) {
+					showToast(getResources().getString(R.string.invalidPrice));
+					return false;
+				} else if (groupLecture.getNumMaxStudents()<=0) {
+					showToast(getResources().getString(R.string.invalidCapacity));
+				}
+				return true;
+			}
+			
+			private boolean isVazio(String texto) {
+				String vazio = "";
+				return texto!=null && vazio.equals(texto.trim());
+			}
+			
+			private void showToast(String message) {
+				Toast.makeText(RegisterGroupLectureActivity.this, message, Toast.LENGTH_LONG).show();
 			}
 		});
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.register_group_lecture, menu);
-		return true;
+	@Override 
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
+	  super.onActivityResult(requestCode, resultCode, data); 
+	  switch(requestCode) { 
+	    case (RESULT_CODE_SUBJECT) : { 
+	      if (resultCode == Activity.RESULT_OK) { 
+	    	  Subject subjectObj = (Subject) data.getSerializableExtra(SUBJECT_GROUP_IDENTIFIER); 
+	    	  subject.setText(subjectObj.getName());
+	    	  subjectId = subjectObj.get_id();
+	      } 
+	      break; 
+	    } 
+	  } 
 	}
 
 	@Override
@@ -102,8 +161,8 @@ public class RegisterGroupLectureActivity extends Activity {
 
 	private void updateLabel() {
 
-		String myFormat = "MM/dd/yy"; // In which you need put here
-		SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+		String myFormat = "dd/MM/yy"; // In which you need put here
+		SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
 	}
 
 	protected class RegisterNewGroupLecture extends
@@ -140,7 +199,7 @@ public class RegisterGroupLectureActivity extends Activity {
 				Toast.makeText(
 						RegisterGroupLectureActivity.this,
 						getResources()
-								.getString(R.string.subject_registered_ok),
+								.getString(R.string.group_lecture_registered_ok),
 						Toast.LENGTH_LONG).show();
 				Intent intent = new Intent(RegisterGroupLectureActivity.this,
 						ProfessorProfileActivity.class);

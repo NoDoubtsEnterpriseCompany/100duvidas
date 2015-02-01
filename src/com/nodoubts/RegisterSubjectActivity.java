@@ -120,7 +120,6 @@ public class RegisterSubjectActivity extends Activity {
 				}else{
 					builder.setMessage(((Exception)result).getMessage());
 				}
-				System.out.println();
 				builder.setTitle("Error");
 				AlertDialog dialog = builder.create();
 				dialog.show();
