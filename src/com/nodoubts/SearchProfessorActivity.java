@@ -39,6 +39,12 @@ public class SearchProfessorActivity extends Activity {
 		
 	}
 	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
+	
 	private class SearchProfessorAsyncTask extends AsyncTask<String, Void, Void> {
 		
 		UserService userService = new UserController();

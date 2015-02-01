@@ -18,14 +18,17 @@
         android:textSize="32sp"
         android:text="@string/add_new_subject" />
 
-    <Button
-        android:id="@+id/btn_add_subject"
-        android:layout_width="130sp"
+    <EditText
+        android:id="@+id/new_subject_description"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="58dp"
-        android:layout_marginLeft="64dp"
-        android:text="@string/add" />
+        android:layout_alignLeft="@+id/new_subject_name"
+        android:layout_below="@+id/new_subject_name"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:minLines="3"
+        android:inputType="textMultiLine" 
+        android:hint="@string/description"/>
 
     <EditText
         android:id="@+id/new_subject_name"
@@ -33,11 +36,17 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/register_acitivity"
         android:layout_below="@+id/register_acitivity"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="62dp"
         android:ems="10"
-        android:hint="@string/name" >
+        android:hint="@string/name" />
 
-        <requestFocus />
-    </EditText>
+    <Button
+        android:id="@+id/btn_add_subject"
+        android:layout_width="130sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/new_subject_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="@string/add" />
 
 </RelativeLayout>

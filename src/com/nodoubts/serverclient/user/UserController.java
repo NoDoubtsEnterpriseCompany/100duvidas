@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.nodoubts.core.Rating;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
@@ -115,4 +116,15 @@ public class UserController implements UserService {
 		StringBuilder builder = new StringBuilder("/users/addsubject");
 		return serverService.post(builder.toString(), jsonTransaction);
 	}
+	
+	@Override
+	public String addRatingToUser(String teacherName,User student, Rating rating) throws ApplicationViewException, JSONException {
+		StringBuilder builder = new StringBuilder("/users/addrating/"+teacherName);
+		Gson gson = new Gson();
+		JSONObject json = new JSONObject();
+		json.put("student", gson.toJson(student));
+		json.put("rating", gson.toJson(rating));
+		return serverService.post(builder.toString(), json.toString());
+	}
+
 }

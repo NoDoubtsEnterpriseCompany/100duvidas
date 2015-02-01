@@ -81,11 +81,24 @@ public class RegisterGroupLectureActivity extends Activity {
 						.getText().toString();
 				String address = ((EditText) findViewById(R.id.address_group_lecture_ed))
 						.getText().toString();
-				int num = Integer
-						.parseInt(((EditText) findViewById(R.id.num_group_lecture_ed))
-								.getText().toString());
-				float price = Float.parseFloat(((EditText) findViewById(R.id.price_group_lecture_ed))
-								.getText().toString());
+				String description = ((EditText) findViewById(R.id.description_group_lecture_ed))
+						.getText().toString();
+				String numValue = ((EditText) findViewById(R.id.num_group_lecture_ed))
+						.getText().toString();
+				int num;
+				if (numValue.trim().equals("")) {
+					num = -1;
+				} else {
+					num = Integer.parseInt(numValue);
+				}
+				String priceValue = ((EditText) findViewById(R.id.price_group_lecture_ed))
+						.getText().toString();
+				float price;
+				if (priceValue.trim().equals("")) {
+					price = -1;
+				} else {
+					price = Float.parseFloat(priceValue);
+				}
 				TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker_group_lecture_ed);
 				myCalendar.set(Calendar.HOUR, timePicker.getCurrentHour());
 				myCalendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
@@ -97,6 +110,7 @@ public class RegisterGroupLectureActivity extends Activity {
 				groupLecture.setPrice(price);
 				groupLecture.setAddress(address);
 				groupLecture.setSubject(subjectId);
+				groupLecture.setDescription(description);
 				if (isGroupLectureValid(groupLecture)) {
 					new RegisterNewGroupLecture().execute(groupLecture);
 				}
@@ -117,13 +131,13 @@ public class RegisterGroupLectureActivity extends Activity {
 					return false;
 				} else if (groupLecture.getNumMaxStudents()<=0) {
 					showToast(getResources().getString(R.string.invalidCapacity));
+					return false;
 				}
 				return true;
 			}
 			
 			private boolean isVazio(String texto) {
-				String vazio = "";
-				return texto!=null && vazio.equals(texto.trim());
+				return texto==null || texto.isEmpty();
 			}
 			
 			private void showToast(String message) {
@@ -164,6 +178,12 @@ public class RegisterGroupLectureActivity extends Activity {
 		String myFormat = "dd/MM/yy"; // In which you need put here
 		SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
 	}
+	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
 
 	protected class RegisterNewGroupLecture extends
 			AsyncTask<GroupLecture, Void, Object> {
@@ -205,6 +225,7 @@ public class RegisterGroupLectureActivity extends Activity {
 						ProfessorProfileActivity.class);
 				intent.putExtra("user", user);
 				startActivity(intent);
+				finish();
 			} else if (result instanceof Exception) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						RegisterGroupLectureActivity.this);

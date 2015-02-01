@@ -131,6 +131,12 @@ public class ProfessorProfileActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	public void onBackPressed() {
+	   super.onBackPressed();
+	   this.finish();
+    }
+	
 	private class SetProfilePicture extends AsyncTask<String, Void, Bitmap> {
 			@Override
 			protected void onPreExecute(){

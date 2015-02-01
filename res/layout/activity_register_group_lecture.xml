@@ -67,6 +67,13 @@
    		android:id="@+id/timePicker_group_lecture_ed"
    		android:layout_width="wrap_content"
    		android:layout_height="wrap_content" />
+   
+   <EditText 
+        android:id="@+id/description_group_lecture_ed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        android:lines="4"/>
     
     <Button
         android:id="@+id/register_group_bt"

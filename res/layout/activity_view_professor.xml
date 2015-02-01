@@ -35,7 +35,9 @@
                 style="@style/customSmallRatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp" 
+                android:isIndicator="true"
+                />
 
             <TextView
                 android:id="@+id/view_professor_contact"

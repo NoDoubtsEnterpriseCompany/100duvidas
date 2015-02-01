@@ -17,6 +17,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.nodoubts.core.Rating;
+import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 
 public class ViewProfessorActivity extends Activity {
@@ -61,11 +62,12 @@ public class ViewProfessorActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
-					//TODO: Call schedule lecture
+					// TODO: Call schedule lecture
 				}
 			});
 		}
 	}
+<<<<<<< HEAD
 
 	private void fillCommentList() {
 		List<Rating> ratings = new ArrayList<Rating>();
@@ -81,10 +83,12 @@ public class ViewProfessorActivity extends Activity {
 				android.R.layout.simple_list_item_1, comments);
 		commentsListView.setAdapter(myAdapter);
 	}
+=======
 	
 	@Override
 	public void onBackPressed() {
 	   super.onBackPressed();
 	   this.finish();
     }
+>>>>>>> 074afd70c27aaa022a3dc1b9b205a3cb3a576c23
 }
