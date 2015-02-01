@@ -68,5 +68,12 @@ public class Subject implements SearchType {
 	public void setProfessors(List<User> professors){
 		this.teachers = professors;
 	}
-
+	
+	public String get_id() {
+		return _id;
+	}
+	
+	public void set_id(String _id) {
+		this._id = _id;
+	}
 }

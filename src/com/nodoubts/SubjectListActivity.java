@@ -38,6 +38,8 @@ public class SubjectListActivity extends Activity {
 	ListAdapter myAdpater;
 	
 	User user;
+	
+	boolean isGroupLectureCreation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class SubjectListActivity extends Activity {
 
 		new SubjectAsyncTask().execute();
 
+		this.isGroupLectureCreation = getIntent().getBooleanExtra("isGroupLectureCreation", false);
+		
 		listView = (ListView) findViewById(R.id.listView_subjectList);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, final View view,
@@ -90,12 +94,19 @@ public class SubjectListActivity extends Activity {
 										dialog.cancel();
 									}
 								});
-
-				// create alert dialog
-				AlertDialog alertDialog = alertDialogBuilder.create();
-
-				// show it
-				alertDialog.show();
+				
+				Subject subject = (Subject) myAdpater.getItem(position);
+				if (!isGroupLectureCreation) {
+					// create alert dialog
+					AlertDialog alertDialog = alertDialogBuilder.create();
+					// show it
+					alertDialog.show();
+				} else {
+					Intent resultIntent = new Intent();
+					resultIntent.putExtra(RegisterGroupLectureActivity.SUBJECT_GROUP_IDENTIFIER, subject);
+					setResult(Activity.RESULT_OK, resultIntent);
+					finish();
+				}
 			}
 		});
 		
@@ -105,6 +116,7 @@ public class SubjectListActivity extends Activity {
 		    public void onClick(View v) {
 		    	Intent addSubjectScreen = new Intent(getApplicationContext(),RegisterSubjectActivity.class);
 		    	addSubjectScreen.putExtra("user", user);
+		    	addSubjectScreen.putExtra("isGroupLectureCreation", isGroupLectureCreation);
 		    	startActivity(addSubjectScreen);
 		    }
 		});
