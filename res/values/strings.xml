@@ -5,7 +5,7 @@
 
     <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
     <string name="port">443</string>
-    
+
     <!-- button text -->
 
     <string name="login_message">Login</string>
@@ -17,6 +17,7 @@
     <string name="add">Add</string>
     <string name="add_subject">Create New Subject</string>
     <string name="add_subject_to_profile">Add new Subject</string>
+    <string name="rate_btn_ratingAct">Rate</string>
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
@@ -33,8 +34,8 @@
     <string name="numStudents">Capacity</string>
     <string name="createGroupLecture">New Group Lecture</string>
     <string name="groupLectures">Group Lectures</string>
-    
-    
+    <string name="comment_hint">Type your comment here</string>
+
     <!-- others -->
     <string name="app_name">100Dúvidas</string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
@@ -67,13 +68,14 @@
     <string name="subjectEmpty">A subject must be selected</string>
     <string name="invalidPrice">Price must be higher than zero</string>
     <string name="invalidCapacity">Capcity must be higher than zero</string>
-    
-    
+
     <!-- facebook -->
     <string name="facebook_app_id">1561113250770242</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_register_subject">RegisterSubjectActivity</string>
     <string name="title_activity_search_professor">SearchProfessorActivity</string>
     <string name="title_activity_register_group_lecture">RegisterGroupLectureActivity</string>
+    <string name="title_activity_rating">RatingActivity</string>
+    <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
 
 </resources>

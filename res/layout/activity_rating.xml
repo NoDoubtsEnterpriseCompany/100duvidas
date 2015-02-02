@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.nodoubts.RatingActivity" >
+
+    <ImageView
+        android:id="@+id/view_professor_pic_ratingAct"
+        android:layout_width="86dp"
+        android:layout_height="92dp"
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/user_name_ratingAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/view_professor_pic_ratingAct"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_toRightOf="@+id/view_professor_pic_ratingAct" />
+
+    <RatingBar
+        android:id="@+id/rating_bar_ratingAct"
+        style="@style/customSmallRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name_ratingAct"
+        android:layout_marginLeft="34dp"
+        android:layout_toRightOf="@+id/view_professor_pic_ratingAct"
+        android:isIndicator="false" />
+
+    <Button
+        android:id="@+id/rate_btn_ratingAct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comment_edit_text_ratingAct"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@+id/view_professor_pic_ratingAct"
+        android:text="@string/rate_btn_ratingAct" />
+
+    <EditText
+        android:id="@+id/comment_edit_text_ratingAct"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/view_professor_pic_ratingAct"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:ems="10"
+        android:hint="@string/comment_hint"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>
