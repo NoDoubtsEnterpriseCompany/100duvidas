@@ -1,20 +1,28 @@
 package com.nodoubts;
 
+import java.util.List;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nodoubts.core.Lecture;
 import com.nodoubts.core.User;
 
 public class UserLectureListActivity extends Activity {
 	
 	TextView name;
 	ImageView profilePicture;
-	ListView lecturesList;
+	ListView lecturesListView;
+	List<Lecture> lectures;
 	User user;
 
 	@Override
@@ -24,13 +32,26 @@ public class UserLectureListActivity extends Activity {
 		
 		name = (TextView) findViewById(R.id.user_name_userLecAct);
 		profilePicture= (ImageView) findViewById(R.id.view_professor_pic_userLecAct);
-		lecturesList = (ListView) findViewById(R.id.lecutes_list_view_LecAct);
+		lecturesListView = (ListView) findViewById(R.id.lecutes_list_view_LecAct);
 		
 		if(getIntent().getExtras() !=  null){
 			user = (User) getIntent().getExtras().get("user");
 			name.setText(user.getName());
 				
 		}
+		lecturesListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Intent viewProfessorActivity = new Intent(UserLectureListActivity.this,ViewProfessorActivity.class);
+				viewProfessorActivity.putExtra("student", user);
+				viewProfessorActivity.putExtra("lecture", lectures.get(position));
+				startActivity(viewProfessorActivity);
+				
+			}
+			
+		});
 		
 		
 	}

@@ -126,13 +126,12 @@ public class UserController implements UserService {
 	}
 
 	@Override
-	public String addRatingToUser(String teacherName, User student,
-			Rating rating) throws ApplicationViewException, JSONException {
+	public String addRatingToUser(String teacherName,Rating rating) throws ApplicationViewException, JSONException {
 		StringBuilder builder = new StringBuilder("/users/addrating/"
 				+ teacherName);
 		Gson gson = new Gson();
 		JSONObject json = new JSONObject();
-		json.put("student", gson.toJson(student));
+		json.put("student", gson.toJson(rating.getCommenter()));
 		json.put("rating", gson.toJson(rating));
 		return serverService.post(builder.toString(), json.toString());
 	}
