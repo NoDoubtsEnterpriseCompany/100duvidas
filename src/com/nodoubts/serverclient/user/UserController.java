@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.nodoubts.core.Rating;
 import com.nodoubts.core.User;
@@ -27,7 +29,7 @@ public class UserController implements UserService {
 	}
 
 	@Override
-	public  User findUser(String username) throws ApplicationViewException {
+	public User findUser(String username) throws ApplicationViewException {
 		StringBuilder builder = new StringBuilder("/users/user/")
 				.append(username);
 		String json = serverService.get(builder.toString());
@@ -41,14 +43,14 @@ public class UserController implements UserService {
 		}
 		return user;
 	}
-	
-	public User findUserByEmail(String email) throws ApplicationViewException{
+
+	public User findUserByEmail(String email) throws ApplicationViewException {
 		List<NameValuePair> params = new LinkedList<NameValuePair>();
 		params.add(new BasicNameValuePair("email", email));
 		String paramsStr = URLEncodedUtils.format(params, "utf-8");
-		
+
 		String query = "/users/user?".concat(paramsStr);
-		
+
 		String response = serverService.get(query.toString());
 		User user = null;
 		Gson gson = new Gson();
@@ -59,15 +61,18 @@ public class UserController implements UserService {
 			e.printStackTrace();
 		}
 		return user;
-		
+
 	}
 
-	/*TODO Adaptar Put a mudança do password
+	/*
+	 * TODO Adaptar Put a mudança do password
+	 * 
 	 * @author Jose Iago, 03-12-2014
 	 */
 	@Override
 	public String actualizeUser(User user) {
-		StringBuilder builder = new StringBuilder("/users/updateuser/").append(user.getUsername());
+		StringBuilder builder = new StringBuilder("/users/updateuser/")
+				.append(user.getUsername());
 		Gson gsonUser = new Gson();
 		return serverService.put(builder.toString(), gsonUser.toJson(user));
 	}
@@ -80,16 +85,18 @@ public class UserController implements UserService {
 	}
 
 	@Override
-	public String authenticateUser(String jsonTransaction) throws ApplicationViewException {
+	public String authenticateUser(String jsonTransaction)
+			throws ApplicationViewException {
 		String URL_LOGIN = "/users/login";
 		StringBuilder builder = new StringBuilder(URL_LOGIN);
 		return serverService.post(builder.toString(), jsonTransaction);
 	}
-	
+
 	@Override
-	public List<User> searchForUsers(String subject) throws ApplicationViewException {
+	public List<User> searchForUsers(String subject)
+			throws ApplicationViewException {
 		StringBuilder builder = new StringBuilder();
-		if (subject!=null && !subject.equals("")) {
+		if (subject != null && !subject.equals("")) {
 			builder.append("?subject=");
 			builder.append(subject);
 		}
@@ -99,9 +106,10 @@ public class UserController implements UserService {
 		try {
 			JSONObject jsonObject = new JSONObject(json);
 			JSONArray jsonArray = jsonObject.getJSONArray("result");
-			for (int i=0; i<jsonArray.length();  i++) {
+			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject explrObject = jsonArray.getJSONObject(i);
-				users.add((User)gson.fromJson(explrObject.toString(), User.class));
+				users.add((User) gson.fromJson(explrObject.toString(),
+						User.class));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -112,19 +120,36 @@ public class UserController implements UserService {
 	@Override
 	public String addSubjectToUser(String jsonTransaction)
 			throws ApplicationViewException {
-		
+
 		StringBuilder builder = new StringBuilder("/users/addsubject");
 		return serverService.post(builder.toString(), jsonTransaction);
 	}
-	
+
 	@Override
-	public String addRatingToUser(String teacherName,User student, Rating rating) throws ApplicationViewException, JSONException {
-		StringBuilder builder = new StringBuilder("/users/addrating/"+teacherName);
+	public String addRatingToUser(String teacherName, User student,
+			Rating rating) throws ApplicationViewException, JSONException {
+		StringBuilder builder = new StringBuilder("/users/addrating/"
+				+ teacherName);
 		Gson gson = new Gson();
 		JSONObject json = new JSONObject();
 		json.put("student", gson.toJson(student));
 		json.put("rating", gson.toJson(rating));
 		return serverService.post(builder.toString(), json.toString());
+	}
+
+	@Override
+	public Rating getRating(String ratingID) throws ApplicationViewException {
+		StringBuilder builder = new StringBuilder("/users/rating/").append(ratingID);
+		String json = serverService.get(builder.toString());
+		Rating rating = null;
+		Gson gson = new Gson();
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			rating = gson.fromJson(jsonObject.getString("result"), Rating.class);
+		} catch (JSONException e) {
+			Log.e("UserController", e.getMessage());
+		}
+		return rating;
 	}
 
 }

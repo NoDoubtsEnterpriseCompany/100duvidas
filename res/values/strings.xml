@@ -18,6 +18,7 @@
     <string name="add_subject">Create New Subject</string>
     <string name="add_subject_to_profile">Add new Subject</string>
     <string name="rate_btn_ratingAct">Rate</string>
+    <string name="lectures_btn">Lectures</string>
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
@@ -40,11 +41,11 @@
     <string name="cancel">Cancel</string>
     <string name="error_hint">Error</string>
     <string name="comment_hint">Type your comment here</string>
-    
+
     <!-- subject_list_activity -->
     <string name="subject_list_title_label">Your Title</string>
     <string name="price_picker_label">Price:</string>
-    
+
     <!-- others -->
     <string name="app_name">100Dúvidas</string>
     <string name="title_activity_student_profile">StudentProfileActivity</string>
@@ -70,7 +71,7 @@
     <string name="curriculum_btn">Curriculum</string>
     <string name="schedule_btn">Schedule lecture</string>
     <string name="view_professor_comments_label">Comments:</string>
-    
+
     <!-- Subject messages -->
     <string name="subject_added_message">Subject successfully added</string>
 

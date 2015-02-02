@@ -25,4 +25,6 @@ public interface UserService {
 	public String addSubjectToUser(String jsonTransaction) throws ApplicationViewException;
 
 	String addRatingToUser(String teacherName, User user, Rating rating) throws ApplicationViewException, JSONException;
+
+	Rating getRating(String ratingID) throws ApplicationViewException;
 }

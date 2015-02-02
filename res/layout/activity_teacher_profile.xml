@@ -24,15 +24,6 @@
         android:ems="10"
         android:text="@string/address" />
 
-    <TextView
-        android:id="@+id/name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/edit_profilebtn"
-        android:layout_marginTop="22dp"
-        android:text="@string/name" />
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -117,5 +108,22 @@
         android:layout_below="@+id/layout_groups_professor">
         
     </ListView>
+
+    <TextView
+        android:id="@+id/name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="22dp"
+        android:text="@string/name" />
+
+    <Button
+        android:id="@+id/lectures_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/add_subjectbtn"
+        android:layout_below="@+id/name_text_view"
+        android:text="@string/lectures_btn" />
 
 </RelativeLayout>

@@ -38,7 +38,7 @@ import com.nodoubts.util.ui.ImageHelper;
 
 public class ProfessorProfileActivity extends Activity {
 	
-	Button editBtn,addSubjectBtn, addGroupLectureBtn;
+	Button editBtn,addSubjectBtn, addGroupLectureBtn,lectures;
 	TextView name;
 	User user;
 	ImageView profilePicture;
@@ -57,6 +57,7 @@ public class ProfessorProfileActivity extends Activity {
 		addSubjectBtn = (Button) findViewById(R.id.add_subjectbtn);
 		addGroupLectureBtn = (Button) findViewById(R.id.add_grouplecturebtn);
 		name = (TextView) findViewById(R.id.name_text_view);
+		lectures = (Button) findViewById(R.id.lectures_btn);
 		context = getApplicationContext();
 		
 		if(getIntent().getSerializableExtra("user") != null ){
@@ -94,6 +95,16 @@ public class ProfessorProfileActivity extends Activity {
 				Intent createGroupScreen = new Intent(getApplicationContext(), RegisterGroupLectureActivity.class);
 				createGroupScreen.putExtra("user",  user);
 				startActivity(createGroupScreen);
+			}
+		});
+		
+		lectures.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent createUserLectureListScreen = new Intent(getApplicationContext(), UserLectureListActivity.class);
+				createUserLectureListScreen.putExtra("user",  user);
+				startActivity(createUserLectureListScreen);
 			}
 		});
 		

@@ -22,6 +22,9 @@ public class Profile implements Serializable {
 	private float totalScore;
 	private float mean;
 	
+	public Profile (){
+		
+	}
 	
 		
 	
@@ -39,11 +42,6 @@ public class Profile implements Serializable {
 
 	public void setMean(float mean) {
 		this.mean = mean;
-	}
-
-	
-	public Profile (){
-		
 	}
 	
 	public Profile(String name) {
