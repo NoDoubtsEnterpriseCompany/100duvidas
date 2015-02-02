@@ -1,6 +1,7 @@
 package com.nodoubts.core;
 
 import java.util.Date;
+import java.util.List;
 
 import com.nodoubts.ViewProfessorActivity;
 
@@ -9,7 +10,7 @@ public class Lecture implements SearchType {
 	
 	private String subject;
 	private User teacher;
-	private User student;
+	private List<String> students;
 	private Double price;
 	private Date date;
 	
@@ -50,12 +51,12 @@ public class Lecture implements SearchType {
 		this.teacher = teacher;
 	}
 
-	public User getStudent() {
-		return student;
+	public List<String> getStudent() {
+		return students;
 	}
 
-	public void setStudent(User student) {
-		this.student = student;
+	public void setStudent(List<String> student) {
+		this.students = student;
 	}
 
 	@Override

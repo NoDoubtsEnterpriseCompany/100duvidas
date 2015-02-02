@@ -33,7 +33,15 @@
     <string name="numStudents">Capacity</string>
     <string name="createGroupLecture">New Group Lecture</string>
     <string name="groupLectures">Group Lectures</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="error_hint">Error</string>
     
+    <!-- subject_list_activity -->
+    <string name="subject_list_title_label">Your Title</string>
+    <string name="price_picker_label">Price:</string>
     
     <!-- others -->
     <string name="app_name">100Dúvidas</string>
@@ -60,6 +68,9 @@
     <string name="curriculum_btn">Curriculum</string>
     <string name="schedule_btn">Schedule lecture</string>
     <string name="view_professor_comments_label">Comments:</string>
+    
+    <!-- Subject messages -->
+    <string name="subject_added_message">Subject successfully added</string>
 
     <!-- Group Lecture Errors -->
     <string name="addressEmpty">Address can not be empty</string>

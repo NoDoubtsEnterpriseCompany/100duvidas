@@ -51,6 +51,7 @@ public class RegisterSubjectActivity extends Activity {
 			private boolean isSubjectValid(Subject subject) {
 				String name = subject.getSubjectName();
 					if(name == null || name.isEmpty()){
+						//TODO: Remove hardcoded error messages
 						Toast.makeText(RegisterSubjectActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
 						return false;
 					}

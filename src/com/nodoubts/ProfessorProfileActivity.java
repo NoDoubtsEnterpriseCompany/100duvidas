@@ -34,6 +34,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nodoubts.core.User;
+import com.nodoubts.util.ui.ImageHelper;
 
 public class ProfessorProfileActivity extends Activity {
 	
@@ -175,7 +176,10 @@ public class ProfessorProfileActivity extends Activity {
 			    } catch (Exception ex) {
 			    	ex.printStackTrace();
 			    }
-				return bitmap;
+				
+				return ImageHelper.getRoundedCornerBitmap(
+						bitmap, profilePicture.getDrawable().getIntrinsicWidth()
+						* profilePicture.getDrawable().getIntrinsicHeight());
 			}
 			@Override
 			protected void onPostExecute(Bitmap result){

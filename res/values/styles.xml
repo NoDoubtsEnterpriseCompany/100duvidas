@@ -12,9 +12,15 @@
         -->
     </style>
 
+    <color name="dark_grey">#414042</color>
+    <color name="dark_orange">#F7941E</color>
+    
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="CustomTheme" parent="android:style/Theme.NoTitleBar">
+        <item name="android:buttonStyle">@style/custom_orange_btn</item>
+        <item name="android:background">@color/dark_grey</item>
+        <item name="android:windowBackground">@color/dark_grey</item>
+        <item name="android:colorBackground">@color/dark_grey</item>
     </style>
 
     <style name="customSmallRatingBar" parent="@android:style/Widget.RatingBar">
@@ -23,4 +29,11 @@
         <item name="android:minWidth">20dp</item>
     </style>
 
+    <style name="custom_orange_btn" parent="@android:style/Widget.Button">
+        <item name="android:button">@drawable/custom_orange_btn</item>
+        <item name="android:textColor">@color/dark_orange</item>
+        <item name="android:textColorHint">@color/dark_orange</item>
+        <item name="android:background">@drawable/custom_orange_btn</item>
+    </style>
+    
 </resources>

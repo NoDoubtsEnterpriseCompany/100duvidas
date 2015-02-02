@@ -5,22 +5,22 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
+import com.nodoubts.LectureCreationDialog.EditLectureListener;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
@@ -29,7 +29,7 @@ import com.nodoubts.serverclient.subject.SubjectService;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
 
-public class SubjectListActivity extends Activity {
+public class SubjectListActivity extends FragmentActivity implements EditLectureListener {
 
 	private SubjectListActivity self;
 
@@ -38,6 +38,9 @@ public class SubjectListActivity extends Activity {
 	ListAdapter myAdpater;
 	
 	User user;
+	Subject subject;
+	
+	LectureCreationDialog lectureDialog;
 	
 	boolean isGroupLectureCreation;
 
@@ -46,7 +49,7 @@ public class SubjectListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		self = this;
 		setContentView(R.layout.activity_subject_list);
-
+		
 		new SubjectAsyncTask().execute();
 
 		this.isGroupLectureCreation = getIntent().getBooleanExtra("isGroupLectureCreation", false);
@@ -57,45 +60,16 @@ public class SubjectListActivity extends Activity {
 					final int position, long id) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						self);
-
-				// set title
-				alertDialogBuilder.setTitle("Your Title");
-
-				// set dialog message
-				alertDialogBuilder
-						.setMessage("Add " + ((TextView) view).getText() + " to your subjects?")
-						.setCancelable(false)
-						.setPositiveButton("Yes",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-										// if this button is clicked, close
-										// current activity
-										
-										if(getIntent().getSerializableExtra("user") != null ){
-											user = (User) getIntent().getSerializableExtra("user");
-										}
-										
-										Subject subject = (Subject) myAdpater.getItem(position);
-										
-										JsonObject jsonTransaction = new JsonObject();
-										jsonTransaction.addProperty("name", subject.getSubjectName());
-										jsonTransaction.addProperty("username", user.getUsername());
-										
-										new AddSubjectAsyncTask(jsonTransaction).execute();
-									}
-								})
-						.setNegativeButton("No",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int id) {
-										// if this button is clicked, just close
-										// the dialog box and do nothing
-										dialog.cancel();
-									}
-								});
 				
-				Subject subject = (Subject) myAdpater.getItem(position);
+				
+				subject = (Subject) myAdpater.getItem(position);
+				
+				lectureDialog = new LectureCreationDialog();
+				lectureDialog.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
+				
+
+				lectureDialog.show(getFragmentManager(), "Teste");
+				
 				if (!isGroupLectureCreation) {
 					// create alert dialog
 					AlertDialog alertDialog = alertDialogBuilder.create();
@@ -139,6 +113,24 @@ public class SubjectListActivity extends Activity {
 	   super.onBackPressed();
 	   this.finish();
     }
+	
+
+	@Override
+	public void onFinishEditDialog(int price) {
+		
+		lectureDialog.dismiss();
+		
+		if(getIntent().getSerializableExtra("user") != null ){
+			user = (User) getIntent().getSerializableExtra("user");
+		}
+		
+		JsonObject jsonTransaction = new JsonObject();
+		jsonTransaction.addProperty("subject_id", subject.getId());
+		jsonTransaction.addProperty("username", user.getUsername());
+		jsonTransaction.addProperty("price", price);
+		
+		new AddSubjectAsyncTask().execute(jsonTransaction);
+	}
 
 	class SubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
 
@@ -162,29 +154,29 @@ public class SubjectListActivity extends Activity {
 		}
 	}
 	
-	class AddSubjectAsyncTask extends AsyncTask<URL, Integer, Long> {
-		
-		private JsonObject jsonObject;
+	class AddSubjectAsyncTask extends AsyncTask<JsonObject, Integer, Object> {
 
-		public AddSubjectAsyncTask(JsonObject jsonObject) {
-			this.jsonObject = jsonObject;
-		}
-		
-
-		UserService userService = new UserController();
-
-		protected Long doInBackground(URL... urls) {
+		protected Object doInBackground(JsonObject... jsonObject) {
+			UserService userService = new UserController();
 			try {
-				userService.addSubjectToUser(jsonObject.toString());
+				return userService.addSubjectToUser(jsonObject[0].toString());
 			} catch (ApplicationViewException e) {
-				e.printStackTrace();
+				return e;
 			}
-			return 1L;
 		}
 		
 		@Override
-		protected void onPostExecute(Long result) {
-			self.toast("Subject successfully added");
+		protected void onPostExecute(Object result) {
+			if(result instanceof Exception){
+				AlertDialog.Builder builder = new AlertDialog.Builder(SubjectListActivity.this);
+				builder.setMessage(((Exception)result).getMessage());
+				builder.setTitle(getString(R.string.error_hint));
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			}else{
+				Toast.makeText(getApplicationContext(),
+						getString(R.string.subject_added_message), Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 }

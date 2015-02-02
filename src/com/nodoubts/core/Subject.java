@@ -1,7 +1,5 @@
 package com.nodoubts.core;
 
-import java.util.List;
-
 import com.nodoubts.SubjectActivity;
 
 public class Subject implements SearchType {
@@ -26,8 +24,6 @@ public class Subject implements SearchType {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	private List<User> teachers;
 	
 	public Subject(String subjectName, String description){
 		this.name = subjectName;
@@ -58,15 +54,6 @@ public class Subject implements SearchType {
 	@Override
 	public String getName() {
 		return getSubjectName();
-	}
-
-
-	public List<User> getProfessors() {
-		return teachers;
-	}
-	
-	public void setProfessors(List<User> professors){
-		this.teachers = professors;
 	}
 	
 	public String get_id() {
