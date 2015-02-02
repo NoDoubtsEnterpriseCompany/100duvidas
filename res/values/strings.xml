@@ -3,11 +3,14 @@
 
     <!-- app configuration -->
 
-  <!--   <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
-    <string name="port">443</string> -->
-    
+
+    <!--
+    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+    <string name="port">443</string>
+    -->
+
     <string name="host_name">http://192.168.1.4</string>
-    <string name="port">3000</string> 
+    <string name="port">3000</string>
 
     <!-- button text -->
 
@@ -94,6 +97,6 @@
     <string name="title_activity_rating">RatingActivity</string>
     <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
     <string name="title_activity_group_lecture">GroupLectureActivity</string>
-    
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>
