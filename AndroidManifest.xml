@@ -82,6 +82,10 @@
             android:name=".UserLectureListActivity"
             android:label="@string/title_activity_user_lecture_list" >
         </activity>
+        <activity
+            android:name=".GroupLectureActivity"
+            android:label="@string/title_activity_group_lecture" >
+        </activity>
     </application>
 
 </manifest>
