@@ -61,12 +61,13 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						self);
 				
-				
 				subject = (Subject) myAdpater.getItem(position);
 				
 				lectureDialog = new LectureCreationDialog();
 				lectureDialog.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
-				
+				if(getIntent().getSerializableExtra("user") != null ){
+					user = (User) getIntent().getSerializableExtra("user");
+				}
 
 				lectureDialog.show(getFragmentManager(), "Teste");
 				
@@ -119,10 +120,6 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 	public void onFinishEditDialog(int price) {
 		
 		lectureDialog.dismiss();
-		
-		if(getIntent().getSerializableExtra("user") != null ){
-			user = (User) getIntent().getSerializableExtra("user");
-		}
 		
 		JsonObject jsonTransaction = new JsonObject();
 		jsonTransaction.addProperty("subject_id", subject.getId());
