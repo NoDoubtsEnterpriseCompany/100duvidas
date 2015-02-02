@@ -1,5 +1,7 @@
 package com.nodoubts;
 
+import com.nodoubts.core.User;
+
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +16,7 @@ public class LectureCreationDialog extends DialogFragment {
 	NumberPicker np;
 	
 	public interface EditLectureListener{
-		void onFinishEditDialog(int price);
+		void onFinishEditDialog(int price, User user);
 	}
 	
 	@Override
@@ -45,7 +47,7 @@ public class LectureCreationDialog extends DialogFragment {
 			@Override
 			public void onClick(View v) {
 				EditLectureListener activity = (EditLectureListener) getActivity();
-				activity.onFinishEditDialog(np.getValue());
+				activity.onFinishEditDialog(np.getValue(), (User) getArguments().get("user"));
 				dismiss();
 			}
 		});

@@ -12,6 +12,7 @@
         -->
     </style>
 
+    <color name="light_grey">#616062</color>
     <color name="dark_grey">#414042</color>
     <color name="dark_orange">#F7941E</color>
     

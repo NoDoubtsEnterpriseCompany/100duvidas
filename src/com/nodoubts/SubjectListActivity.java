@@ -65,6 +65,8 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 				
 				lectureDialog = new LectureCreationDialog();
 				lectureDialog.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
+				lectureDialog.setArguments(getIntent().getExtras());
+				
 				if(getIntent().getSerializableExtra("user") != null ){
 					user = (User) getIntent().getSerializableExtra("user");
 				}
@@ -117,7 +119,7 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 	
 
 	@Override
-	public void onFinishEditDialog(int price) {
+	public void onFinishEditDialog(int price, User user) {
 		
 		lectureDialog.dismiss();
 		
