@@ -12,10 +12,13 @@
         -->
     </style>
 
-    <color name="light_grey">#616062</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_2">#F4F1EF</color>
+    <color name="light_grey">#6D6E70</color>
+    <color name="light_orange">#F9A51E</color>
     <color name="dark_grey">#414042</color>
     <color name="dark_orange">#F7941E</color>
-    
+
     <!-- Application theme. -->
     <style name="CustomTheme" parent="android:style/Theme.NoTitleBar">
         <item name="android:buttonStyle">@style/custom_orange_btn</item>
@@ -36,5 +39,26 @@
         <item name="android:textColorHint">@color/dark_orange</item>
         <item name="android:background">@drawable/custom_orange_btn</item>
     </style>
+
+    <style name="enter_orange_btn" parent="@android:style/Widget.Button">
+        <item name="android:button">@drawable/orange_btn</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textColorHint">@color/dark_grey</item>
+        <item name="android:background">@drawable/orange_btn</item>
+        <item name="android:gravity">left</item>
+    </style>
     
+    <style name="rouded_text_view" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/rounded_text_view</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textColorHint">@color/light_grey</item>
+    </style>
+
+    <style name="fb_btn">
+        <item name="android:button">@drawable/fb_btn</item>
+        <item name="android:background">@drawable/fb_btn</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>
