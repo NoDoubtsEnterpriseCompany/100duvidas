@@ -12,18 +12,21 @@ import com.nodoubts.core.User;
 
 public class HomeActivity extends Activity {
 
+	static User user;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 
+		user = (User) getIntent().getSerializableExtra("user");
 		Button buttonProfile = (Button) findViewById(R.id.btn_profile);
 		buttonProfile.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Intent profileScreen = new Intent(getApplicationContext(),ProfessorProfileActivity.class);
-				profileScreen.putExtra("user", (User) getIntent().getSerializableExtra("user"));
+				profileScreen.putExtra("user", user);
 				startActivity(profileScreen);
 			}
 		});

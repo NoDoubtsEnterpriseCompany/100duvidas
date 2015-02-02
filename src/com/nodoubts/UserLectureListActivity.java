@@ -4,13 +4,35 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.nodoubts.core.User;
 
 public class UserLectureListActivity extends Activity {
+	
+	TextView name;
+	ImageView profilePicture;
+	ListView lecturesList;
+	User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_lecture_list);
+		
+		name = (TextView) findViewById(R.id.user_name_userLecAct);
+		profilePicture= (ImageView) findViewById(R.id.view_professor_pic_userLecAct);
+		lecturesList = (ListView) findViewById(R.id.lecutes_list_view_LecAct);
+		
+		if(getIntent().getExtras() !=  null){
+			user = (User) getIntent().getExtras().get("user");
+			name.setText(user.getName());
+				
+		}
+		
+		
 	}
 
 	@Override

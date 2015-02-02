@@ -14,8 +14,8 @@ public class GroupLecture implements Serializable, SearchType {
 
 	private String _id;
 	private int numMaxStudents;
-	private List<User> studentsRegistered;
-	private Date date;
+	private List<String> studentsRegistered;
+	private String date;
 	private User professor;
 	private String name;
 	private float price;
@@ -25,7 +25,7 @@ public class GroupLecture implements Serializable, SearchType {
 	
 	public GroupLecture() {
 		this.professor = new User();
-		this.studentsRegistered = new ArrayList<User>();
+		this.studentsRegistered = new ArrayList<String>();
 	}
 	
 	public String get_id() {
@@ -40,16 +40,16 @@ public class GroupLecture implements Serializable, SearchType {
 	public void setNumMaxStudents(int numMaxStudents) {
 		this.numMaxStudents = numMaxStudents;
 	}
-	public List<User> getStudentsRegistered() {
+	public List<String> getStudentsRegistered() {
 		return studentsRegistered;
 	}
-	public void setStudentsRegistered(List<User> studentsRegistered) {
+	public void setStudentsRegistered(List<String> studentsRegistered) {
 		this.studentsRegistered = studentsRegistered;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public static long getSerialversionuid() {

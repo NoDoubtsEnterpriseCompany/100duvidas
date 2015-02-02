@@ -24,7 +24,7 @@
         />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/lecutes_list_view_LecAct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/view_professor_pic_userLecAct"
