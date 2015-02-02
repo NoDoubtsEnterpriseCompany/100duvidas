@@ -8,6 +8,7 @@ import com.nodoubts.ViewProfessorActivity;
 public class User implements SearchType{
 	private static final long serialVersionUID = -3587210382909215826L;
 	
+	private String _id;
 	private String username;
 	private String password;
 	private String email;
@@ -87,4 +88,11 @@ public class User implements SearchType{
 		getRatings().add(rating);
 	}
 
+	public String get_id() {
+		return _id;
+	}
+	
+	public void set_id(String _id) {
+		this._id = _id;
+	}
 }

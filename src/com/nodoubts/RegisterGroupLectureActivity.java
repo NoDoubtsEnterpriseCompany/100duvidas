@@ -104,7 +104,7 @@ public class RegisterGroupLectureActivity extends Activity {
 				myCalendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
 				GroupLecture groupLecture = new GroupLecture();
 				groupLecture.setNumMaxStudents(num);
-				groupLecture.setDate(myCalendar.getTime());
+				groupLecture.setDate(myCalendar.getTime().toString());
 				groupLecture.setName(nome);
 				groupLecture.setProfessor(user);
 				groupLecture.setPrice(price);

@@ -33,10 +33,6 @@ public class GroupLectureAdapter<T extends SearchType> extends ArrayAdapter<T>{
 		TextView tv = (TextView) convertView.findViewById(R.id.name_group_lecture_list);
 		tv.setText(searchObj.getName());
 		
-		TextView tvDate = (TextView) convertView.findViewById(R.id.date_group_lecture_list);
-		if (searchObj.getDate()!=null) {
-			tvDate.setText(searchObj.getDate().toString());
-		}
 		return convertView;
 	}
 }
