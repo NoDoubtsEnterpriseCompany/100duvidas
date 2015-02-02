@@ -74,6 +74,14 @@
             android:name=".RegisterGroupLectureActivity"
             android:label="@string/title_activity_register_group_lecture" >
         </activity>
+        <activity
+            android:name=".RatingActivity"
+            android:label="@string/title_activity_rating" >
+        </activity>
+        <activity
+            android:name=".UserLectureListActivity"
+            android:label="@string/title_activity_user_lecture_list" >
+        </activity>
     </application>
 
 </manifest>
