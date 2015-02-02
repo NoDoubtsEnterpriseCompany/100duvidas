@@ -18,7 +18,9 @@
     <string name="add_subject">Create New Subject</string>
     <string name="add_subject_to_profile">Add new Subject</string>
     <string name="rate_btn_ratingAct">Rate</string>
+    <string name="enter_btn_label">Enter</string>
     <string name="lectures_btn">Lectures</string>
+
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
@@ -91,5 +93,6 @@
     <string name="title_activity_rating">RatingActivity</string>
     <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
     <string name="title_activity_group_lecture">GroupLectureActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>

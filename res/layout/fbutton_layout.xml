@@ -5,8 +5,14 @@
     android:orientation="vertical" >
     
     <com.facebook.widget.LoginButton
+        xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/authButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        fb:login_text="f"
+        fb:logout_text=""
+        android:textSize="30sp"
+        android:gravity="right"
+        style="@style/fb_btn"/>
 
 </LinearLayout>
