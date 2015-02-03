@@ -10,6 +10,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import android.util.Log;
 
@@ -81,6 +82,7 @@ public class UserController implements UserService {
 	public String saveUser(User user) throws ApplicationViewException {
 		StringBuilder builder = new StringBuilder("/users/adduser");
 		Gson gsonUser = new Gson();
+		System.out.println("adduser "+gsonUser.toJson(user));
 		return serverService.post(builder.toString(), gsonUser.toJson(user));
 	}
 
@@ -131,8 +133,9 @@ public class UserController implements UserService {
 				+ teacherName);
 		Gson gson = new Gson();
 		JSONObject json = new JSONObject();
-		json.put("student", gson.toJson(rating.getCommenter()));
-		json.put("rating", gson.toJson(rating));
+		json.put("student", gson.toJson(rating.getCommenter(),User.class));
+		json.put("rating", gson.toJson(rating,Rating.class));
+		System.out.println(json.toString());
 		return serverService.post(builder.toString(), json.toString());
 	}
 

@@ -73,7 +73,8 @@ public class SubjectActivity extends Activity {
 	            		public void onItemClick(AdapterView<?> parent,
 	            				View view, int position, long id) {
 	            			Intent searchScreen = new Intent(SubjectActivity.this, ViewProfessorActivity.class);
-	        				searchScreen.putExtra("searchObj", lectures.get(0));
+	        				searchScreen.putExtra("searchObj", lectures.get(position));
+	        				System.out.println("clicou" + lectures.get(position));
 	        				startActivity(searchScreen);
 	            		}
 					});

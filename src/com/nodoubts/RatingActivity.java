@@ -17,6 +17,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -50,7 +51,6 @@ public class RatingActivity extends Activity {
 	User user;
 	ProgressBar waitSpinner;
 	Button rate;
-	UserService userController;
 	Lecture lecture;
 
 	@Override
@@ -64,10 +64,13 @@ public class RatingActivity extends Activity {
 		profilePicture = (ImageView) findViewById(R.id.view_professor_pic_ratingAct);
 		waitSpinner = (ProgressBar) findViewById(R.id.singleSpinner);
 		rate = (Button) findViewById(R.id.rate_btn_ratingAct);
-		userController = new UserController();
+		commentEditText = (EditText) findViewById(R.id.comment_edit_text_ratingAct);
 
 		if (getIntent().getExtras() != null) {
-			user = (User) getIntent().getExtras().get("user");
+		//	user = (User) getIntent().getExtras().get("user");
+			user = new User("joao","asdf","j@j.com");
+			user.getProfile().setName("joao");
+			user.setUsername("joao");
 			lecture = (Lecture) getIntent().getExtras().get("lecture");
 			name.setText(user.getName());
 
@@ -83,15 +86,9 @@ public class RatingActivity extends Activity {
 				String teacherName = lecture.getTeacher().getUsername();
 				float score = ratingbar.getRating();
 				String comment = commentEditText.getText().toString();
-
 				Rating rating = new Rating(score, comment, user);
-				try {
-					userController.addRatingToUser(teacherName, rating);
-				} catch (ApplicationViewException e) {
-					Log.e("ratingActivitiy", e.getMessage());
-				} catch (JSONException e) {
-					Log.e("ratingActivitiy", e.getMessage());
-				}
+				
+				new RatingUser().execute(rating,teacherName);
 			}
 		});
 	}
@@ -168,6 +165,60 @@ public class RatingActivity extends Activity {
 			if (result != null) {
 				profilePicture.setImageBitmap(result);
 			}
+		}
+	}
+	
+	
+	
+	protected class RatingUser extends AsyncTask<Object, Void, Object> {
+
+		UserService userService = new UserController();
+		ProgressDialog progressDialog;
+		Rating rating;
+		String teacherName;
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			this.progressDialog = new ProgressDialog(RatingActivity.this);
+			this.progressDialog.setProgressStyle(progressDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			this.progressDialog.show();
+		}
+		
+		@Override
+		protected Object doInBackground(Object... params) {			
+			try {
+				rating = (Rating) params[0];
+				teacherName = (String) params[1];
+				try {
+					userService.addRatingToUser(teacherName, rating);
+				} catch (JSONException e) {
+					Log.e("rating",e.getMessage());
+				}
+			} catch (ApplicationViewException e) {
+				
+			}
+			return new Object();
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			this.progressDialog.dismiss();
+			/*
+			if(result instanceof String){
+				Toast.makeText(RatingActivity.this, 
+						getResources().getString(R.string.user_registered_ok), Toast.LENGTH_LONG).show();
+				Intent homeScreen = new Intent(getApplicationContext(),HomeActivity.class);
+				homeScreen.putExtra("user", user);
+				startActivity(homeScreen);
+			}else if(result instanceof Exception){
+				AlertDialog.Builder builder = new AlertDialog.Builder(RatingActivity.this);
+				builder.setMessage(((Exception)result).getMessage());
+				builder.setTitle("Error");
+				AlertDialog dialog = builder.create();
+				dialog.show();
+			}
+			 	*/
 		}
 	}
 }
