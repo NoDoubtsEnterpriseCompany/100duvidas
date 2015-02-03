@@ -69,7 +69,7 @@ public class FbLoginFragment extends Fragment {
 			}).executeAsync();
             	
         } else if (state.isClosed()) {
-            Log.i(TAG, "Facebook logged out...");
+        	openMainActivity();
         }
     }
 
@@ -84,11 +84,19 @@ public class FbLoginFragment extends Fragment {
                 (session.isOpened() || session.isClosed()) ) {
             onSessionStateChange(session, session.getState(), null);
         }
-
+        
         uiHelper.onResume();
     }
 
-    @Override
+    private void openMainActivity() {
+    	Intent mainScreen = new Intent(
+				getActivity().getApplicationContext(), MainActivity.class);
+    	mainScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    	startActivity(mainScreen);
+        getActivity().finish();
+	}
+
+	@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         uiHelper.onActivityResult(requestCode, resultCode, data);
