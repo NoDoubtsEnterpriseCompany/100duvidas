@@ -2,7 +2,6 @@
 <resources>
 
     <!-- app configuration -->
-
     <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
     <string name="port">443</string>
 
@@ -20,7 +19,6 @@
     <string name="rate_btn_ratingAct">Rate</string>
     <string name="enter_btn_label">Enter</string>
     <string name="lectures_btn">Lectures</string>
-
 
     <!-- hints text -->
     <string name="password_hint">Password</string>
