@@ -12,13 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.gson.JsonObject;
+import com.nodoubts.FbLoginFragment.FbLoginCallback;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements FbLoginCallback {
 	UserController userController;
 	ServerService serverController;
 	EditText userNameEditText;
@@ -33,10 +34,9 @@ public class MainActivity extends FragmentActivity {
 		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager()
-			.beginTransaction()
-			.commit();
+			.beginTransaction().commit();
 		}
-        
+		
         userController = new UserController();
 		serverController= ServerController.getInstance();
 		userNameEditText = (EditText) findViewById(R.id.email);
@@ -122,5 +122,24 @@ public class MainActivity extends FragmentActivity {
 			super.onPostExecute(result);
 			this.progressDialog.dismiss();
 		}
+	}
+
+	@Override
+	public void fbLoggedIn(User user) {
+		
+		getSupportFragmentManager().beginTransaction().remove(
+				getSupportFragmentManager().findFragmentById(
+						R.id.FbLoginFragment)).commit();
+		getSupportFragmentManager().popBackStack();
+		
+		Intent homeScreen = new Intent(
+				this, HomeActivity.class);
+		homeScreen.putExtra("user", user);
+		startActivity(homeScreen);
+		finish();
+	}
+
+	@Override
+	public void fbLoggedOut() {
 	}
 }

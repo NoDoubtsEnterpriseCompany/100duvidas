@@ -14,10 +14,4 @@
         android:layout_gravity="center"
 	    android:src="@drawable/splash_screen" />
 	
-	<fragment
-            android:id="@+id/FbLoginFragment"
-            android:name="com.nodoubts.FbLoginFragment"
-            android:layout_width="32dp"
-            android:layout_height="32dp"/>
-
 </RelativeLayout>

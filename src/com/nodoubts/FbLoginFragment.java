@@ -31,7 +31,13 @@ import com.nodoubts.serverclient.user.UserController;
 public class FbLoginFragment extends Fragment {
     private static final String TAG = "FbLoginFragment";
     private UiLifecycleHelper uiHelper;
-
+    private Session mSession;
+    
+    public interface FbLoginCallback{
+    	public void fbLoggedIn(User user);
+    	public void fbLoggedOut();
+    }
+    
     private Session.StatusCallback callback = new Session.StatusCallback() {
         @Override
         public void call(Session session, SessionState state, Exception exception) {
@@ -60,17 +66,39 @@ public class FbLoginFragment extends Fragment {
 
 	private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (state.isOpened()) {
-            	Request.newMeRequest(session, new GraphUserCallback() {				
-				@Override
-				public void onCompleted(GraphUser fbUser, Response response) {
-					LoginTask fbLoginTask = new LoginTask();
-					fbLoginTask.execute(fbUser);
-				}
-			}).executeAsync();
-            	
+        	if(mSession==null || isSessionChanged(session)){
+        		mSession = session;
+	            	Request.newMeRequest(session, new GraphUserCallback() {				
+					@Override
+					public void onCompleted(GraphUser fbUser, Response response) {
+						LoginTask fbLoginTask = new LoginTask();
+						fbLoginTask.execute(fbUser);
+					}
+				}).executeAsync();
+        	}
         } else if (state.isClosed()) {
-        	openMainActivity();
+        	System.out.println("Logout!!!");
         }
+    }
+	
+    
+    private boolean isSessionChanged(Session session) {
+
+        // Check if session state changed
+        if (mSession.getState() != session.getState())
+            return true;
+
+        // Check if accessToken changed
+        if (mSession.getAccessToken() != null) {
+            if (!mSession.getAccessToken().equals(session.getAccessToken()))
+                return true;
+        }
+        else if (session.getAccessToken() != null) {
+            return true;
+        }
+
+        // Nothing changed
+        return false;
     }
 
     @Override
@@ -87,14 +115,6 @@ public class FbLoginFragment extends Fragment {
         
         uiHelper.onResume();
     }
-
-    private void openMainActivity() {
-    	Intent mainScreen = new Intent(
-				getActivity().getApplicationContext(), MainActivity.class);
-    	mainScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	startActivity(mainScreen);
-        getActivity().finish();
-	}
 
 	@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -150,12 +170,8 @@ public class FbLoginFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Object result) {
 			if(result instanceof User){
-				Intent homeScreen = new Intent(
-						getActivity().getApplicationContext(),HomeActivity.class);
-				homeScreen.putExtra("user", (User)result);
-				homeScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(homeScreen);
-				getActivity().finish();
+				FbLoginCallback fbLoginCallback = (FbLoginCallback) getActivity();
+				fbLoginCallback.fbLoggedIn((User)result);
 			
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
