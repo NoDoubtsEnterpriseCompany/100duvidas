@@ -9,7 +9,7 @@
     <padding
         android:left="14dp"
         android:top="3dp"
-        android:right="6dp"
+        android:right="3dp"
         android:bottom="1dp"/>
     <stroke
         android:width="2dip"

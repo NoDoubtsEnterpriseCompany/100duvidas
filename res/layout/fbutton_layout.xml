@@ -9,10 +9,8 @@
         android:id="@+id/authButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        fb:login_text="f"
-        fb:logout_text="f"
-        android:textSize="30sp"
-        android:gravity="right"
+        fb:login_text=""
+        fb:logout_text=""
         style="@style/fb_btn"/>
 
 </LinearLayout>

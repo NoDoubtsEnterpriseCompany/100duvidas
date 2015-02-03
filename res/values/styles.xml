@@ -52,6 +52,8 @@
         <item name="android:background">@drawable/rounded_text_view</item>
         <item name="android:textColor">@color/light_grey</item>
         <item name="android:textColorHint">@color/light_grey</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textSize">6pt</item>
     </style>
 
     <style name="fb_btn">
