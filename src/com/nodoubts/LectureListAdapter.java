@@ -32,15 +32,6 @@ public class LectureListAdapter extends SearchAdapter<Lecture> {
 		tv.setText(searchObj.getName());
 		RatingBar professor_rating = (RatingBar) convertView.findViewById(R.id.professor_rating);
 		professor_rating.setRating(searchObj.getTeacher().getScore());
-		
-		tv.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent searchScreen = new Intent(context, searchObj.getActivityClass());
-				searchScreen.putExtra("searchObj", searchObj);
-				context.startActivity(searchScreen);
-			}
-		});
 		return convertView;
 	}
 }
