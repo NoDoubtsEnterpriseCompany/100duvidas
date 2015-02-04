@@ -59,16 +59,19 @@ public class ViewProfessorActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
-
+					/*
 					Intent scheduleLecureIntent = new Intent(
 							getApplicationContext(),
 							ScheduleLectureActivity.class);
 					scheduleLecureIntent.putExtra("lecture", lecture);
 					getApplicationContext().startActivity(scheduleLecureIntent);
-
+					 	*/
+					Toast.makeText(getApplicationContext(), "You're still not able to schedule a lecture!", Toast.LENGTH_SHORT).show();
 				}
 			});
+					
 		}
+		
 
 		rate.setOnClickListener(new OnClickListener() {
 
