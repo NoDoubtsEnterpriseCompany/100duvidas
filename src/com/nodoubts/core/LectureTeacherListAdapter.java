@@ -3,21 +3,22 @@ package com.nodoubts.core;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.nodoubts.R;
 
-public class LectureTeacherListAdapter extends ArrayAdapter<Lecture> {
+public class LectureTeacherListAdapter extends SearchAdapter<Lecture>  {
 
 	private Context context;
 	private Lecture searchObj;
 
 	public LectureTeacherListAdapter(Context context, List<Lecture> lectures) {
-		super(context, 0, lectures);
+		super(context,lectures);
 		this.context = context;
 	}
 
@@ -34,7 +35,6 @@ public class LectureTeacherListAdapter extends ArrayAdapter<Lecture> {
 				.findViewById(R.id.teacher_name_ltAdapter);
 		lectureName.setText(searchObj.getName());
 		teacherName.setText(searchObj.getTeacher().getName());
-
 		return convertView;
 	}
 }

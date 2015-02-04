@@ -32,15 +32,6 @@ public class SearchAdapter<T extends SearchType> extends ArrayAdapter<T>{
 		}
 		TextView tv = (TextView) convertView.findViewById(R.id.search_obj_name);
 		tv.setText(searchObj.getName());
-		tv.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent searchScreen = new Intent(context, searchObj.getActivityClass());
-				searchScreen.putExtra("searchObj", searchObj);
-				context.startActivity(searchScreen);
-			}
-		});
 		return convertView;
 	}
 }

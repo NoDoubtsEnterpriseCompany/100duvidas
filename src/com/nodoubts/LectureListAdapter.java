@@ -15,8 +15,7 @@ import com.nodoubts.core.Lecture;
 import com.nodoubts.core.SearchAdapter;
 
 public class LectureListAdapter extends SearchAdapter<Lecture> {
-	
-	
+
 	public LectureListAdapter(Context context, List<Lecture> lectures) {
 		super(context, lectures);
 	}
@@ -30,7 +29,8 @@ public class LectureListAdapter extends SearchAdapter<Lecture> {
 		}
 		TextView tv = (TextView) convertView.findViewById(R.id.search_obj_name);
 		tv.setText(searchObj.getName());
-		RatingBar professor_rating = (RatingBar) convertView.findViewById(R.id.professor_rating);
+		RatingBar professor_rating = (RatingBar) convertView
+				.findViewById(R.id.professor_rating);
 		professor_rating.setRating(searchObj.getTeacher().getScore());
 		return convertView;
 	}

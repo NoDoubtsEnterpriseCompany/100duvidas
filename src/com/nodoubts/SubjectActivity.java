@@ -25,39 +25,52 @@ import com.nodoubts.serverclient.lecture.LectureController;
 import com.nodoubts.serverclient.lecture.LectureService;
 
 public class SubjectActivity extends Activity {
-	
+
 	private Subject subject;
 	ListView professorsListView;
 	GroupLectureAdapter<GroupLecture> groupLectureAdapter;
 	List<Lecture> lectures;
 	List<GroupLecture> groupLectures;
 	LectureListAdapter searchAdapter;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	    this.setContentView(R.layout.subject_activity);
-	    
-	    subject = (Subject) getIntent().getExtras().get("searchObj");
+		this.setContentView(R.layout.subject_activity);
+
+		subject = (Subject) getIntent().getExtras().get("searchObj");
 		TextView subjectNameTextView = (TextView) findViewById(R.id.subject_name_textview);
 		TextView subjectDescriptionTextView = (TextView) findViewById(R.id.subject_description_textview);
 		professorsListView = (ListView) findViewById(R.id.subject_teachersListView);
-		
-		if(subject!=null){
+
+		if (subject != null) {
 			subjectDescriptionTextView.setText(subject.getDescription());
 			subjectNameTextView.setText(subject.getName());
 			RequestLecturesTask getLectures = new RequestLecturesTask();
 			getLectures.execute(subject);
 			new RequestGroupLecturesTask().execute(subject);
 		}
+		
+		professorsListView.setAdapter(searchAdapter);
+    	professorsListView.setOnItemClickListener(new OnItemClickListener() {
+    		
+    		@Override
+    		public void onItemClick(AdapterView<?> parent,
+    				View view, int position, long id) {
+    			Intent searchScreen = new Intent(SubjectActivity.this, ViewProfessorActivity.class);
+				searchScreen.putExtra("searchObj", lectures.get(position));
+				System.out.println("clicou" + lectures.get(position));
+				startActivity(searchScreen);
+    		}
+		});
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-	   super.onBackPressed();
-	   this.finish();
-    }
-	
+		super.onBackPressed();
+		this.finish();
+	}
+
 	public void onRadioButtonClicked(View view) {
 	    // Is the button now checked?
 	    boolean checked = ((RadioButton) view).isChecked();
@@ -93,10 +106,27 @@ public class SubjectActivity extends Activity {
 	                    }
 					});
 	            break;
-	    }
+	    
+	    default:
+	    	professorsListView.setAdapter(searchAdapter);
+          	professorsListView.setOnItemClickListener(new OnItemClickListener() {
+          		
+          		@Override
+          		public void onItemClick(AdapterView<?> parent,
+          				View view, int position, long id) {
+          			Intent searchScreen = new Intent(SubjectActivity.this, ViewProfessorActivity.class);
+      				searchScreen.putExtra("searchObj", lectures.get(position));
+      				System.out.println("clicou" + lectures.get(position));
+      				startActivity(searchScreen);
+          		}
+				});
+	    	
+	    	break;
+		}
 	}
-	
-	private class RequestLecturesTask extends AsyncTask<Subject, Void, List<Lecture>>{
+
+	private class RequestLecturesTask extends
+			AsyncTask<Subject, Void, List<Lecture>> {
 
 		@Override
 		protected List<Lecture> doInBackground(Subject... params) {
@@ -105,29 +135,30 @@ public class SubjectActivity extends Activity {
 			lectures = lectureService.getSubjectLectures(subject.get_id());
 			return lectures;
 		}
-		
+
 		@Override
 		protected void onPostExecute(List<Lecture> result) {
-			searchAdapter = new LectureListAdapter(
-					SubjectActivity.this, result);
+			searchAdapter = new LectureListAdapter(SubjectActivity.this, result);
 			professorsListView.setAdapter(searchAdapter);
 		}
 	}
-	
-	private class RequestGroupLecturesTask extends AsyncTask<Subject, Void, List<GroupLecture>> {
-		
+
+	private class RequestGroupLecturesTask extends
+			AsyncTask<Subject, Void, List<GroupLecture>> {
+
 		@Override
 		protected List<GroupLecture> doInBackground(Subject... params) {
 			Subject subject = params[0];
 			GroupLectureService groupLectureService = new GroupLectureController();
-			groupLectures = groupLectureService.getGroupLecturesBySubject(subject.get_id());
+			groupLectures = groupLectureService
+					.getGroupLecturesBySubject(subject.get_id());
 			return groupLectures;
 		}
-		
+
 		@Override
 		protected void onPostExecute(List<GroupLecture> result) {
-			groupLectureAdapter = new GroupLectureAdapter<GroupLecture>(SubjectActivity.this, 
-					result);
+			groupLectureAdapter = new GroupLectureAdapter<GroupLecture>(
+					SubjectActivity.this, result);
 		}
 	}
 }
