@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -41,6 +42,9 @@ public class RegisterUserActivity extends Activity{
 						user.getPassword().trim().equals("") ||
 						user.getProfile().getName().equals("")) {
 					Toast.makeText(RegisterUserActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+					return false;
+				}else if (user.getPassword().length() < 6){
+					Toast.makeText(RegisterUserActivity.this, "Please create a password with at least 6 characters", Toast.LENGTH_SHORT).show();
 					return false;
 				}
 				return true;
@@ -100,7 +104,7 @@ public class RegisterUserActivity extends Activity{
 				startActivity(homeScreen);
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserActivity.this);
-				builder.setMessage(((Exception)result).getMessage());
+				builder.setMessage(R.string.existing_user);
 				builder.setTitle("Error");
 				AlertDialog dialog = builder.create();
 				dialog.show();

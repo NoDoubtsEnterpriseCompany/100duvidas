@@ -33,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.Rating;
@@ -204,6 +205,9 @@ public class RatingActivity extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			this.progressDialog.dismiss();
+			
+			setResult(RESULT_OK);
+			finish();
 			/*
 			if(result instanceof String){
 				Toast.makeText(RatingActivity.this, 

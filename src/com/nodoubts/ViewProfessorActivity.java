@@ -88,7 +88,7 @@ public class ViewProfessorActivity extends Activity {
 						RatingActivity.class);
 				// ratingActivity.putExtra("user", student);
 				ratingActivity.putExtra("lecture", lecture);
-				startActivity(ratingActivity);
+				startActivityForResult(ratingActivity,1);
 				// }else{
 				// Toast.makeText(ViewProfessorActivity.this,
 				// "You're not able to rate this user",Toast.LENGTH_SHORT
@@ -99,6 +99,15 @@ public class ViewProfessorActivity extends Activity {
 	}
 
 
+	@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+ 
+             if(resultCode == RESULT_OK){  
+            	 Toast.makeText(ViewProfessorActivity.this, "Rated Succesfully", Toast.LENGTH_SHORT).show();
+             }
+ 
+    }
+	
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();

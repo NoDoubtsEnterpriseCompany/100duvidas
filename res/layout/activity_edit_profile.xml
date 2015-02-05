@@ -73,12 +73,13 @@
 
     <Button
         android:id="@+id/save_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/number_edit_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"
         android:gravity="center"
+        android:textSize="20sp"
         android:text="@string/save_btn" />
 
 </RelativeLayout>
