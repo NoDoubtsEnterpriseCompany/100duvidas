@@ -32,6 +32,7 @@ public class SubjectActivity extends Activity {
 	List<Lecture> lectures;
 	List<GroupLecture> groupLectures;
 	LectureListAdapter searchAdapter;
+	static final int INSCRIBE_USER_ON_GROUP_CODE = 1213;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,7 @@ public class SubjectActivity extends Activity {
 	                            long id) {
 	                        Intent intent = new Intent(SubjectActivity.this, GroupLectureActivity.class);
 	                        intent.putExtra("groupLectureSelected", groupLectures.get(position));
-	                        startActivity(intent);
+	                        startActivityForResult(intent, INSCRIBE_USER_ON_GROUP_CODE);
 	                    }
 					});
 	            break;
@@ -122,6 +123,22 @@ public class SubjectActivity extends Activity {
 				});
 	    	
 	    	break;
+		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (INSCRIBE_USER_ON_GROUP_CODE==requestCode) {
+			if (resultCode==Activity.RESULT_OK) {
+				String groupId = data.getStringExtra("groupId");
+				String userId = data.getStringExtra("userId");
+				for (int i=0; i<groupLectures.size(); i++) {
+					if (groupLectures.get(i).get_id().equals(groupId)) {
+						groupLectures.get(i).getStudentsRegistered().add(userId);
+						break;
+					}
+				}
+			}
 		}
 	}
 

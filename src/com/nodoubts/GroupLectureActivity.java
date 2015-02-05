@@ -117,6 +117,10 @@ public class GroupLectureActivity extends Activity {
 						getResources()
 						.getString(R.string.group_lecture_registered_ok),
 						Toast.LENGTH_LONG).show();
+				Intent resultIntent = new Intent();
+				resultIntent.putExtra("userId", user.get_id());
+				resultIntent.putExtra("groupId", groupLecture.get_id());
+				setResult(Activity.RESULT_OK, resultIntent);
 				finish();
 			} else if (result instanceof Exception) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
