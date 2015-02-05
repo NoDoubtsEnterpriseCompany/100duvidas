@@ -42,6 +42,21 @@ public class SubjectController implements SubjectService {
 		}
 		return subject;
 	}
+	
+	@Override
+	public Subject getSubjectById(String subjectId) throws ApplicationViewException {
+		StringBuilder builder = new StringBuilder("/subjects/subject/").append(subjectId);
+		String json = serverService.get(builder.toString());
+		Subject subject = null;
+		Gson gson = new Gson();
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			subject = gson.fromJson(jsonObject.getString("result"), Subject.class);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return subject;
+	}
 
 	//TODO verificar como receber uma lista
 	@Override

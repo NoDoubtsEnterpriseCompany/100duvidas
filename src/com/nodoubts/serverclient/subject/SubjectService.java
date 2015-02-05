@@ -9,7 +9,10 @@ public interface SubjectService {
 	
 	
 	public String addSubject(Subject subject) throws ApplicationViewException; 
+	
 	public Subject getSubject(String subjectName) throws ApplicationViewException;
 	
 	public List<Subject> getSubjects() throws ApplicationViewException;
+	
+	public Subject getSubjectById(String subjectId) throws ApplicationViewException;
 }
