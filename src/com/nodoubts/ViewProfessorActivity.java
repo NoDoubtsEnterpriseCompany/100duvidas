@@ -5,10 +5,10 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -16,18 +16,23 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nodoubts.core.CommentAdapter;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.Rating;
 import com.nodoubts.core.User;
+import com.nodoubts.exceptions.ApplicationViewException;
+import com.nodoubts.serverclient.user.UserController;
+import com.nodoubts.serverclient.user.UserService;
 
 public class ViewProfessorActivity extends Activity {
 
 	private Lecture lecture;
-	private List<String> ratings;
-	private List<String> comments;
+	private List<String> ratingsIds;
 	private float score;
+	List<String> comments;
 	ListView commentsListView;
-	ListAdapter myAdapter;
+	CommentAdapter myAdapter;
+	public List<Rating> ratingObjs;
 	User student;
 
 	@Override
@@ -49,65 +54,82 @@ public class ViewProfessorActivity extends Activity {
 
 		if (lecture != null) {
 			score = lecture.getTeacher().getScore();
-			ratings = lecture.getTeacher().getRatings();
+			ratingsIds = lecture.getTeacher().getRatings();
 			nameTextView.setText(lecture.getTeacher().getName());
 			emailTextView.setText(lecture.getTeacher().getEmail());
-			fillRatingAdapter(comments);
 			ratingBar.setRating(score);
+			new RequestRatingTask().execute(ratingsIds);
 
 			scheduleBtn.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
 					/*
-					Intent scheduleLecureIntent = new Intent(
-							getApplicationContext(),
-							ScheduleLectureActivity.class);
-					scheduleLecureIntent.putExtra("lecture", lecture);
-					getApplicationContext().startActivity(scheduleLecureIntent);
-					 	*/
-					Toast.makeText(getApplicationContext(), "You're still not able to schedule a lecture!", Toast.LENGTH_SHORT).show();
+					 * Intent scheduleLecureIntent = new Intent(
+					 * getApplicationContext(), ScheduleLectureActivity.class);
+					 * scheduleLecureIntent.putExtra("lecture", lecture);
+					 * getApplicationContext
+					 * ().startActivity(scheduleLecureIntent);
+					 */
+					Toast.makeText(getApplicationContext(),
+							"You're still not able to schedule a lecture!",
+							Toast.LENGTH_SHORT).show();
 				}
 			});
-					
+
 		}
-		
 
 		rate.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				//if (student != null) {
-					Intent ratingActivity = new Intent(
-							ViewProfessorActivity.this, RatingActivity.class);
-					//ratingActivity.putExtra("user", student);
-					ratingActivity.putExtra("lecture", lecture);
-					startActivity(ratingActivity);
-				//}else{
-					//Toast.makeText(ViewProfessorActivity.this, "You're not able to rate this user",Toast.LENGTH_SHORT ).show();
-				//}
+				// if (student != null) {
+				Intent ratingActivity = new Intent(ViewProfessorActivity.this,
+						RatingActivity.class);
+				// ratingActivity.putExtra("user", student);
+				ratingActivity.putExtra("lecture", lecture);
+				startActivity(ratingActivity);
+				// }else{
+				// Toast.makeText(ViewProfessorActivity.this,
+				// "You're not able to rate this user",Toast.LENGTH_SHORT
+				// ).show();
+				// }
 			}
 		});
 	}
 
-	private void fillCommentList() {
-		List<Rating> ratings = new ArrayList<Rating>();
-		// TODO fazer um join pra pegar a lista de rating a partir das IDs
-		for (Rating rating : ratings) {
-			comments.add(rating.getComment());
-		}
-	}
-
-	private void fillRatingAdapter(List<String> comments) {
-		fillCommentList();
-		myAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, comments);
-		commentsListView.setAdapter(myAdapter);
-	}
 
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		this.finish();
 	}
+
+	private class RequestRatingTask extends
+			AsyncTask<List<String>, Void, List<Rating>> {
+		
+
+		@Override
+		protected List<Rating> doInBackground(List<String>... params) {
+			ratingObjs = new ArrayList<Rating>();
+			List<String> ratingIDs= params[0];
+			UserService userController = new UserController();
+			for (String id : ratingIDs) {
+				try {
+					Rating r = userController.getRating(id);
+					ratingObjs.add(r);
+				} catch (ApplicationViewException e) {
+					e.printStackTrace();
+				}
+			}
+			return ratingObjs;
+		}
+
+		@Override
+		protected void onPostExecute(List<Rating> result) {
+			myAdapter = new CommentAdapter(ViewProfessorActivity.this,ratingObjs);
+			commentsListView.setAdapter(myAdapter);
+		}
+	}
+
 }
