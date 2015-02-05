@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.nodoubts.core.Lecture;
+import com.nodoubts.core.ScheduledLecture;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
@@ -23,9 +24,16 @@ public class LectureController implements LectureService {
 
 	@Override
 	public String saveLecture(Lecture lecture) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder("/users/requestlecture");
-		Gson gsonUser = new Gson();
-		return serverService.post(builder.toString(), gsonUser.toJson(lecture));
+		StringBuilder builder = new StringBuilder("/lectures/addlecture");
+		Gson gsonObj = new Gson();
+		return serverService.post(builder.toString(), gsonObj.toJson(lecture));
+	}
+	
+	@Override
+	public String scheduleLecture(ScheduledLecture lecture) throws ApplicationViewException {
+		StringBuilder builder = new StringBuilder("/lectures/schedulelecture");
+		Gson gsonObj = new Gson();
+		return serverService.post(builder.toString(), gsonObj.toJson(lecture));
 	}
 
 	@Override

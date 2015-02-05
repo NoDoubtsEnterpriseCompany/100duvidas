@@ -1,18 +1,17 @@
 package com.nodoubts.core;
 
 import java.util.Date;
-import java.util.List;
 
 import com.nodoubts.ViewProfessorActivity;
 
 public class Lecture implements SearchType {
 	private static final long serialVersionUID = -30791561334913081L;
 	
-	private String subject;
-	private User teacher;
-	private List<String> students;
-	private Double price;
-	private Date date;
+	protected String subject;
+	protected User teacher;
+	protected Double price;
+	protected Date date;
+	protected String address;
 	
 	public Double getPrice() {
 		return price;
@@ -51,16 +50,16 @@ public class Lecture implements SearchType {
 		this.teacher = teacher;
 	}
 
-	public List<String> getStudent() {
-		return students;
-	}
-
-	public void setStudent(List<String> student) {
-		this.students = student;
-	}
-
 	@Override
 	public String getName() {
 		return teacher.getName();
+	}
+
+	public String getAddress() {
+		return address;
+	}
+	
+	public String setAddress(String address) {
+		return this.address = address;
 	}
 }

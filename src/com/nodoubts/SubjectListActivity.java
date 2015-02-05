@@ -119,7 +119,7 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 	
 
 	@Override
-	public void onFinishEditDialog(int price, User user) {
+	public void onFinishEditDialog(Double price, String address, User user) {
 		
 		lectureDialog.dismiss();
 		
@@ -127,6 +127,7 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 		jsonTransaction.addProperty("subject_id", subject.getId());
 		jsonTransaction.addProperty("username", user.getUsername());
 		jsonTransaction.addProperty("price", price);
+		jsonTransaction.addProperty("address", address);
 		
 		new AddSubjectAsyncTask().execute(jsonTransaction);
 	}

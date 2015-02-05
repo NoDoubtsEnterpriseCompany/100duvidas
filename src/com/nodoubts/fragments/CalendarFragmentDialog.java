@@ -1,6 +1,4 @@
-package com.nodoubts;
-
-import com.nodoubts.core.User;
+package com.nodoubts.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,17 +7,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.NumberPicker;
+import android.widget.CalendarView;
 
-public class LectureCreationDialog extends DialogFragment {
+import com.nodoubts.R;
+
+public class CalendarFragmentDialog extends DialogFragment {
 	
-	EditText np;
-	EditText address;
+	CalendarView calendarView;
 	
-	
-	public interface EditLectureListener{
-		void onFinishEditDialog(Double price, String address, User user);
+	public interface GetDateListener{
+		void onFinishDatePicker(long date, Object obj);
 	}
 	
 	@Override
@@ -36,22 +33,20 @@ public class LectureCreationDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.create_lecture_dialog, container, false);
+        View view = inflater.inflate(R.layout.calendar_dialog, container, false);
         
-        np = (EditText) view.findViewById(R.id.price_picker);
+        calendarView = (CalendarView) view.findViewById(R.id.calendarView1);
+        calendarView.getDate();
         
-        address = (EditText) view.findViewById(R.id.address);
-
-        Button okBtn = (Button) view.findViewById(R.id.create_lecture_ok);
-        Button cancelBtn = (Button) view.findViewById(R.id.create_lecture_cancel);
+        Button okBtn = (Button) view.findViewById(R.id.ok_btn);
+        Button cancelBtn = (Button) view.findViewById(R.id.cancel_btn);
         
         okBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				EditLectureListener activity = (EditLectureListener) getActivity();
-				activity.onFinishEditDialog(
-						Double.valueOf(np.getText().toString()), address.getText().toString(), (User) getArguments().get("user"));
+				GetDateListener activity = (GetDateListener) getActivity();
+				activity.onFinishDatePicker(calendarView.getDate(), getArguments().get("intentObj"));
 				dismiss();
 			}
 		});
