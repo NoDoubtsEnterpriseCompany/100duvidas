@@ -4,7 +4,6 @@
     <!-- app configuration -->
     <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
     <string name="port">443</string>
-
     <!-- button text -->
 
     <string name="login_message">Login</string>
@@ -105,5 +104,9 @@
     <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
     <string name="title_activity_group_lecture">GroupLectureActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+
+    <!-- ERROS MSGS -->
+    <string name="existing_user">This username and/or email already exisits, choose another</string>
+    <string name="invalid_user_pass">Invalid username/password combination. Check again</string>
 
 </resources>

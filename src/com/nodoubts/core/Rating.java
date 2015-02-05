@@ -1,7 +1,7 @@
 package com.nodoubts.core;
 
 
-public class Rating {
+public class Rating  implements SearchType{
 	
 	private float score;
 	private String comment;
@@ -25,5 +25,16 @@ public class Rating {
 	
 	public String getComment(){
 		return this.comment;
+	}
+
+	@Override
+	public Class<?> getActivityClass() {
+		return null;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
