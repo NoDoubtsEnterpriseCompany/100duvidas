@@ -1,4 +1,4 @@
-package com.nodoubts.util.ui;
+package com.nodoubts.ui.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

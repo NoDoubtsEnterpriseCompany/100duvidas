@@ -2,7 +2,7 @@ package com.nodoubts.core;
 
 import java.util.Date;
 
-import com.nodoubts.ViewProfessorActivity;
+import com.nodoubts.ui.user.ViewProfessorActivity;
 
 public class Lecture implements SearchType {
 	private static final long serialVersionUID = -30791561334913081L;

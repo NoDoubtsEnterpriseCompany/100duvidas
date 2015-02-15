@@ -1,4 +1,9 @@
-package com.nodoubts;
+package com.nodoubts.ui.profile;
+
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
+import com.nodoubts.R.menu;
 
 import android.app.Activity;
 import android.os.Bundle;

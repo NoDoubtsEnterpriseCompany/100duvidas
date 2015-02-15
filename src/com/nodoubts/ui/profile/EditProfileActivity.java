@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.profile;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.nodoubts.R;
 import com.nodoubts.core.Profile;
 import com.nodoubts.core.User;
 

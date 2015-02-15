@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.lecture;
 
 import java.util.List;
 
@@ -14,8 +14,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nodoubts.R;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.user.ViewProfessorActivity;
 
 public class UserLectureListActivity extends Activity {
 	

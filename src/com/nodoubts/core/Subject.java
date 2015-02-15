@@ -1,6 +1,6 @@
 package com.nodoubts.core;
 
-import com.nodoubts.SubjectActivity;
+import com.nodoubts.ui.subject.SubjectActivity;
 
 public class Subject implements SearchType {
 	private static final long serialVersionUID = 8116536122442142507L;

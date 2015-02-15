@@ -1,4 +1,4 @@
-package com.nodoubts.fragments;
+package com.nodoubts.ui.fragments;
 
 import android.app.DialogFragment;
 import android.os.Bundle;

@@ -61,7 +61,7 @@
 
         <fragment
             android:id="@+id/FbLoginFragment"
-            android:name="com.nodoubts.FbLoginFragment"
+            android:name="com.nodoubts.ui.fragments.FbLoginFragment"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"

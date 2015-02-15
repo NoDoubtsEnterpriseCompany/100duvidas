@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nodoubts.R;
 import com.nodoubts.core.CommentAdapter;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.Rating;
@@ -22,6 +23,8 @@ import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
+import com.nodoubts.ui.lecture.ScheduleLectureActivity;
+import com.nodoubts.ui.rating.RatingActivity;
 
 public class ViewProfessorActivity extends Activity {
 

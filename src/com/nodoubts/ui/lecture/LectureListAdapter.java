@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.lecture;
 
 import java.util.List;
 
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.SearchAdapter;
 

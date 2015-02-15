@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.nodoubts.EditProfileActivity" >
+    tools:context="com.nodoubts.ui.profile.EditProfileActivity" >
 
     <TextView
         android:id="@+id/subject_name_textview"

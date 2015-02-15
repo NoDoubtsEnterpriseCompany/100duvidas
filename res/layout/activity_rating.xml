@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.nodoubts.RatingActivity" >
+    tools:context="com.nodoubts.ui.rating.RatingActivity" >
 
     <ImageView
         android:id="@+id/view_professor_pic_ratingAct"

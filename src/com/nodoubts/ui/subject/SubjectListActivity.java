@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.subject;
 
 import java.net.URL;
 import java.util.List;
@@ -20,7 +20,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
-import com.nodoubts.LectureCreationDialog.EditLectureListener;
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
+import com.nodoubts.R.string;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
@@ -28,6 +31,9 @@ import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
+import com.nodoubts.ui.lecture.LectureCreationDialog;
+import com.nodoubts.ui.lecture.LectureCreationDialog.EditLectureListener;
+import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
 
 public class SubjectListActivity extends FragmentActivity implements EditLectureListener {
 

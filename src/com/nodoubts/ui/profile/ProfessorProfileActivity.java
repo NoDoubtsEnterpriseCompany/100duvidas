@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.profile;
 
 
 import java.io.InputStream;
@@ -33,8 +33,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
+import com.nodoubts.R.menu;
 import com.nodoubts.core.User;
-import com.nodoubts.util.ui.ImageHelper;
+import com.nodoubts.ui.lecture.UserLectureListActivity;
+import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
+import com.nodoubts.ui.subject.SubjectListActivity;
+import com.nodoubts.ui.util.ImageHelper;
 
 public class ProfessorProfileActivity extends Activity {
 	

@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.rating;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,12 +20,18 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
+import com.nodoubts.R.string;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
+import com.nodoubts.ui.profile.ProfessorProfileActivity;
+import com.nodoubts.ui.subject.SubjectListActivity;
 
 public class RegisterGroupLectureActivity extends Activity {
 
@@ -34,8 +40,8 @@ public class RegisterGroupLectureActivity extends Activity {
 	DatePickerDialog.OnDateSetListener date;
 	EditText subject;
 	String subjectId;
-	static final int RESULT_CODE_SUBJECT = 1212; 
-	static final String SUBJECT_GROUP_IDENTIFIER = "subjectGroup";
+	public static final int RESULT_CODE_SUBJECT = 1212; 
+	public static final String SUBJECT_GROUP_IDENTIFIER = "subjectGroup";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

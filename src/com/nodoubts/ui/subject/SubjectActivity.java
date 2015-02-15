@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.subject;
 
 import java.util.List;
 
@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.GroupLectureAdapter;
 import com.nodoubts.core.Lecture;
@@ -23,6 +26,9 @@ import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
 import com.nodoubts.serverclient.lecture.LectureController;
 import com.nodoubts.serverclient.lecture.LectureService;
+import com.nodoubts.ui.grouplecture.GroupLectureActivity;
+import com.nodoubts.ui.lecture.LectureListAdapter;
+import com.nodoubts.ui.user.ViewProfessorActivity;
 
 public class SubjectActivity extends Activity {
 

@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.subject;
 
 
 import android.app.Activity;
@@ -16,11 +16,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
+import com.nodoubts.R.menu;
+import com.nodoubts.R.string;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
+import com.nodoubts.ui.profile.ProfessorProfileActivity;
 
 public class RegisterSubjectActivity extends Activity {
 	

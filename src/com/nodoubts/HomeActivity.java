@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.nodoubts.R;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.profile.ProfessorProfileActivity;
+import com.nodoubts.ui.search.SearchActivity;
 
 
 public class HomeActivity extends Activity {
 
-	static User user;
+	public static User user;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

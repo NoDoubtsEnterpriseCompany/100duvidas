@@ -2,7 +2,7 @@ package com.nodoubts.core;
 
 import java.util.List;
 
-import com.nodoubts.ViewProfessorActivity;
+import com.nodoubts.ui.user.ViewProfessorActivity;
 
 
 public class User implements SearchType{

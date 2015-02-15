@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.nodoubts.ProfessorProfileActivity" >
+    tools:context="com.nodoubts.ui.profile.ProfessorProfileActivity" >
 
     <TextView
         android:id="@+id/courses_text_field"

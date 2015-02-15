@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.facebook.Session;
-import com.nodoubts.FbLoginFragment.FbLoginCallback;
+import com.nodoubts.R;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.fragments.FbLoginFragment;
+import com.nodoubts.ui.fragments.FbLoginFragment.FbLoginCallback;
 
 public class SplashActivity extends FragmentActivity implements Runnable, FbLoginCallback{
 	

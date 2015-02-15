@@ -1,5 +1,8 @@
-package com.nodoubts;
+package com.nodoubts.ui.lecture;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
 import com.nodoubts.core.User;
 
 import android.app.DialogFragment;

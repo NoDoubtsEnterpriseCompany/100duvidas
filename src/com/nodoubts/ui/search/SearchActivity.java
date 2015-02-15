@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.search;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
 import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.Subject;
 import com.nodoubts.exceptions.ApplicationViewException;

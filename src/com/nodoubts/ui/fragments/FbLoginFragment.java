@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.fragments;
 
 import java.util.Arrays;
 
@@ -20,6 +20,9 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
 import com.nodoubts.core.Profile;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;

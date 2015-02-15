@@ -13,12 +13,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
-import com.nodoubts.FbLoginFragment.FbLoginCallback;
+import com.nodoubts.R;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
+import com.nodoubts.ui.fragments.FbLoginFragment.FbLoginCallback;
+import com.nodoubts.ui.user.RegisterUserActivity;
 
 public class MainActivity extends FragmentActivity implements FbLoginCallback {
 	UserController userController;

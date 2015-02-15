@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.grouplecture;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +14,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nodoubts.HomeActivity;
+import com.nodoubts.R;
+import com.nodoubts.R.id;
+import com.nodoubts.R.layout;
+import com.nodoubts.R.string;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;

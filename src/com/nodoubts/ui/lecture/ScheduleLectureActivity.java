@@ -1,4 +1,4 @@
-package com.nodoubts;
+package com.nodoubts.ui.lecture;
 
 import java.util.Date;
 
@@ -17,17 +17,19 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.nodoubts.HomeActivity;
+import com.nodoubts.R;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.ModuleFactory;
 import com.nodoubts.core.ScheduledLecture;
 import com.nodoubts.core.Subject;
 import com.nodoubts.exceptions.ApplicationViewException;
-import com.nodoubts.fragments.CalendarFragmentDialog;
-import com.nodoubts.fragments.CalendarFragmentDialog.GetDateListener;
 import com.nodoubts.serverclient.lecture.LectureController;
 import com.nodoubts.serverclient.lecture.LectureService;
 import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
+import com.nodoubts.ui.fragments.CalendarFragmentDialog;
+import com.nodoubts.ui.fragments.CalendarFragmentDialog.GetDateListener;
 
 public class ScheduleLectureActivity extends FragmentActivity implements GetDateListener{
 
