@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginLeft="30dp"
+        android:layout_weight="0.06" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="91dp"
+            android:layout_height="91dp"
+            android:background="@drawable/profile_pic_img"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="14dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/bright_blue"
+                android:textSize="16dp"/>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="24.5dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/scroll" />
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_city_label"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:id="@+id/curriculum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_cirriculum_label"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/light_grey"
+                android:textSize="12dp"/>
+
+            <TextView
+                android:id="@+id/lectures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_lectures_label"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/dark_orange"
+                android:textSize="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical" >
+
+            <RatingBar
+                android:id="@+id/ratingBar1"
+                style="@style/customSmallRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_comments_label"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/bright_blue"
+                android:textSize="12dp"
+                android:layout_marginTop="6dp"
+                />
+
+            <TextView
+                android:id="@+id/refer_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_refer_btn"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="12dp"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="65dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/innactive_schedule"
+            style="@style/schedule_btn"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="116dp">
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search_btn_img"
+            style="@style/search_btn"/>
+
+    </LinearLayout>
+
+</LinearLayout>

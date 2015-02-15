@@ -18,6 +18,8 @@
     <color name="light_orange">#F9A51E</color>
     <color name="dark_grey">#414042</color>
     <color name="dark_orange">#F7941E</color>
+    <color name="bright_blue">#00AEEF</color>
+    
 
     <!-- Application theme. -->
     <style name="CustomTheme" parent="android:style/Theme.NoTitleBar">
@@ -25,12 +27,14 @@
         <item name="android:background">@color/dark_grey</item>
         <item name="android:windowBackground">@color/dark_grey</item>
         <item name="android:colorBackground">@color/dark_grey</item>
+<!--         <item name="android:editTextStyle">@style/rouded_text_view</item> -->
+<!-- TODO: Put margin in rounded_text_view style, consider this margin in main activity -->
     </style>
 
     <style name="customSmallRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/custom_small_rating_bar</item>
-        <item name="android:minHeight">20dp</item>
-        <item name="android:minWidth">20dp</item>
+        <item name="android:minHeight">15dp</item>
+        <item name="android:minWidth">15dp</item>
     </style>
 
     <style name="custom_orange_btn" parent="@android:style/Widget.Button">
@@ -46,6 +50,16 @@
         <item name="android:textColorHint">@color/dark_grey</item>
         <item name="android:background">@drawable/orange_btn</item>
         <item name="android:gravity">left</item>
+    </style>
+
+    <style name="schedule_btn" parent="@android:style/Widget.ImageButton">
+        <item name="android:button">@drawable/schedule_btn</item>
+        <item name="android:background">@drawable/schedule_btn</item>
+    </style>
+    
+    <style name="search_btn" parent="@android:style/Widget.ImageButton">
+        <item name="android:button">@drawable/search_btn_img</item>
+        <item name="android:background">@drawable/search_btn_img</item>
     </style>
     
     <style name="rouded_text_view" parent="@android:style/Widget.EditText">
