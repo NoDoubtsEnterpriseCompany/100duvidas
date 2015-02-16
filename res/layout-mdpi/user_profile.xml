@@ -10,12 +10,24 @@
         android:layout_marginLeft="30dp"
         android:layout_weight="0.06" >
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <RelativeLayout
             android:layout_width="91dp"
-            android:layout_height="91dp"
-            android:background="@drawable/profile_pic_img"/>
+            android:layout_height="91dp" >
 
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="91dp"
+                android:layout_height="91dp"
+                android:src="@drawable/picture_label" />
+			<ProgressBar
+                android:id="@+id/singleSpinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/profile_pic"
+				android:gravity="center_vertical"
+                android:visibility="invisible" />
+        </RelativeLayout>
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,7 +35,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/userName"
+                android:id="@+id/profile_username_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name"
@@ -39,7 +51,7 @@
                 android:src="@drawable/scroll" />
 
             <TextView
-                android:id="@+id/city"
+                android:id="@+id/profile_city_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_city_label"
@@ -78,10 +90,10 @@
             android:orientation="vertical" >
 
             <RatingBar
-                android:id="@+id/ratingBar1"
+                android:id="@+id/profile_rating"
                 style="@style/customSmallRatingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/comments"
@@ -105,9 +117,9 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/profile_schedule_btn"
             android:layout_width="65dp"
-            android:layout_height="64dp"
+            android:layout_height="65dp"
             android:layout_marginLeft="100dp"
             android:src="@drawable/innactive_schedule"
             style="@style/schedule_btn"/>

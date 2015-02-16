@@ -85,6 +85,9 @@
             android:name="com.nodoubts.ui.lecture.ScheduleLectureActivity">
         </activity>
         <activity
+            android:name="com.nodoubts.ui.profile.UserProfile">
+        </activity>
+        <activity
             android:name="com.nodoubts.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
