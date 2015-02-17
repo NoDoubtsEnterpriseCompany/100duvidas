@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
@@ -45,7 +46,29 @@ public class GroupLectureController implements GroupLectureService {
 		StringBuilder builder = new StringBuilder("/grouplectures?subject=");
 		builder.append(subjectId);
 		List<GroupLecture> groupLectures = new ArrayList<GroupLecture>();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH").create();
+		try {
+			String json = serverService.get(builder.toString());
+			JSONObject jsonObject = new JSONObject(json);
+			JSONArray jsonArray = jsonObject.getJSONArray("result");
+			for (int i=0; i<jsonArray.length();  i++) {
+				JSONObject explrObject = jsonArray.getJSONObject(i);
+				groupLectures.add((GroupLecture)gson.fromJson(explrObject.toString(), GroupLecture.class));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (ApplicationViewException e) {
+			e.printStackTrace();
+		}
+		return groupLectures;
+	}
+	
+	@Override
+	public List<GroupLecture> getGroupLecturesByUser(String username) {
+		StringBuilder builder = new StringBuilder("/grouplectures?professor=");
+		builder.append(username);
+		List<GroupLecture> groupLectures = new ArrayList<GroupLecture>();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH").create();
 		try {
 			String json = serverService.get(builder.toString());
 			System.out.println(json);

@@ -1,5 +1,6 @@
 package com.nodoubts.core;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.nodoubts.ui.user.ViewProfessorActivity;

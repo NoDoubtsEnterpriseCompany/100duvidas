@@ -78,7 +78,7 @@
             android:label="@string/title_activity_user_lecture_list" >
         </activity>
         <activity
-            android:name="com.nodoubts.GroupLectureActivity"
+            android:name="com.nodoubts.ui.grouplecture.GroupLectureActivity"
             android:label="@string/title_activity_group_lecture" >
         </activity>
         <activity
@@ -95,6 +95,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserLecturesTabsActivity"
+            android:label="@string/title_activity_user_lectures_tabs" 
+            android:theme="@style/CustomActionBarTheme">
         </activity>
     </application>
 

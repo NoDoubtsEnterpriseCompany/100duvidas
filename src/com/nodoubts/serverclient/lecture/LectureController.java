@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.ScheduledLecture;
 import com.nodoubts.exceptions.ApplicationViewException;
@@ -52,6 +53,32 @@ public class LectureController implements LectureService {
 				JSONObject explrObject = jsonArray.getJSONObject(i);
 				lectures.
 				add((Lecture)serializer.fromJson(explrObject.toString(), Lecture.class));
+				
+			}
+		} catch (ApplicationViewException e) {
+			e.printStackTrace();
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		return lectures;
+	}
+	
+	@Override
+	public List<ScheduledLecture> getScheduledLecturesFromTeacher(String teacher_id){
+		StringBuilder builder = new StringBuilder("/lectures/scheduledlecture?teacher="+teacher_id);		
+		List<ScheduledLecture> lectures = new ArrayList<ScheduledLecture>();
+		
+		try {
+			JSONObject response = new JSONObject(
+					serverService.get(builder.toString()));
+			JSONArray jsonArray = response.getJSONArray("result");
+			
+			Gson serializer = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH").create();
+			
+			for (int i=0; i<jsonArray.length();  i++) {
+				JSONObject explrObject = jsonArray.getJSONObject(i);
+				lectures.
+				add((ScheduledLecture)serializer.fromJson(explrObject.toString(), ScheduledLecture.class));
 				
 			}
 		} catch (ApplicationViewException e) {

@@ -30,6 +30,24 @@
 <!--         <item name="android:editTextStyle">@style/rouded_text_view</item> -->
 <!-- TODO: Put margin in rounded_text_view style, consider this margin in main activity -->
     </style>
+    
+    <style name="CustomActionBarTheme"
+           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:background">@color/dark_grey</item>
+        <item name="android:windowBackground">@color/dark_grey</item>
+        <item name="android:colorBackground">@color/dark_grey</item>
+        <item name="android:buttonStyle">@style/custom_orange_btn</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar"
+           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:buttonStyle">@style/custom_orange_btn</item>
+        <item name="android:background">@color/dark_grey</item>
+        <item name="android:windowBackground">@color/dark_grey</item>
+        <item name="android:colorBackground">@color/dark_grey</item>
+    </style>
 
     <style name="customSmallRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/custom_small_rating_bar</item>

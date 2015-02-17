@@ -24,6 +24,7 @@ import com.nodoubts.R;
 import com.nodoubts.R.id;
 import com.nodoubts.R.layout;
 import com.nodoubts.R.string;
+import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
@@ -110,7 +111,7 @@ public class RegisterGroupLectureActivity extends Activity {
 				myCalendar.set(Calendar.MINUTE, timePicker.getCurrentMinute());
 				GroupLecture groupLecture = new GroupLecture();
 				groupLecture.setNumMaxStudents(num);
-				groupLecture.setDate(myCalendar.getTime().toString());
+				groupLecture.setDate(myCalendar.getTime());
 				groupLecture.setName(nome);
 				groupLecture.setProfessor(user);
 				groupLecture.setPrice(price);
@@ -228,7 +229,7 @@ public class RegisterGroupLectureActivity extends Activity {
 								.getString(R.string.group_lecture_registered_ok),
 						Toast.LENGTH_LONG).show();
 				Intent intent = new Intent(RegisterGroupLectureActivity.this,
-						ProfessorProfileActivity.class);
+						UserLecturesTabsActivity.class);
 				intent.putExtra("user", user);
 				startActivity(intent);
 				finish();
