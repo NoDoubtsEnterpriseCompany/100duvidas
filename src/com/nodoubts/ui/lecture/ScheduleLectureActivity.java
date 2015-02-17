@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -169,7 +170,7 @@ ProgressDialog progressDialog;
 			if(result instanceof Subject){
 				subjectName.setText(((Subject)result).getName());
 			}else if(result instanceof ApplicationViewException){
-				System.out.println(result);
+				Log.e("Schedule Lecture Act",((ApplicationViewException) result).getMessage());
 			}
 		}
 	}

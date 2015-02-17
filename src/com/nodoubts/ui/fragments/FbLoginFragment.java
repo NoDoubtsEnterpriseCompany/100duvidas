@@ -80,7 +80,6 @@ public class FbLoginFragment extends Fragment {
 				}).executeAsync();
         	}
         } else if (state.isClosed()) {
-        	System.out.println("Logout!!!");
         }
     }
 	

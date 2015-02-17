@@ -72,7 +72,6 @@ public class GroupLectureController implements GroupLectureService {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH").create();
 		try {
 			String json = serverService.get(builder.toString());
-			System.out.println(json);
 			JSONObject jsonObject = new JSONObject(json);
 			JSONArray jsonArray = jsonObject.getJSONArray("result");
 			for (int i=0; i<jsonArray.length();  i++) {

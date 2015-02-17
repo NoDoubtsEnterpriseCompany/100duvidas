@@ -25,8 +25,6 @@ public class HomeActivity extends Activity {
 
 		context = this;
 		user = (User) getIntent().getSerializableExtra("user");
-		System.out.println("AQUIIIIIIIIIIIIIII");
-		System.out.println(user);
 		Button buttonProfile = (Button) findViewById(R.id.btn_profile);
 		buttonProfile.setOnClickListener(new OnClickListener() {
 			

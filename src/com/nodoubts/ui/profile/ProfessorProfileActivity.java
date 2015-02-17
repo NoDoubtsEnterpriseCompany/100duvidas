@@ -183,8 +183,8 @@ public class ProfessorProfileActivity extends Activity {
 			                .execute(httpRequest);
 
 			        HttpEntity entity = response.getEntity();
-			        BufferedHttpEntity b_entity = new BufferedHttpEntity(entity);
-			        InputStream input = b_entity.getContent();
+			        BufferedHttpEntity bEntity = new BufferedHttpEntity(entity);
+			        InputStream input = bEntity.getContent();
 
 			        bitmap = BitmapFactory.decodeStream(input);
 

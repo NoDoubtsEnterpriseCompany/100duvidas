@@ -29,9 +29,9 @@ public class ServerController implements ServerService{
 	private String HOST_URL;
 	
 	private ServerController(){
-		String host_name = NoDoubts.getAppContext().getString(R.string.host_name);
+		String hostName = NoDoubts.getAppContext().getString(R.string.host_name);
 		String port = NoDoubts.getAppContext().getString(R.string.port);
-		HOST_URL = host_name.concat(":").concat(port);
+		HOST_URL = hostName.concat(":").concat(port);
 	}
 	
 
@@ -46,7 +46,6 @@ public class ServerController implements ServerService{
 	public String get(String uri) throws ApplicationViewException {
 		String response = null;
 		String url = HOST_URL.concat(uri);
-		System.out.println(url);
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpEntity httpEntity = null;
