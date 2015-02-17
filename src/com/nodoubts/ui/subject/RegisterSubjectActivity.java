@@ -17,10 +17,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
-import com.nodoubts.R.menu;
-import com.nodoubts.R.string;
 import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;

@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -15,9 +14,6 @@ import android.widget.Toast;
 
 import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
-import com.nodoubts.R.string;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;

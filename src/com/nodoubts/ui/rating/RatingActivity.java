@@ -33,12 +33,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
-import com.nodoubts.R.menu;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.Rating;
 import com.nodoubts.core.User;

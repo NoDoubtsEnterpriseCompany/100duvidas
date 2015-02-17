@@ -1,14 +1,11 @@
 package com.nodoubts.ui.profile;
 
-import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
-import com.nodoubts.R.menu;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.nodoubts.R;
 
 public class StudentProfileActivity extends Activity {
 

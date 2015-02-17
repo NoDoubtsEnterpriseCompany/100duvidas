@@ -1,10 +1,5 @@
 package com.nodoubts.ui.lecture;
 
-import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
-import com.nodoubts.core.User;
-
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +8,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
+
+import com.nodoubts.R;
+import com.nodoubts.core.User;
 
 public class LectureCreationDialog extends DialogFragment {
 	

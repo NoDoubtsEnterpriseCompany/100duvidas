@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
 import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
@@ -68,7 +67,7 @@ public class SearchProfessorActivity extends Activity {
 			try {
 				users = userService.searchForUsers(params[0]);
 			} catch (ApplicationViewException e) {
-				e.printStackTrace();
+				Log.e("SearchProfessorActivity ",e.getMessage());
 			}
 			while (users==null){}
 			return null;

@@ -14,7 +14,6 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.nodoubts.core.Lecture;
 import com.nodoubts.core.Rating;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;

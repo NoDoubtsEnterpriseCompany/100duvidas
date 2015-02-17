@@ -21,9 +21,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.nodoubts.R;
-import com.nodoubts.R.id;
-import com.nodoubts.R.layout;
-import com.nodoubts.R.string;
 import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.Subject;
@@ -31,7 +28,6 @@ import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
-import com.nodoubts.ui.profile.ProfessorProfileActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
 
 public class RegisterGroupLectureActivity extends Activity {
