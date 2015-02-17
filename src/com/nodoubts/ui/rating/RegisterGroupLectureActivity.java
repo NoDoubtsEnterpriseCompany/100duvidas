@@ -157,7 +157,7 @@ public class RegisterGroupLectureActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {     
 	  super.onActivityResult(requestCode, resultCode, data); 
 	  switch(requestCode) { 
-	    case (RESULT_CODE_SUBJECT) : { 
+	    case RESULT_CODE_SUBJECT : { 
 	      if (resultCode == Activity.RESULT_OK) { 
 	    	  Subject subjectObj = (Subject) data.getSerializableExtra(SUBJECT_GROUP_IDENTIFIER); 
 	    	  subject.setText(subjectObj.getName());

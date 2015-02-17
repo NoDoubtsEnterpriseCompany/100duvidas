@@ -155,7 +155,7 @@ public class RatingActivity extends Activity {
 				bitmap = BitmapFactory.decodeStream(input);
 
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				Log.e("rating",ex.getMessage());
 			}
 
 			return ImageHelper.getRoundedCornerBitmap(bitmap, profilePicture

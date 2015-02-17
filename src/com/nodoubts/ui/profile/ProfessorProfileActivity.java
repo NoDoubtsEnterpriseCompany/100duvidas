@@ -189,7 +189,7 @@ public class ProfessorProfileActivity extends Activity {
 			        bitmap = BitmapFactory.decodeStream(input);
 
 			    } catch (Exception ex) {
-			    	ex.printStackTrace();
+			    	Log.e("ProfessorProfileAct ",ex.getMessage());
 			    }
 				
 				return ImageHelper.getRoundedCornerBitmap(

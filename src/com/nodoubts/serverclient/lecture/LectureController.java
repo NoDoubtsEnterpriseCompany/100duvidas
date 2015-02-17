@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nodoubts.core.Lecture;
@@ -56,9 +58,9 @@ public class LectureController implements LectureService {
 				
 			}
 		} catch (ApplicationViewException e) {
-			e.printStackTrace();
+			Log.e("LectureController",e.getMessage());
 		} catch (JSONException e1) {
-			e1.printStackTrace();
+			Log.e("ServerController",e1.getMessage());
 		}
 		return lectures;
 	}
@@ -82,9 +84,9 @@ public class LectureController implements LectureService {
 				
 			}
 		} catch (ApplicationViewException e) {
-			e.printStackTrace();
+			Log.e("ServerController",e.getMessage());
 		} catch (JSONException e1) {
-			e1.printStackTrace();
+			Log.e("ServerController",e1.getMessage());
 		}
 		return lectures;
 	}

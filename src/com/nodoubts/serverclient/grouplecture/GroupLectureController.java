@@ -7,10 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nodoubts.core.GroupLecture;
-import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
@@ -56,9 +57,9 @@ public class GroupLectureController implements GroupLectureService {
 				groupLectures.add((GroupLecture)gson.fromJson(explrObject.toString(), GroupLecture.class));
 			}
 		} catch (JSONException e) {
-			e.printStackTrace();
+						Log.e("GroupLectureController",e.getMessage());
 		} catch (ApplicationViewException e) {
-			e.printStackTrace();
+						Log.e("GroupLectureController",e.getMessage());
 		}
 		return groupLectures;
 	}
@@ -79,9 +80,9 @@ public class GroupLectureController implements GroupLectureService {
 				groupLectures.add((GroupLecture)gson.fromJson(explrObject.toString(), GroupLecture.class));
 			}
 		} catch (JSONException e) {
-			e.printStackTrace();
+			Log.e("GroupLectureController",e.getMessage());
 		} catch (ApplicationViewException e) {
-			e.printStackTrace();
+			Log.e("GroupLectureController", e.getMessage());
 		}
 		return groupLectures;
 	}
