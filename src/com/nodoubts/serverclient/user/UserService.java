@@ -23,9 +23,14 @@ public interface UserService {
 	public List<User> searchForUsers(String disciplina) throws ApplicationViewException;
 	
 	public String addSubjectToUser(String jsonTransaction) throws ApplicationViewException;
-
-	public Rating getRating(String ratingID) throws ApplicationViewException;
-
+	/**
+	 * return a list of ratings given an username
+	 * @param userName the username of the user to get the ratings
+	 * @return a list of ratings of the given user
+	 * @throws ApplicationViewException
+	 */
+	public List<Rating> getRatings(String userName) throws ApplicationViewException;
+	
 	public String addRatingToUser(String teacherName, Rating rating)
 			throws ApplicationViewException, JSONException;
 }

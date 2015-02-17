@@ -5,16 +5,16 @@ public class Rating  implements SearchType{
 	
 	private float score;
 	private String comment;
-	private User commenter;
+	private String commenterId;
 	
-	public Rating(float score, String comment, User commenter){
+	public Rating(float score, String comment, String commenter){
 		this.score=score;
 		this.comment=comment;
-		this.commenter=commenter;
+		this.commenterId=commenter;
 	}
 	
-	public User getCommenter() {
-		return commenter;
+	public String getCommenter() {
+		return commenterId;
 	}
 
 	public Rating(){};

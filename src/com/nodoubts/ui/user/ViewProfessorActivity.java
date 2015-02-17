@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -29,7 +30,6 @@ import com.nodoubts.ui.rating.RatingActivity;
 public class ViewProfessorActivity extends Activity {
 
 	private Lecture lecture;
-	private List<String> ratingsIds;
 	private float score;
 	List<String> comments;
 	ListView commentsListView;
@@ -56,11 +56,10 @@ public class ViewProfessorActivity extends Activity {
 
 		if (lecture != null) {
 			score = lecture.getTeacher().getScore();
-			ratingsIds = lecture.getTeacher().getRatings();
 			nameTextView.setText(lecture.getTeacher().getName());
 			emailTextView.setText(lecture.getTeacher().getEmail());
 			ratingBar.setRating(score);
-			new RequestRatingTask().execute(ratingsIds);
+			new RequestRatingTask().execute(lecture.getTeacher().getUsername());
 
 			scheduleBtn.setOnClickListener(new OnClickListener() {
 
@@ -85,7 +84,7 @@ public class ViewProfessorActivity extends Activity {
 						RatingActivity.class);
 				// ratingActivity.putExtra("user", student);
 				ratingActivity.putExtra("lecture", lecture);
-				startActivityForResult(ratingActivity,1);
+				startActivityForResult(ratingActivity, 1);
 				// }else{
 				// Toast.makeText(ViewProfessorActivity.this,
 				// "You're not able to rate this user",Toast.LENGTH_SHORT
@@ -95,16 +94,16 @@ public class ViewProfessorActivity extends Activity {
 		});
 	}
 
-
 	@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
- 
-             if(resultCode == RESULT_OK){  
-            	 Toast.makeText(ViewProfessorActivity.this, "Rated Succesfully", Toast.LENGTH_SHORT).show();
-             }
- 
-    }
-	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (resultCode == RESULT_OK) {
+			Toast.makeText(ViewProfessorActivity.this, "Rated Succesfully",
+					Toast.LENGTH_SHORT).show();
+		}
+
+	}
+
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
@@ -112,28 +111,23 @@ public class ViewProfessorActivity extends Activity {
 	}
 
 	private class RequestRatingTask extends
-			AsyncTask<List<String>, Void, List<Rating>> {
-		
+			AsyncTask<String, Void, List<Rating>> {
 
 		@Override
-		protected List<Rating> doInBackground(List<String>... params) {
-			ratingObjs = new ArrayList<Rating>();
-			List<String> ratingIDs= params[0];
+		protected List<Rating> doInBackground(String... params) {
 			UserService userController = new UserController();
-			for (String id : ratingIDs) {
-				try {
-					Rating r = userController.getRating(id);
-					ratingObjs.add(r);
-				} catch (ApplicationViewException e) {
-					e.printStackTrace();
-				}
+			try {
+				ratingObjs = userController.getRatings(params[0]);
+			} catch (ApplicationViewException e) {
+				Log.e("ViewProfessorAct", e.getMessage());
 			}
 			return ratingObjs;
 		}
 
 		@Override
 		protected void onPostExecute(List<Rating> result) {
-			myAdapter = new CommentAdapter(ViewProfessorActivity.this,ratingObjs);
+			myAdapter = new CommentAdapter(ViewProfessorActivity.this,
+					ratingObjs);
 			commentsListView.setAdapter(myAdapter);
 		}
 	}

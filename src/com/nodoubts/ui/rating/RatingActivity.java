@@ -88,12 +88,12 @@ public class RatingActivity extends Activity {
 		rate.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String teacherName = lecture.getTeacher().getUsername();
+				String teacherUserName = lecture.getTeacher().getUsername();
 				float score = ratingbar.getRating();
 				String comment = commentEditText.getText().toString();
-				Rating rating = new Rating(score, comment, user);
+				Rating rating = new Rating(score, comment, user.get_id());
 				
-				new RatingUser().execute(rating,teacherName);
+				new RatingUser().execute(rating,teacherUserName);
 			}
 		});
 	}
