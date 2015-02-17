@@ -18,7 +18,8 @@
                 android:id="@+id/profile_pic"
                 android:layout_width="91dp"
                 android:layout_height="91dp"
-                android:src="@drawable/picture_label" />
+                android:src="@drawable/avatar"/>
+            
 			<ProgressBar
                 android:id="@+id/singleSpinner"
                 android:layout_width="fill_parent"
@@ -134,7 +135,7 @@
         android:layout_marginTop="116dp">
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/profile_search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/search_btn_img"

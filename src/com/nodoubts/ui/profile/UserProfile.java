@@ -36,6 +36,7 @@ import android.widget.TextView;
 import com.nodoubts.R;
 import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.search.SearchActivity;
 import com.nodoubts.ui.util.ImageHelper;
 
 public class UserProfile extends FragmentActivity {
@@ -45,7 +46,7 @@ public class UserProfile extends FragmentActivity {
 	private ImageView profilePicture;
 	private ProgressBar waitSpinner;
 	private RatingBar rating;
-	private ImageButton scheduleBtn;
+	private ImageButton scheduleBtn, searchBtn;
 	private Context context;
 
 	@Override
@@ -59,6 +60,7 @@ public class UserProfile extends FragmentActivity {
 		city = (TextView) findViewById(R.id.profile_city_textview);
 		rating = (RatingBar) findViewById(R.id.profile_rating);
 		scheduleBtn = (ImageButton) findViewById(R.id.profile_schedule_btn);
+		searchBtn = (ImageButton) findViewById(R.id.profile_search_btn);
 		context = this;
 		rating.setEnabled(false);
 		user = (User) getIntent().getSerializableExtra("user");
@@ -69,7 +71,15 @@ public class UserProfile extends FragmentActivity {
 			public void onClick(View v) {
 				Intent calendarActivity = new Intent(context, UserLecturesTabsActivity.class);
 				startActivity(calendarActivity);
-				finish();
+			}
+		});
+		
+		searchBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent searchActivity = new Intent(context, SearchActivity.class);
+				startActivity(searchActivity);
 			}
 		});
 		
