@@ -64,7 +64,7 @@ public class SearchProfessorActivity extends Activity {
 		
 		@Override
 		protected Void doInBackground(String... params) {
-			try {
+			try {	
 				users = userService.searchForUsers(params[0]);
 			} catch (ApplicationViewException e) {
 				Log.e("SearchProfessorActivity ",e.getMessage());
