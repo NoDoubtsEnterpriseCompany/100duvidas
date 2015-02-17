@@ -74,7 +74,7 @@
 
     <!-- Subject messages -->
     <string name="subject_added_message">Subject successfully added</string>
-    
+
     <!-- Lecture strings -->
     <string name="lecture_confirmation_label">Confirmation</string>
     <string name="lecture_professorname_label">Professor\'s name</string>
@@ -85,8 +85,7 @@
     <string name="lecture_confirm_btn">Confirm</string>
     <string name="empty_date_hint">Data can\'t be empty</string>
     <string name="lecture_scheduled_hint">Lecture scheduled!</string>
-    
-    
+
     <!-- Profile string -->
     <string name="profile_city_label">City</string>
     <string name="profile_cirriculum_label"><u>Curriculum</u></string>
@@ -94,7 +93,6 @@
     <string name="profile_comments_label"><u>X Comments</u></string>
     <string name="profile_refer_btn">Refer</string>
     <string name="profile_pic_label">Picture</string>
-    
 
     <!-- Group Lecture Errors -->
     <string name="addressEmpty">Address can not be empty</string>
