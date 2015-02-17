@@ -13,4 +13,6 @@ public interface GroupLectureService {
 	String registerStudent(String groupLectureId, User user) throws ApplicationViewException;
 	
 	List<GroupLecture> getGroupLecturesBySubject(String subjectId);
+	
+	List<GroupLecture> getGroupLecturesByUser(String username);
 }

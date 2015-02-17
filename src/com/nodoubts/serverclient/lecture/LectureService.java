@@ -15,4 +15,5 @@ public interface LectureService {
 	public String scheduleLecture(ScheduledLecture lecture)
 			throws ApplicationViewException;
 	
+	List<ScheduledLecture> getScheduledLecturesFromTeacher(String teacher_id);
 }

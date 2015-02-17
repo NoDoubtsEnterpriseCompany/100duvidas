@@ -32,8 +32,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
+import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
 import com.nodoubts.ui.util.ImageHelper;
 
@@ -62,6 +62,16 @@ public class UserProfile extends FragmentActivity {
 		rating.setEnabled(false);
 		user = (User) getIntent().getSerializableExtra("user");
 		
+		scheduleBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent calendarActivity = new Intent(context, UserLecturesTabsActivity.class);
+				startActivity(calendarActivity);
+				finish();
+			}
+		});
+		
 		if( user != null ){
 			rating.setRating(user.getProfile().getTotalScore());
 			name.setText(user.getProfile().getName());
@@ -76,17 +86,6 @@ public class UserProfile extends FragmentActivity {
 						bitmap, profilePicture.getDrawable().getIntrinsicWidth()
 						* profilePicture.getDrawable().getIntrinsicHeight());
 			}
-			
-			scheduleBtn.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					Intent homeActivity = new Intent(context, ProfessorProfileActivity.class);
-					homeActivity.putExtra("user", user);
-					startActivity(homeActivity);
-					finish();
-				}
-			});
 			
 		}
 	}
