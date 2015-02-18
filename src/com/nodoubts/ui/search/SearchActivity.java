@@ -67,7 +67,6 @@ public class SearchActivity extends Activity {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				textLength = editText.getText().length();
-				if( textLength > 2){
 					matchingSubjects.clear();
 					for (Subject subject : subjects) {
 						if(subject.getName().toLowerCase().trim().contains(editText.getText())){
@@ -77,12 +76,6 @@ public class SearchActivity extends Activity {
 					SearchAdapter<Subject> subjectsAdapter = new SearchAdapter<Subject>(
 							SearchActivity.this, matchingSubjects);
 					listView.setAdapter(subjectsAdapter);
-				}else{
-					SearchAdapter<Subject> subjectsAdapter = new SearchAdapter<Subject>(
-							SearchActivity.this, matchingSubjects);
-					listView.setAdapter(subjectsAdapter);
-					
-				}
 			}
 
 			@Override
