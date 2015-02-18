@@ -19,7 +19,6 @@
     <color name="dark_grey">#414042</color>
     <color name="dark_orange">#F7941E</color>
     <color name="bright_blue">#00AEEF</color>
-    
 
     <!-- Application theme. -->
     <style name="CustomTheme" parent="android:style/Theme.NoTitleBar">
@@ -27,12 +26,11 @@
         <item name="android:background">@color/dark_grey</item>
         <item name="android:windowBackground">@color/dark_grey</item>
         <item name="android:colorBackground">@color/dark_grey</item>
-<!--         <item name="android:editTextStyle">@style/rouded_text_view</item> -->
-<!-- TODO: Put margin in rounded_text_view style, consider this margin in main activity -->
+        <!-- <item name="android:editTextStyle">@style/rouded_text_view</item> -->
+        <!-- TODO: Put margin in rounded_text_view style, consider this margin in main activity -->
     </style>
-    
-    <style name="CustomActionBarTheme"
-           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+
+    <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="android:windowBackground">@color/dark_grey</item>
@@ -41,8 +39,7 @@
     </style>
 
     <!-- ActionBar styles -->
-    <style name="MyActionBar"
-           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:buttonStyle">@style/custom_orange_btn</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="android:windowBackground">@color/dark_grey</item>
@@ -74,12 +71,17 @@
         <item name="android:button">@drawable/schedule_btn</item>
         <item name="android:background">@drawable/schedule_btn</item>
     </style>
-    
+
     <style name="search_btn" parent="@android:style/Widget.ImageButton">
         <item name="android:button">@drawable/search_btn_img</item>
         <item name="android:background">@drawable/search_btn_img</item>
     </style>
-    
+
+    <style name="subject_btn" parent="@android:style/Widget.ImageButton">
+        <item name="android:button">@drawable/ic_subject</item>
+        <item name="android:background">@drawable/ic_subject</item>
+    </style>
+
     <style name="rouded_text_view" parent="@android:style/Widget.EditText">
         <item name="android:background">@drawable/rounded_text_view</item>
         <item name="android:textColor">@color/light_grey</item>

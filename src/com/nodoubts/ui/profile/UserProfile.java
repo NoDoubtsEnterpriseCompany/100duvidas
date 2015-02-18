@@ -37,6 +37,7 @@ import com.nodoubts.R;
 import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
 import com.nodoubts.ui.search.SearchActivity;
+import com.nodoubts.ui.subject.SubjectListActivity;
 import com.nodoubts.ui.util.ImageHelper;
 
 public class UserProfile extends FragmentActivity {
@@ -46,7 +47,7 @@ public class UserProfile extends FragmentActivity {
 	private ImageView profilePicture;
 	private ProgressBar waitSpinner;
 	private RatingBar rating;
-	private ImageButton scheduleBtn, searchBtn;
+	private ImageButton scheduleBtn, searchBtn, subjectBtn;
 	private Context context;
 
 	@Override
@@ -61,43 +62,57 @@ public class UserProfile extends FragmentActivity {
 		rating = (RatingBar) findViewById(R.id.profile_rating);
 		scheduleBtn = (ImageButton) findViewById(R.id.profile_schedule_btn);
 		searchBtn = (ImageButton) findViewById(R.id.profile_search_btn);
+		subjectBtn = (ImageButton) findViewById(R.id.profile_subject_btn);
 		context = this;
 		rating.setEnabled(false);
 		user = (User) getIntent().getSerializableExtra("user");
-		
+
 		scheduleBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Intent calendarActivity = new Intent(context, UserLecturesTabsActivity.class);
+				Intent calendarActivity = new Intent(context,
+						UserLecturesTabsActivity.class);
 				startActivity(calendarActivity);
 			}
 		});
-		
+
 		searchBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Intent searchActivity = new Intent(context, SearchActivity.class);
+				Intent searchActivity = new Intent(context,
+						SearchActivity.class);
 				startActivity(searchActivity);
 			}
 		});
-		
-		if( user != null ){
+
+		subjectBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent searchScreen = new Intent(getApplicationContext(), SubjectListActivity.class);
+				searchScreen.putExtra("user", user);
+				startActivity(searchScreen);
+			}
+		});
+
+		if (user != null) {
 			rating.setRating(user.getProfile().getTotalScore());
 			name.setText(user.getProfile().getName());
 			city.setText(user.getProfile().getCity());
-			if(user.getProfile().getProfilePic() != null){
+			if (user.getProfile().getProfilePic() != null) {
 				SetProfilePicture setPictureTask = new SetProfilePicture();
 				setPictureTask.execute(user.getProfile().getProfilePic());
-			}else{
+			} else {
 
-				Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.picture_label);
-				ImageHelper.getRoundedCornerBitmap(
-						bitmap, profilePicture.getDrawable().getIntrinsicWidth()
+				Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+						R.drawable.picture_label);
+				ImageHelper.getRoundedCornerBitmap(bitmap, profilePicture
+						.getDrawable().getIntrinsicWidth()
 						* profilePicture.getDrawable().getIntrinsicHeight());
 			}
-			
+
 		}
 	}
 
@@ -105,18 +120,18 @@ public class UserProfile extends FragmentActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (requestCode == 1) {
-			if(resultCode == RESULT_OK){
-				User newUser=(User) data.getSerializableExtra("result");
-				this.user=newUser;
+			if (resultCode == RESULT_OK) {
+				User newUser = (User) data.getSerializableExtra("result");
+				this.user = newUser;
 				this.name.setText(user.getProfile().getName());
 				this.city.setText(user.getProfile().getCity());
 			}
 			if (resultCode == RESULT_CANCELED) {
-				//Write your code if there's no result
+				// Write your code if there's no result
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -144,7 +159,7 @@ public class UserProfile extends FragmentActivity {
 
 	private class SetProfilePicture extends AsyncTask<String, Void, Bitmap> {
 		@Override
-		protected void onPreExecute(){
+		protected void onPreExecute() {
 			waitSpinner.setVisibility(View.VISIBLE);
 			profilePicture.setVisibility(View.INVISIBLE);
 		}
@@ -152,8 +167,10 @@ public class UserProfile extends FragmentActivity {
 		protected Bitmap doInBackground(String... params) {
 			String picUrl = params[0];
 			Bitmap bitmap = null;
-			String picWidth = String.valueOf(profilePicture.getDrawable().getIntrinsicWidth());
-			String picHeight = String.valueOf(profilePicture.getDrawable().getIntrinsicHeight());
+			String picWidth = String.valueOf(profilePicture.getDrawable()
+					.getIntrinsicWidth());
+			String picHeight = String.valueOf(profilePicture.getDrawable()
+					.getIntrinsicHeight());
 			List<NameValuePair> queryParams = new LinkedList<NameValuePair>();
 			queryParams.add(new BasicNameValuePair("width", picWidth));
 			queryParams.add(new BasicNameValuePair("height", picHeight));
@@ -177,18 +194,19 @@ public class UserProfile extends FragmentActivity {
 				bitmap = BitmapFactory.decodeStream(input);
 
 			} catch (Exception ex) {
-				Log.e("UserProfile",ex.getMessage());
+				Log.e("UserProfile", ex.getMessage());
 			}
 
-			return ImageHelper.getRoundedCornerBitmap(
-					bitmap, profilePicture.getDrawable().getIntrinsicWidth()
+			return ImageHelper.getRoundedCornerBitmap(bitmap, profilePicture
+					.getDrawable().getIntrinsicWidth()
 					* profilePicture.getDrawable().getIntrinsicHeight());
 		}
+
 		@Override
-		protected void onPostExecute(Bitmap result){
+		protected void onPostExecute(Bitmap result) {
 			waitSpinner.setVisibility(View.INVISIBLE);
 			profilePicture.setVisibility(View.VISIBLE);
-			if(result!=null){
+			if (result != null) {
 				profilePicture.setImageBitmap(result);
 			}
 		}

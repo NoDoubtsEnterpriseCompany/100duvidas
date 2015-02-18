@@ -31,7 +31,6 @@ public class SearchActivity extends Activity {
 	private ListView listView;
 	private List<Subject> subjects;
 	private List<Subject> matchingSubjects;
-	private int textLength = 0;
 	private AutoCompleteTextView editText;
 
 	@Override
@@ -66,7 +65,6 @@ public class SearchActivity extends Activity {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				textLength = editText.getText().length();
 					matchingSubjects.clear();
 					for (Subject subject : subjects) {
 						if(subject.getName().toLowerCase().trim().contains(editText.getText())){

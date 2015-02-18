@@ -18,17 +18,17 @@
                 android:id="@+id/profile_pic"
                 android:layout_width="91dp"
                 android:layout_height="91dp"
-                android:src="@drawable/avatar"/>
-            
-			<ProgressBar
+                android:src="@drawable/avatar" />
+
+            <ProgressBar
                 android:id="@+id/singleSpinner"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/profile_pic"
-				android:gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:visibility="invisible" />
         </RelativeLayout>
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,7 +42,7 @@
                 android:text="@string/name"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/bright_blue"
-                android:textSize="16dp"/>
+                android:textSize="16dp" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_city_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="14dp"/>
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/curriculum"
@@ -66,7 +66,7 @@
                 android:text="@string/profile_cirriculum_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/light_grey"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/lectures"
@@ -75,7 +75,7 @@
                 android:text="@string/profile_lectures_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/dark_orange"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -94,53 +94,58 @@
                 android:id="@+id/profile_rating"
                 style="@style/customSmallRatingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:text="@string/profile_comments_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/bright_blue"
-                android:textSize="12dp"
-                android:layout_marginTop="6dp"
-                />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/refer_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:text="@string/profile_refer_btn"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="12dp"
-                android:layout_marginTop="3dp"/>
+                android:textSize="12dp" />
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/profile_schedule_btn"
+            style="@style/schedule_btn"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_marginLeft="100dp"
-            android:src="@drawable/innactive_schedule"
-            style="@style/schedule_btn"/>
-
+            android:src="@drawable/innactive_schedule" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
         android:layout_weight="0.06"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="116dp">
+        android:gravity="center_horizontal" >
 
         <ImageButton
             android:id="@+id/profile_search_btn"
+            style="@style/search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/search_btn_img"
-            style="@style/search_btn"/>
+            android:src="@drawable/search_btn_img" />
 
+        <ImageButton
+            android:id="@+id/profile_subject_btn"
+            style="@style/subject_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/ic_subject" />
     </LinearLayout>
 
 </LinearLayout>

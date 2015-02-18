@@ -23,6 +23,7 @@ import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
 import com.nodoubts.ui.profile.ProfessorProfileActivity;
+import com.nodoubts.ui.profile.UserProfile;
 
 public class RegisterSubjectActivity extends Activity {
 	
@@ -121,7 +122,7 @@ public class RegisterSubjectActivity extends Activity {
 			if(result instanceof String){
 				Toast.makeText(RegisterSubjectActivity.this, 
 						getResources().getString(R.string.subject_registered_ok), Toast.LENGTH_LONG).show();
-				Intent intent = new Intent(RegisterSubjectActivity.this, ProfessorProfileActivity.class);
+				Intent intent = new Intent(RegisterSubjectActivity.this, UserProfile.class);
 				intent.putExtra("user", user);
 				startActivity(intent);
 				finish();
