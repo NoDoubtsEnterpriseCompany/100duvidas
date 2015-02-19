@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.nodoubts.NoDoubts"
+        android:name=".NoDoubts"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -22,24 +22,24 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name="com.nodoubts.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/CustomThemeNAB">
         </activity>
         <activity
-            android:name="com.nodoubts.ui.user.RegisterUserActivity"
+            android:name=".ui.user.RegisterUserActivity"
             android:label="@string/title_activity_register_user" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.profile.ProfessorProfileActivity"
+            android:name=".ui.profile.ProfessorProfileActivity"
             android:label="@string/title_activity_teacher_profile" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.profile.StudentProfileActivity"
+            android:name=".ui.profile.StudentProfileActivity"
             android:label="@string/title_activity_student_profile" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.profile.EditProfileActivity"
+            android:name=".ui.profile.EditProfileActivity"
             android:label="@string/title_activity_edit_profile" >
         </activity>
         <activity
@@ -47,47 +47,47 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.nodoubts.HomeActivity"
+            android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.subject.RegisterSubjectActivity"
+            android:name=".ui.subject.RegisterSubjectActivity"
             android:label="@string/title_activity_register_subject" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.search.SearchProfessorActivity"
+            android:name=".ui.search.SearchProfessorActivity"
             android:label="@string/title_activity_search_professor" >
         </activity>
-        <activity android:name="com.nodoubts.ui.subject.SubjectListActivity" >
+        <activity android:name=".ui.subject.SubjectListActivity" >
         </activity>
-        <activity android:name="com.nodoubts.ui.search.SearchActivity" >
+        <activity android:name=".ui.search.SearchActivity" >
         </activity>
-        <activity android:name="com.nodoubts.ui.subject.SubjectActivity" >
+        <activity android:name=".ui.subject.SubjectActivity" >
         </activity>
-        <activity android:name="com.nodoubts.ui.user.ViewProfessorActivity" >
+        <activity android:name=".ui.user.ViewProfessorActivity" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.rating.RegisterGroupLectureActivity"
+            android:name=".ui.rating.RegisterGroupLectureActivity"
             android:label="@string/title_activity_register_group_lecture" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.rating.RatingActivity"
+            android:name=".ui.rating.RatingActivity"
             android:label="@string/title_activity_rating" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.lecture.UserLectureListActivity"
+            android:name=".ui.lecture.UserLectureListActivity"
             android:label="@string/title_activity_user_lecture_list" >
         </activity>
         <activity
-            android:name="com.nodoubts.ui.grouplecture.GroupLectureActivity"
+            android:name=".ui.grouplecture.GroupLectureActivity"
             android:label="@string/title_activity_group_lecture" >
         </activity>
-        <activity android:name="com.nodoubts.ui.lecture.ScheduleLectureActivity" >
+        <activity android:name=".ui.lecture.ScheduleLectureActivity" >
         </activity>
-        <activity android:name="com.nodoubts.ui.profile.UserProfile" >
+        <activity android:name=".ui.profile.UserProfile" >
         </activity>
         <activity
-            android:name="com.nodoubts.SplashActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/CustomThemeNAB">
             <intent-filter>
@@ -100,6 +100,10 @@
             android:name=".UserLecturesTabsActivity"
             android:label="@string/title_activity_user_lectures_tabs"
             android:theme="@style/CustomActionBarTheme" >
+        </activity>
+        <activity
+            android:name=".ViewScheduledLectureActivity"
+            android:label="@string/title_activity_view_scheduled_lecture" >
         </activity>
     </application>
 

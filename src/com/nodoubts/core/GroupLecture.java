@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.nodoubts.ui.grouplecture.GroupLectureActivity;
+
 public class GroupLecture implements Serializable, SearchType {
 
 	/**
@@ -72,7 +74,7 @@ public class GroupLecture implements Serializable, SearchType {
 
 	@Override
 	public Class<?> getActivityClass() {
-		return GroupLecture.class;
+		return GroupLectureActivity.class;
 	}
 	
 	public float getPrice() {

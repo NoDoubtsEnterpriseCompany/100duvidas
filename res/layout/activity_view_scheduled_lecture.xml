@@ -10,12 +10,12 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/name_group_lecture_tv"
+        android:id="@+id/name_scheduled_lecture_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textSize="30sp"
-        android:text="@string/group_lecture" />
+        android:textSize="30sp" 
+        android:text="@string/scheduled_lecture"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,34 +31,13 @@
             android:text="@string/price_text_view"/>
 
         <TextView
-            android:id="@+id/price_group_lecture_tv"
+            android:id="@+id/price_scheduled_lecture_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" 
             android:layout_marginLeft="5dp"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/number_subscribers_text_view"/>
-
-        <TextView
-            android:id="@+id/number_subscribers_group_lecture_tv"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" 
-            android:layout_marginLeft="5dp"/>
-    </LinearLayout>
-    
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -73,7 +52,7 @@
             android:text="@string/teacher_text_view"/>
 
         <TextView
-            android:id="@+id/teacher_group_lecture_tv"
+            android:id="@+id/teacher_scheduled_lecture_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" 
@@ -94,7 +73,7 @@
             android:text="@string/address_text_view"/>
 
         <TextView
-            android:id="@+id/address_group_lecture_tv"
+            android:id="@+id/address_scheduled_lecture_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" 
@@ -115,18 +94,11 @@
             android:text="@string/lecture_date_label"/>
 
         <TextView
-            android:id="@+id/date_group_lecture_tv"
+            android:id="@+id/date_scheduled_lecture_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" 
             android:layout_marginLeft="5dp"/>
     </LinearLayout>
-    
-    <Button 
-        android:id="@+id/participate_group_lecture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Participate"
-        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

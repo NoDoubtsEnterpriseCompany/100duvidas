@@ -1,5 +1,7 @@
 package com.nodoubts.ui.grouplecture;
 
+import java.text.SimpleDateFormat;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -37,17 +39,18 @@ public class GroupLectureActivity extends Activity {
 		//TODO: badsmell remove static access to user
 		this.user = UserProfile.user;
 
-		TextView name = (TextView) findViewById(R.id.name_group_lecture_tv);
 		TextView price = (TextView) findViewById(R.id.price_group_lecture_tv);
 		TextView address = (TextView) findViewById(R.id.address_group_lecture_tv);
 		TextView professor = (TextView) findViewById(R.id.teacher_group_lecture_tv);
 		TextView numSubscribers = (TextView) findViewById(R.id.number_subscribers_group_lecture_tv);
-
-		name.setText(this.groupLecture.getName());
+		TextView date = (TextView) findViewById(R.id.date_group_lecture_tv);
+		SimpleDateFormat spf = new SimpleDateFormat("dd/MM/yyyy");
+		
 		price.setText(String.valueOf(this.groupLecture.getPrice()));
 		address.setText(groupLecture.getAddress());
 		professor.setText(groupLecture.getProfessor().getProfile().getName());
 		numSubscribers.setText(String.valueOf(groupLecture.getStudentsRegistered().size()));
+		date.setText(spf.format(groupLecture.getDate()));
 		
 
 		Button participateBtn = (Button) findViewById(R.id.participate_group_lecture);

@@ -76,7 +76,12 @@
     <string name="view_professor_comments_label">Comments:</string>
     <string name="lecture_at">Lecture at</string>
     <string name="group_lecture_at">Group Lecture at</string>
-    
+    <string name="group_lecture">Group Lecture</string>
+    <string name="scheduled_lecture">Scheduled Lecture</string>
+    <string name="address_text_view">Address:</string>
+    <string name="teacher_text_view">Teacher:</string>
+    <string name="price_text_view">Price:</string>
+    <string name="number_subscribers_text_view">Number of Subscribers:</string>
 
     <!-- Subject messages -->
     <string name="subject_added_message">Subject successfully added</string>
@@ -122,5 +127,6 @@
     <!-- ERROS MSGS -->
     <string name="existing_user">This username and/or email already exisits, choose another</string>
     <string name="invalid_user_pass">Invalid username/password combination. Check again</string>
+    <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
 
 </resources>
