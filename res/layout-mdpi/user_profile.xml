@@ -12,9 +12,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="128dp"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="0.06" >
+            android:layout_height="105dp"
+            android:layout_marginLeft="30dp" >
 
             <RelativeLayout
                 android:layout_width="91dp"
@@ -135,7 +134,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="116dp"
-            android:layout_weight="0.06"
             android:gravity="center_horizontal" >
 
             <ImageButton
