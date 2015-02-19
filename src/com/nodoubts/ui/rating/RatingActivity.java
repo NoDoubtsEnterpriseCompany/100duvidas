@@ -41,7 +41,6 @@ import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
-import com.nodoubts.ui.util.ImageHelper;
 
 public class RatingActivity extends Activity {
 
@@ -114,6 +113,8 @@ public class RatingActivity extends Activity {
 	}
 
 	private class SetProfilePicture extends AsyncTask<String, Void, Bitmap> {
+		private static final int IMG_BORDER = 8;
+
 		@Override
 		protected void onPreExecute() {
 			waitSpinner.setVisibility(View.VISIBLE);
@@ -154,9 +155,7 @@ public class RatingActivity extends Activity {
 				Log.e("rating",ex.getMessage());
 			}
 
-			return ImageHelper.getRoundedCornerBitmap(bitmap, profilePicture
-					.getDrawable().getIntrinsicWidth()
-					* profilePicture.getDrawable().getIntrinsicHeight());
+			return bitmap;
 		}
 
 		@Override

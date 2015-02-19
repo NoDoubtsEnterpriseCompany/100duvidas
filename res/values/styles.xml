@@ -29,10 +29,13 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:titleTextStyle">@style/NoTitleText</item>
         <item name="android:subtitleTextStyle">@style/NoTitleText</item>
+        <item name="android:displayOptions">homeAsUp</item>
+        <item name="android:icon">@android:color/transparent</item>
         <!-- <item name="android:editTextStyle">@style/rouded_text_view</item> -->
         <!-- TODO: Put margin in rounded_text_view style, consider this margin in main activity -->
     </style>
 
+    <!-- No Action Bar Theme -->
     <style name="CustomThemeNAB" parent="@style/CustomTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -32,11 +33,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
@@ -47,13 +46,14 @@ import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
 import com.nodoubts.ui.search.SearchActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
-import com.nodoubts.ui.util.ImageHelper;
+import com.nodoubts.ui.util.CircularImageView;
 
 public class UserProfile extends FragmentActivity {
 
+	private static final int IMG_BORDER = 6;
 	private TextView name, city;
 	public static User user; //TODO: badsmell thereis static access to this field. Remove it.
-	private ImageView profilePicture;
+	private CircularImageView profilePicture;
 	private ProgressBar waitSpinner;
 	private RatingBar rating;
 	private ImageButton scheduleBtn, searchBtn;
@@ -71,7 +71,7 @@ public class UserProfile extends FragmentActivity {
 
 		final ActionBar actionBar = getActionBar();
 		waitSpinner = (ProgressBar) findViewById(R.id.singleSpinner);
-		profilePicture = (ImageView) findViewById(R.id.profile_pic);
+		profilePicture = (CircularImageView) findViewById(R.id.profile_pic);
 		name = (TextView) findViewById(R.id.profile_username_textview);
 		city = (TextView) findViewById(R.id.profile_city_textview);
 		rating = (RatingBar) findViewById(R.id.profile_rating);
@@ -85,12 +85,17 @@ public class UserProfile extends FragmentActivity {
 		optsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		optsDrawerList = (ListView) findViewById(R.id.left_drawer);
 		
+		profilePicture.setBorderColor(Color.WHITE);
+		profilePicture.setBorderWidth(IMG_BORDER);
+
 		View mActionBarView = getLayoutInflater().inflate(R.layout.action_bar_custom, null);
 		actionBar.setCustomView(mActionBarView);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
+		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
+		actionBar.setCustomView(mActionBarView);
+		actionBar.setDisplayShowCustomEnabled(true);
 
 
 		optsDrawerToggle = new ActionBarDrawerToggle(
@@ -145,19 +150,6 @@ public class UserProfile extends FragmentActivity {
 			if (user.getProfile().getProfilePic() != null) {
 				SetProfilePicture setPictureTask = new SetProfilePicture();
 				setPictureTask.execute(user.getProfile().getProfilePic());
-			} else {
-
-				Log.i("UserProfile", "Entrou no else");
-				Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
-						R.drawable.picture_label);
-
-				Log.i("UserProfile", bitmap.toString());
-
-				Bitmap roundedAvatar = ImageHelper.getRoundedCornerBitmap(bitmap, profilePicture
-						.getDrawable().getIntrinsicWidth()
-						* profilePicture.getDrawable().getIntrinsicHeight());
-
-				profilePicture.setImageBitmap(roundedAvatar);
 			}
 
 		}
@@ -228,9 +220,9 @@ public class UserProfile extends FragmentActivity {
 			String picUrl = params[0];
 			Bitmap bitmap = null;
 			String picWidth = String.valueOf(profilePicture.getDrawable()
-					.getIntrinsicWidth());
+					.getIntrinsicWidth() - IMG_BORDER);
 			String picHeight = String.valueOf(profilePicture.getDrawable()
-					.getIntrinsicHeight());
+					.getIntrinsicHeight() - IMG_BORDER);
 			List<NameValuePair> queryParams = new LinkedList<NameValuePair>();
 			queryParams.add(new BasicNameValuePair("width", picWidth));
 			queryParams.add(new BasicNameValuePair("height", picHeight));
@@ -257,9 +249,7 @@ public class UserProfile extends FragmentActivity {
 				Log.e("UserProfile", ex.getMessage());
 			}
 
-			return ImageHelper.getRoundedCornerBitmap(bitmap, profilePicture
-					.getDrawable().getIntrinsicWidth()
-					* profilePicture.getDrawable().getIntrinsicHeight());
+			return bitmap;
 		}
 
 		@Override

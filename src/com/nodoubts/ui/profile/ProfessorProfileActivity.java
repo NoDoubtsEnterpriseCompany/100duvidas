@@ -38,7 +38,6 @@ import com.nodoubts.core.User;
 import com.nodoubts.ui.lecture.UserLectureListActivity;
 import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
-import com.nodoubts.ui.util.ImageHelper;
 
 public class ProfessorProfileActivity extends Activity {
 	
@@ -192,9 +191,7 @@ public class ProfessorProfileActivity extends Activity {
 			    	Log.e("ProfessorProfileAct ",ex.getMessage());
 			    }
 				
-				return ImageHelper.getRoundedCornerBitmap(
-						bitmap, profilePicture.getDrawable().getIntrinsicWidth()
-						* profilePicture.getDrawable().getIntrinsicHeight());
+				return bitmap;
 			}
 			@Override
 			protected void onPostExecute(Bitmap result){

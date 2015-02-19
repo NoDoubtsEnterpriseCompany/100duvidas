@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nodoubts.ui.rating.RatingActivity" >
 
-    <ImageView
+    <com.nodoubts.ui.util.CircularImageView
         android:id="@+id/view_professor_pic_ratingAct"
         android:layout_width="86dp"
         android:layout_height="92dp"
