@@ -13,6 +13,7 @@ import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
 import com.nodoubts.serverclient.lecture.LectureController;
 import com.nodoubts.serverclient.lecture.LectureService;
+import com.nodoubts.ui.profile.UserProfile;
 
 import android.app.ProgressDialog;
 import android.content.Context;
