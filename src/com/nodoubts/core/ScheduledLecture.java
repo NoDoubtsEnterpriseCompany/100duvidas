@@ -1,5 +1,7 @@
 package com.nodoubts.core;
 
+import com.nodoubts.ViewScheduledLectureActivity;
+
 
 public class ScheduledLecture extends Lecture implements SearchType {
 	private static final long serialVersionUID = -30791561334913081L;
@@ -14,4 +16,8 @@ public class ScheduledLecture extends Lecture implements SearchType {
 		this.student = student;
 	}
 	
+	@Override
+	public Class<?> getActivityClass() {
+		return ViewScheduledLectureActivity.class;
+	}
 }

@@ -14,11 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
+import com.nodoubts.ViewScheduledLectureActivity;
+import com.nodoubts.core.ScheduledLecture;
 import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.SearchType;
 import com.nodoubts.core.User;
@@ -40,14 +44,20 @@ public class LecturesOferredFragment extends Fragment {
 		View rootView = inflater.inflate(
 				R.layout.fragment_lectures_created_tab, container, false);
 		listOferred = (ListView) rootView.findViewById(R.id.lectures_oferred_lv);
-//		listOferred.setOnItemClickListener(new OnItemClickListener() {
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view,
-//					int position, long id) {
-//				Intent intent = new Intent(context, lecturesCreated.get(position).getActivityClass());
-//				startActivity(intent);
-//			}
-//		});
+		listOferred.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				SearchType lecture = lecturesCreated.get(position);
+				Intent intent = new Intent(context, lecture.getActivityClass());
+				if (lecture instanceof ScheduledLecture) {
+					intent.putExtra(ViewScheduledLectureActivity.SCHEDULED_LECTURE_SELECTED, lecture);
+				} else {
+					intent.putExtra("groupLectureSelected", lecture);
+				}
+				startActivity(intent);
+			}
+		});
 		Button btnNewGroup = (Button) rootView.findViewById(R.id.create_new_group_lecture_btn);
 		btnNewGroup.setOnClickListener(new OnClickListener() {
 			
