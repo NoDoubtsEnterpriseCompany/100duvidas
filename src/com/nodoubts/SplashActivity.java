@@ -11,6 +11,7 @@ import com.nodoubts.R;
 import com.nodoubts.core.User;
 import com.nodoubts.ui.fragments.FbLoginFragment;
 import com.nodoubts.ui.fragments.FbLoginFragment.FbLoginCallback;
+import com.nodoubts.ui.profile.UserProfile;
 
 public class SplashActivity extends FragmentActivity implements Runnable, FbLoginCallback{
 	
@@ -48,7 +49,7 @@ public class SplashActivity extends FragmentActivity implements Runnable, FbLogi
 
 	@Override
 	public void fbLoggedIn(User user) {
-		Intent homeScreen = new Intent(this, HomeActivity.class); 
+		Intent homeScreen = new Intent(this, UserProfile.class); 
 		homeScreen.putExtra("user", user);
 		startActivity(homeScreen);
 		finish();

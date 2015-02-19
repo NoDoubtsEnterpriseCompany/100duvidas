@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="user_opts">
+        <item>Add subject</item>
+        <item>Edit Profile</item>        
+    </string-array>
+</resources>

@@ -3,16 +3,6 @@ package com.nodoubts.ui.fragments;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nodoubts.HomeActivity;
-import com.nodoubts.R;
-import com.nodoubts.core.SearchAdapter;
-import com.nodoubts.core.SearchType;
-import com.nodoubts.core.User;
-import com.nodoubts.serverclient.grouplecture.GroupLectureController;
-import com.nodoubts.serverclient.grouplecture.GroupLectureService;
-import com.nodoubts.serverclient.lecture.LectureController;
-import com.nodoubts.serverclient.lecture.LectureService;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -23,6 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.nodoubts.R;
+import com.nodoubts.core.SearchAdapter;
+import com.nodoubts.core.SearchType;
+import com.nodoubts.core.User;
+import com.nodoubts.serverclient.grouplecture.GroupLectureController;
+import com.nodoubts.serverclient.grouplecture.GroupLectureService;
+import com.nodoubts.serverclient.lecture.LectureController;
+import com.nodoubts.serverclient.lecture.LectureService;
+import com.nodoubts.ui.profile.UserProfile;
 
 public class LecturesRegisteredFragment extends Fragment {
 
@@ -47,7 +47,8 @@ public class LecturesRegisteredFragment extends Fragment {
 		// }
 		// });
 		context = rootView.getContext();
-		User user = HomeActivity.user;
+		//TODO: badsmell remove static access to user
+		User user = UserProfile.user;
 		new RequestLecturesRegisteredTask().execute(user);
 		return rootView;
 	}

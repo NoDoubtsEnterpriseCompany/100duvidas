@@ -6,6 +6,8 @@
     <string name="port">443</string>
     <!-- button text -->
 
+	<string name="empty"></string>
+
     <string name="login_message">Login</string>
     <string name="register_message">Register</string>
     <string name="save_btn">Save</string>
@@ -97,6 +99,7 @@
     <string name="profile_comments_label"><u>X Comments</u></string>
     <string name="profile_refer_btn">Refer</string>
     <string name="profile_pic_label">Picture</string>
+    <string name="opts_open">Options</string>
 
     <!-- Group Lecture Errors -->
     <string name="addressEmpty">Address can not be empty</string>

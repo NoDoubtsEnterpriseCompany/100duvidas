@@ -13,13 +13,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
 import com.nodoubts.core.GroupLecture;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
+import com.nodoubts.ui.profile.UserProfile;
 
 public class GroupLectureActivity extends Activity {
 
@@ -34,7 +34,8 @@ public class GroupLectureActivity extends Activity {
 		groupLectureService = new GroupLectureController();
 		this.groupLecture = (GroupLecture)getIntent().getSerializableExtra("groupLectureSelected");
 		//this.user = (User) getIntent().getSerializableExtra("user");
-		this.user = HomeActivity.user;
+		//TODO: badsmell remove static access to user
+		this.user = UserProfile.user;
 
 		TextView name = (TextView) findViewById(R.id.name_group_lecture_tv);
 		TextView price = (TextView) findViewById(R.id.price_group_lecture_tv);

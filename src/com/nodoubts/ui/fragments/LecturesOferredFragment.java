@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
 import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.SearchType;
@@ -26,6 +25,7 @@ import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
 import com.nodoubts.serverclient.lecture.LectureController;
 import com.nodoubts.serverclient.lecture.LectureService;
+import com.nodoubts.ui.profile.UserProfile;
 import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
 
 public class LecturesOferredFragment extends Fragment {
@@ -54,12 +54,14 @@ public class LecturesOferredFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(context, RegisterGroupLectureActivity.class);
-				intent.putExtra("user", HomeActivity.user);
+				intent.putExtra("user", UserProfile.user);
+				//TODO: badsmell- remove static access to user 
 				startActivity(intent);
 			}
 		});
 		context = rootView.getContext();
-		new RequestGroupLecturesTask().execute(HomeActivity.user);
+		//TODO: badsmell- remove static access to user 
+		new RequestGroupLecturesTask().execute(UserProfile.user);
 		return rootView;
 	}
 

@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
 import com.nodoubts.core.Lecture;
 import com.nodoubts.core.ModuleFactory;
@@ -31,6 +30,7 @@ import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
 import com.nodoubts.ui.fragments.CalendarFragmentDialog;
 import com.nodoubts.ui.fragments.CalendarFragmentDialog.GetDateListener;
+import com.nodoubts.ui.profile.UserProfile;
 
 public class ScheduleLectureActivity extends FragmentActivity implements GetDateListener{
 
@@ -93,9 +93,10 @@ public class ScheduleLectureActivity extends FragmentActivity implements GetDate
 					}else{
 						selectedDate.setHours(timePicker.getCurrentHour());
 						selectedDate.setMinutes(timePicker.getCurrentMinute());
+						//TODO:basmell remove static acess to user
 						ScheduledLecture scheduledLecture = ModuleFactory.createScheduledFactory(
 								lecture.getSubject(), lecture.getTeacher(), lecture.getPrice(),
-								selectedDate, lecture.getAddress(), HomeActivity.user.get_id());
+								selectedDate, lecture.getAddress(), UserProfile.user.get_id());
 						scheduleLecture.execute(scheduledLecture);
 					}
 				}

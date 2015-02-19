@@ -19,6 +19,7 @@ import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.ui.fragments.FbLoginFragment.FbLoginCallback;
+import com.nodoubts.ui.profile.UserProfile;
 import com.nodoubts.ui.user.RegisterUserActivity;
 
 public class MainActivity extends FragmentActivity implements FbLoginCallback {
@@ -33,7 +34,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction().commit();
 		}
@@ -113,7 +114,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 				User user = userController.findUser(userNameEditText.getText()
 						.toString());
 				Intent homeScreen = new Intent(getApplicationContext(),
-						HomeActivity.class);
+						UserProfile.class);
 				homeScreen.putExtra("user", user);
 				startActivity(homeScreen);
 			} catch (ApplicationViewException e) {
@@ -142,7 +143,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 						R.id.FbLoginFragment)).commit();
 		getSupportFragmentManager().popBackStack();
 
-		Intent homeScreen = new Intent(this, HomeActivity.class);
+		Intent homeScreen = new Intent(this, UserProfile.class);
 		homeScreen.putExtra("user", user);
 		startActivity(homeScreen);
 		finish();

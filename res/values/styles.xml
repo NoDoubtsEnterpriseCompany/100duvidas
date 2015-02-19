@@ -21,13 +21,21 @@
     <color name="bright_blue">#00AEEF</color>
 
     <!-- Application theme. -->
-    <style name="CustomTheme" parent="android:style/Theme.NoTitleBar">
+    <style name="CustomTheme" parent="android:style/Theme.Holo">
         <item name="android:buttonStyle">@style/custom_orange_btn</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="android:windowBackground">@color/dark_grey</item>
         <item name="android:colorBackground">@color/dark_grey</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:titleTextStyle">@style/NoTitleText</item>
+        <item name="android:subtitleTextStyle">@style/NoTitleText</item>
         <!-- <item name="android:editTextStyle">@style/rouded_text_view</item> -->
         <!-- TODO: Put margin in rounded_text_view style, consider this margin in main activity -->
+    </style>
+
+    <style name="CustomThemeNAB" parent="@style/CustomTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
     </style>
 
     <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
@@ -95,6 +103,11 @@
         <item name="android:background">@drawable/fb_btn</item>
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="NoTitleText">
+        <item name="android:textSize">0sp</item>
+        <item name="android:textColor">#00000000</item>
     </style>
 
 </resources>

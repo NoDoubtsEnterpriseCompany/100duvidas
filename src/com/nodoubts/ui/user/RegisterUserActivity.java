@@ -12,12 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.nodoubts.HomeActivity;
 import com.nodoubts.R;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
+import com.nodoubts.ui.profile.UserProfile;
 
 public class RegisterUserActivity extends Activity{
 
@@ -100,7 +100,7 @@ public class RegisterUserActivity extends Activity{
 			if(result instanceof String){
 				Toast.makeText(RegisterUserActivity.this, 
 						getResources().getString(R.string.user_registered_ok), Toast.LENGTH_LONG).show();
-				Intent homeScreen = new Intent(getApplicationContext(),HomeActivity.class);
+				Intent homeScreen = new Intent(getApplicationContext(),UserProfile.class);
 				homeScreen.putExtra("user", user);
 				startActivity(homeScreen);
 			}else if(result instanceof Exception){
