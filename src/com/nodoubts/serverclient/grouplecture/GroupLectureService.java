@@ -15,4 +15,6 @@ public interface GroupLectureService {
 	List<GroupLecture> getGroupLecturesBySubject(String subjectId);
 	
 	List<GroupLecture> getGroupLecturesByUser(String username);
+	
+	List<GroupLecture> getGroupLecturesOfStudent(String studentId);
 }

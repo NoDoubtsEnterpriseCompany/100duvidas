@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
     
-    <TextView 
-        android:layout_width="wrap_content"
+    <ListView 
+        android:id="@+id/lectures_registered_lv"
         android:layout_height="wrap_content"
-        android:text="LECTURES THAT I AM REGISTERED"
-        />
+        android:layout_width="fill_parent">
+    </ListView>
 
 </LinearLayout>

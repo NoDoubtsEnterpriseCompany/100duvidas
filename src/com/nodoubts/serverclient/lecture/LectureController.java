@@ -90,4 +90,30 @@ public class LectureController implements LectureService {
 		}
 		return lectures;
 	}
+	
+	@Override
+	public List<ScheduledLecture> getScheduledLecturesFromStudent(String student_id){
+		StringBuilder builder = new StringBuilder("/lectures/scheduledlecture?student="+student_id);		
+		List<ScheduledLecture> lectures = new ArrayList<ScheduledLecture>();
+		
+		try {
+			JSONObject response = new JSONObject(
+					serverService.get(builder.toString()));
+			JSONArray jsonArray = response.getJSONArray("result");
+			
+			Gson serializer = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH").create();
+			
+			for (int i=0; i<jsonArray.length();  i++) {
+				JSONObject explrObject = jsonArray.getJSONObject(i);
+				lectures.
+				add((ScheduledLecture)serializer.fromJson(explrObject.toString(), ScheduledLecture.class));
+				
+			}
+		} catch (ApplicationViewException e) {
+			Log.e("ServerController",e.getMessage());
+		} catch (JSONException e1) {
+			Log.e("ServerController",e1.getMessage());
+		}
+		return lectures;
+	}
 }
