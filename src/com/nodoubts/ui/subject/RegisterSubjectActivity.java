@@ -30,6 +30,7 @@ public class RegisterSubjectActivity extends Activity {
 	Button addButton;
 	SubjectService subjectService;
 	User user;
+	EditText nameEt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class RegisterSubjectActivity extends Activity {
 		if(getIntent().getSerializableExtra("user") != null ){
 			user = (User) getIntent().getSerializableExtra("user");
 		}
+		
+		nameEt = (EditText) findViewById(R.id.new_subject_name);
+		nameEt.requestFocus();
 		
 		
 		addButton.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +66,8 @@ public class RegisterSubjectActivity extends Activity {
 			}
 			
 			private Subject getSubject(){
-				String name = ((EditText) findViewById(R.id.new_subject_name)).getText().toString();
+				
+				String name = nameEt.getText().toString();
 				String description = ((EditText) findViewById(R.id.new_subject_description)).getText().toString();
 				return new Subject(name, description);
 			}

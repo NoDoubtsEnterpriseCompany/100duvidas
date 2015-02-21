@@ -69,7 +69,8 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 				public void beforeTextChanged(CharSequence s, int start, int count,
 						int after) {
 					matchingSubjectList = new ArrayList<Subject>();
-					matchingSubjectList.addAll(subjectList);
+					if(!subjectList.isEmpty())
+						matchingSubjectList.addAll(subjectList);
 				}
 
 				@Override

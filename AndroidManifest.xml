@@ -24,72 +24,93 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/CustomThemeNAB">
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomThemeNAB" >
         </activity>
         <activity
             android:name=".ui.user.RegisterUserActivity"
-            android:label="@string/title_activity_register_user" >
+            android:label="@string/title_activity_register_user"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.profile.ProfessorProfileActivity"
-            android:label="@string/title_activity_teacher_profile" >
+            android:label="@string/title_activity_teacher_profile"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.profile.StudentProfileActivity"
-            android:label="@string/title_activity_student_profile" >
+            android:label="@string/title_activity_student_profile"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.profile.EditProfileActivity"
-            android:label="@string/title_activity_edit_profile" >
+            android:label="@string/title_activity_edit_profile"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.facebook.LoginActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home" >
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.subject.RegisterSubjectActivity"
-            android:label="@string/title_activity_register_subject" >
+            android:label="@string/title_activity_register_subject"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.search.SearchProfessorActivity"
-            android:label="@string/title_activity_search_professor" >
+            android:label="@string/title_activity_search_professor"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.subject.SubjectListActivity" >
+        <activity
+            android:name=".ui.subject.SubjectListActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.search.SearchActivity" >
+        <activity android:name=".ui.search.SearchActivity" 
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.subject.SubjectActivity" >
+        <activity android:name=".ui.subject.SubjectActivity" 
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.user.ViewProfessorActivity" >
+        <activity android:name=".ui.user.ViewProfessorActivity" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ui.rating.RegisterGroupLectureActivity"
-            android:label="@string/title_activity_register_group_lecture" >
+            android:label="@string/title_activity_register_group_lecture"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.rating.RatingActivity"
-            android:label="@string/title_activity_rating" >
+            android:label="@string/title_activity_rating"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.lecture.UserLectureListActivity"
-            android:label="@string/title_activity_user_lecture_list" >
+            android:label="@string/title_activity_user_lecture_list" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ui.grouplecture.GroupLectureActivity"
-            android:label="@string/title_activity_group_lecture" >
+            android:label="@string/title_activity_group_lecture" 
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.lecture.ScheduleLectureActivity" >
+        <activity android:name=".ui.lecture.ScheduleLectureActivity" 
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.profile.UserProfile" >
+        <activity android:name=".ui.profile.UserProfile"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/CustomThemeNAB">
+            android:theme="@style/CustomThemeNAB" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -99,11 +120,13 @@
         <activity
             android:name=".UserLecturesTabsActivity"
             android:label="@string/title_activity_user_lectures_tabs"
-            android:theme="@style/CustomActionBarTheme" >
+            android:theme="@style/CustomActionBarTheme" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ViewScheduledLectureActivity"
-            android:label="@string/title_activity_view_scheduled_lecture" >
+            android:label="@string/title_activity_view_scheduled_lecture"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
