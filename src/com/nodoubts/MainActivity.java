@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.nodoubts.core.User;
-import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction().commit();
 		}
@@ -47,8 +47,8 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				
-					new LoginAsyncTask().execute();
+
+				new LoginAsyncTask().execute();
 			}
 		});
 
@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 		registerBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 				Intent intent = new Intent(MainActivity.this,
 						RegisterUserActivity.class);
 				startActivity(intent);
@@ -115,11 +115,14 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 						.toString());
 				Intent homeScreen = new Intent(getApplicationContext(),
 						UserProfile.class);
-				homeScreen.putExtra("user", user);
-				startActivity(homeScreen);
-			} catch (ApplicationViewException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				if (user != null) {
+					homeScreen.putExtra("user", user);
+					startActivity(homeScreen);
+				}else{
+					response = getResources().getString(R.string.conectivity_problems);
+				}
+			} catch (Exception e) {
+				Log.e("Main Activity",e.getMessage());
 			}
 			return response;
 		}
@@ -127,8 +130,12 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-			if(result.isEmpty()){
-				Toast.makeText(MainActivity.this, R.string.invalid_user_pass, Toast.LENGTH_SHORT).show();
+			if (result.isEmpty()) {
+				Toast.makeText(MainActivity.this, R.string.invalid_user_pass,
+						Toast.LENGTH_SHORT).show();
+			}else if (result.equals(getResources().getString(R.string.conectivity_problems))){
+				Toast.makeText(MainActivity.this, R.string.conectivity_problems,
+						Toast.LENGTH_SHORT).show();
 			}
 			this.progressDialog.dismiss();
 		}

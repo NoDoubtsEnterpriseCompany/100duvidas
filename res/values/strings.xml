@@ -6,8 +6,7 @@
     <string name="port">443</string>
     <!-- button text -->
 
-	<string name="empty"></string>
-
+    <string name="empty"></string>
     <string name="login_message">Login</string>
     <string name="register_message">Register</string>
     <string name="save_btn">Save</string>
@@ -128,5 +127,6 @@
     <string name="existing_user">This username and/or email already exisits, choose another</string>
     <string name="invalid_user_pass">Invalid username/password combination. Check again</string>
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
+    <string name="conectivity_problems">Sorry! We are facing some temporary problems connecting to our server</string>
 
 </resources>
