@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app configuration -->
+    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+    <string name="port">443</string>
+    <!-- button text -->
+
+    <string name="empty"></string>
+    <string name="login_message">Entrar</string>
+    <string name="register_message">Registrar</string>
+    <string name="save_btn">Salvar</string>
+    <string name="edit_btn">Editar Perfil</string>
+    <string name="profile_btn">Perfil</string>
+    <string name="search_professor_btn">Procurar</string>
+    <string name="add">Adicionar</string>
+    <string name="add_subject">Criar nova Disciplina</string>
+    <string name="add_subject_to_profile">Adicionar Nova Disciplina</string>
+    <string name="rate_btn_ratingAct">Avaliar</string>
+    <string name="enter_btn_label">Entrar</string>
+    <string name="lectures_btn">Aulas</string>
+
+    <!-- hints text -->
+    <string name="password_hint">Senha</string>
+    <string name="username">Usuário</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="city">Cidade</string>
+    <string name="description">Descrição</string>
+    <string name="street">Rua</string>
+    <string name="number">Número</string>
+    <string name="email_hint">examplo@mail.com </string>
+    <string name="subject_name">Nome da Disciplina</string>
+    <string name="precoAula">Preço</string>
+    <string name="numStudents">Capacidade</string>
+    <string name="createGroupLecture">Nova Turma</string>
+    <string name="groupLectures">Turmas</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="error_hint">Erro</string>
+    <string name="comment_hint">Digite seu comentário aqui</string>
+
+    <!-- subject_list_activity -->
+    <string name="subject_list_title_label">Seu Título</string>
+    <string name="price_picker_label">Preço:</string>
+    <string name="address_label">Endereço</string>
+
+    <!-- others -->
+    <string name="app_name">100Dúvidas</string>
+    <string name="title_activity_student_profile">StudentProfileActivity</string>
+    <string name="title_activity_teacher_profile">TeacherProfileActivity</string>
+    <string name="title_activity_register_user">Registrar</string>
+    <string name="title_activity_user_lectures_tabs">Calendário</string>
+    <string name="hello_world">Olá Mundo!</string>
+    <string name="action_settings">Configurações</string>
+    <string name="address">Endereço</string>
+    <string name="offered_courses">Cursos Ofertados</string>
+    <string name="starred_teachers">Professores Votados</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="personal_inf">Informações Pessoais</string>
+    <string name="user_registered_ok">Usuário salvo com sucesso</string>
+    <string name="add_new_subject">Adicionar Nova Disciplina</string>
+    <string name="subject_registered_ok">Disciplina criada com sucesso</string>
+    <string name="group_lecture_registered_ok">Turma criada com sucesso</string>
+    <string name="existing_subject"> Disciplina já existe</string>
+    <string name="search_subject">Procurar por Disciplina</string>
+    <string name="search">Procurar</string>
+    <string name="subject_description_label">Descrição:</string>
+    <string name="subject_teacher_label">Professores:</string>
+    <string name="subject_description_content_label">Descrição da Disciplina</string>
+    <string name="curriculum_btn">Currículo</string>
+    <string name="schedule_btn">Agendar Aula</string>
+    <string name="view_professor_comments_label">Comentários:</string>
+    <string name="lecture_at">Aula as:</string>
+    <string name="group_lecture_at">Turma as</string>
+    <string name="group_lecture">Turma</string>
+    <string name="scheduled_lecture">Aulas Marcadas</string>
+    <string name="address_text_view">Endereço:</string>
+    <string name="teacher_text_view">Professor:</string>
+    <string name="price_text_view">Preço:</string>
+    <string name="number_subscribers_text_view">Número de inscritos:</string>
+
+    <!-- Subject messages -->
+    <string name="subject_added_message">Disciplina adicionada com sucesso</string>
+
+    <!-- Lecture strings -->
+    <string name="lecture_confirmation_label">Confirmação</string>
+    <string name="lecture_professorname_label">Nome do Professor:</string>
+    <string name="lecture_subjectname_label">Disciplina</string>
+    <string name="lecture_price_label">Preço</string>
+    <string name="lecture_address_label">Endereço</string>
+    <string name="lecture_date_label">Data:</string>
+    <string name="lecture_confirm_btn">Confirmar</string>
+    <string name="empty_date_hint">Data não pode ser vazia</string>
+    <string name="lecture_scheduled_hint">Aula agendada!</string>
+
+    <!-- Profile string -->
+    <string name="profile_city_label">Cidade</string>
+    <string name="profile_cirriculum_label"><u>Currículo</u></string>
+    <string name="profile_lectures_label">X Aulas</string>
+    <string name="profile_comments_label"><u>X Comentários</u></string>
+    <string name="profile_refer_btn">Recomendar</string>
+    <string name="profile_pic_label">Foto</string>
+    <string name="opts_open">Opções</string>
+
+    <!-- Group Lecture Errors -->
+    <string name="addressEmpty">Endereço não pode ser vazio</string>
+    <string name="nameEmpty">Nome não pode ser vazio</string>
+    <string name="subjectEmpty">Uma disciplina deve ser selecionada</string>
+    <string name="invalidPrice">Preço deve ser maior que zero</string>
+    <string name="invalidCapacity">A capacidade deve ser maior que zero</string>
+
+    <!-- facebook -->
+    <string name="facebook_app_id">1561113250770242</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_register_subject">RegisterSubjectActivity</string>
+    <string name="title_activity_search_professor">SearchProfessorActivity</string>
+    <string name="title_activity_register_group_lecture">RegisterGroupLectureActivity</string>
+    <string name="title_activity_rating">RatingActivity</string>
+    <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
+    <string name="title_activity_group_lecture">GroupLectureActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <!-- ERROS MSGS -->
+    <string name="existing_user">Esse usuário e/ou email já existe. Favor escolher outro!</string>
+    <string name="invalid_user_pass">Usuário/senha inválidos. Verifique novamente!</string>
+    <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
+    <string name="conectivity_problems">Desculpe! Estamos enfrentando algum problema de conexão temporário com o nosso servidor!</string>
+
+</resources>
