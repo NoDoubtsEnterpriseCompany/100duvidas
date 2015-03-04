@@ -21,7 +21,7 @@ public class User implements SearchType{
 		this.profile = new Profile(""); //TODO: remove this
 	}
 
-	public User(){}
+	public User(){this.profile = new Profile("");}
 
 	public User(String username,String password,String email,String name){
 		this.username = username;
