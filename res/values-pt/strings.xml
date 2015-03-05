@@ -3,7 +3,7 @@
 
     <!-- app configuration -->
     <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
-    <string name="port">443</string>
+    <string name="port">3000</string>
     <!-- button text -->
 
     <string name="empty"></string>

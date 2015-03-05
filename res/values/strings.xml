@@ -2,10 +2,8 @@
 <resources>
 
     <!-- app configuration -->
-    <!-- <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
-    <string name="port">443</string> -->
-    <string name="host_name">http://192.168.25.5</string>
-    <string name="port">3000</string>
+    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+    <string name="port">443</string>
     <!-- button text -->
 
     <string name="empty"></string>
@@ -108,6 +106,9 @@
     <string name="profile_refer_btn">Refer</string>
     <string name="profile_pic_label">Picture</string>
     <string name="opts_open">Options</string>
+    <string name="male">Male</string>
+        <string name="female">Female</string>
+    
 
     <!-- Group Lecture Errors -->
     <string name="addressEmpty">Address can not be empty</string>

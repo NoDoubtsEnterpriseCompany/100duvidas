@@ -144,31 +144,36 @@ public class UserProfile extends FragmentActivity {
 			}
 		});
 
+		updateData();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 1) {
+			if (resultCode == RESULT_OK) {
+				User newUser = (User) data.getSerializableExtra("result");
+				this.user = newUser;
+				updateData();
+			}
+			if (resultCode == RESULT_CANCELED) {
+				// Write your code if there's no result
+			}
+		}
+	}
+	
+	private void updateData() {
 		if (user != null) {
 			rating.setRating(user.getProfile().getTotalScore());
 			name.setText(user.getProfile().getName());
 			city.setText(user.getProfile().getCity());
+			name.refreshDrawableState();
+			rating.refreshDrawableState();
+			city.refreshDrawableState();
 			if (user.getProfile().getProfilePic() != null) {
 				SetProfilePicture setPictureTask = new SetProfilePicture();
 				setPictureTask.execute(user.getProfile().getProfilePic());
 			}
 
-		}
-	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-		if (requestCode == 1) {
-			if (resultCode == RESULT_OK) {
-				User newUser = (User) data.getSerializableExtra("result");
-				this.user = newUser;
-				this.name.setText(user.getProfile().getName());
-				this.city.setText(user.getProfile().getCity());
-			}
-			if (resultCode == RESULT_CANCELED) {
-				// Write your code if there's no result
-			}
 		}
 	}
 
@@ -280,7 +285,7 @@ public class UserProfile extends FragmentActivity {
 			case 1:
 				activity = new Intent(context, EditProfileActivity.class);
 				activity.putExtra("user", user);
-				startActivity(activity);
+				startActivityForResult(activity, 1);
 				break;
 			}
 

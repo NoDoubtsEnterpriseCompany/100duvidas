@@ -15,7 +15,7 @@
     <string name="search_professor_btn">Suche</string>
     <string name="add">Hinzufügen</string>
     <string name="add_subject">Neues Thema</string>
-    <string name="add_subject_to_profile">Hinzufügen neuer Gegenstand</string>
+    <string name="add_subject_to_profile">Hinzufügen neuer Lehrveranstaltung</string>
     <string name="rate_btn_ratingAct">Rate</string>
     <string name="enter_btn_label">Eingeben</string>
     <string name="lectures_btn">Vorträge</string>
@@ -30,7 +30,7 @@
     <string name="street">Straße</string>
     <string name="number">Anzahl</string>
     <string name="email_hint">example@mail.com </string>
-    <string name="subject_name">Gegenstand Name</string>
+    <string name="subject_name">Lehrveranstaltung Name</string>
     <string name="precoAula">Preis</string>
     <string name="numStudents">Kapazität</string>
     <string name="createGroupLecture">Neue Gruppe Vortrag</string>
@@ -61,15 +61,15 @@
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="personal_inf">Persönliche Angaben</string>
     <string name="user_registered_ok">Benutzer erfolgreich gespeichert</string>
-    <string name="add_new_subject">Hinzufügen neuer Gegenstand</string>
-    <string name="subject_registered_ok">Gegenstand registriert erfolgreich</string>
+    <string name="add_new_subject">Hinzufügen neuer Lehrveranstaltung</string>
+    <string name="subject_registered_ok">Lehrveranstaltung registriert erfolgreich</string>
     <string name="group_lecture_registered_ok">Gruppe Vortrag registriert erfolgreich</string>
-    <string name="existing_subject"> Gegenstand bereits vorhanden	</string>
+    <string name="existing_subject"> Lehrveranstaltung bereits vorhanden	</string>
     <string name="search_subject">Suche nach Themen</string>
     <string name="search">Suche</string>
     <string name="subject_description_label">Beschreibung:</string>
     <string name="subject_teacher_label">Lehrer:</string>
-    <string name="subject_description_content_label">Gegenstand  Beschreibung</string>
+    <string name="subject_description_content_label">Lehrveranstaltung  Beschreibung</string>
     <string name="curriculum_btn">Lehrplan</string>
     <string name="schedule_btn">Termine Vorlesungs</string>
     <string name="view_professor_comments_label">Kommentare:</string>
@@ -85,12 +85,12 @@
     <string name="lectures_registered_user">Vortrag/Gruppe Vortrag in der Sie sich registriert haben</string>
     
     <!-- Subject messages -->
-    <string name="subject_added_message">Gegenstand erfolgreich hinzugefügt</string>
+    <string name="subject_added_message">Lehrveranstaltung erfolgreich hinzugefügt</string>
 
     <!-- Lecture strings -->
     <string name="lecture_confirmation_label">Bestätigung</string>
     <string name="lecture_professorname_label"> Lehrer Name</string>
-    <string name="lecture_subjectname_label">Gegenstand</string>
+    <string name="lecture_subjectname_label">Lehrveranstaltung</string>
     <string name="lecture_price_label">Preis</string>
     <string name="lecture_address_label">Anschrift</string>
     <string name="lecture_date_label">Datum:</string>
@@ -110,7 +110,7 @@
     <!-- Group Lecture Errors -->
     <string name="addressEmpty">  Adresse darf nicht leer sein</string>
     <string name="nameEmpty">Name darf nicht leer sein</string>
-    <string name="subjectEmpty"> Ein Gegenstand muss so gewählt werden</string>
+    <string name="subjectEmpty"> Ein Lehrveranstaltung muss so gewählt werden</string>
     <string name="invalidPrice">Preis muss höher als Null sein</string>
     <string name="invalidCapacity">Kapazität muss größer als Null sein</string>
 
