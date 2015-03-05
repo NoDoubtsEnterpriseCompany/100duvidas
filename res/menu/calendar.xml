@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.nodoubts.CalendarActivity" >
+
+    <item
+        android:id="@+id/action_list_lectures"
+        android:icon="@drawable/draw_ic"
+        android:title="@string/app_name"
+        android:showAsAction="always"/>
+
+</menu>

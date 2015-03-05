@@ -81,6 +81,8 @@
     <string name="teacher_text_view">Professor:</string>
     <string name="price_text_view">Preço:</string>
     <string name="number_subscribers_text_view">Número de inscritos:</string>
+    <string name="lectures_oferred_user">Turmas/Aulas oferecidas por você</string>
+    <string name="lectures_registered_user">Turmas/Aulas nas quais você está registrado</string>
 
     <!-- Subject messages -->
     <string name="subject_added_message">Disciplina adicionada com sucesso</string>
@@ -122,6 +124,7 @@
     <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
     <string name="title_activity_group_lecture">GroupLectureActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_calendar">Calendário</string>
 
     <!-- ERROS MSGS -->
     <string name="existing_user">Esse usuário e/ou email já existe. Favor escolher outro!</string>

@@ -41,6 +41,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.nodoubts.CalendarActivity;
 import com.nodoubts.R;
 import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
@@ -128,7 +129,7 @@ public class UserProfile extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				Intent calendarActivity = new Intent(context,
-						UserLecturesTabsActivity.class);
+						CalendarActivity.class);
 				startActivity(calendarActivity);
 			}
 		});

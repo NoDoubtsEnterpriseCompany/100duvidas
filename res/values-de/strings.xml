@@ -81,7 +81,9 @@
     <string name="teacher_text_view">Lehrer:</string>
     <string name="price_text_view">Preis:</string>
     <string name="number_subscribers_text_view">Anzahl der Teilnehmer:</string>
-
+    <string name="lectures_oferred_user">Vortrag/Gruppe Vortrag die von Ihnen</string>
+    <string name="lectures_registered_user">Vortrag/Gruppe Vortrag in der Sie sich registriert haben</string>
+    
     <!-- Subject messages -->
     <string name="subject_added_message">Gegenstand erfolgreich hinzugefügt</string>
 
@@ -122,6 +124,7 @@
     <string name="title_activity_user_lecture_list">UserLectureListActivity</string>
     <string name="title_activity_group_lecture">GroupLectureActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_calendar">Kalender</string>
 
     <!-- ERROS MSGS -->
     <string name="existing_user">Dieser Benutzername und / oder E-Mail bereits existiert, wählen Sie ein anderes</string>

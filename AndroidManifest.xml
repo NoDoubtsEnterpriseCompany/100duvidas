@@ -71,14 +71,17 @@
             android:name=".ui.subject.SubjectListActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.search.SearchActivity" 
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.subject.SubjectActivity" 
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.subject.SubjectActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.user.ViewProfessorActivity" 
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.user.ViewProfessorActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.rating.RegisterGroupLectureActivity"
@@ -92,25 +95,27 @@
         </activity>
         <activity
             android:name=".ui.lecture.UserLectureListActivity"
-            android:label="@string/title_activity_user_lecture_list" 
-            android:screenOrientation="portrait">
+            android:label="@string/title_activity_user_lecture_list"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ui.grouplecture.GroupLectureActivity"
-            android:label="@string/title_activity_group_lecture" 
-            android:screenOrientation="portrait">
+            android:label="@string/title_activity_group_lecture"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.lecture.ScheduleLectureActivity" 
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.lecture.ScheduleLectureActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ui.profile.UserProfile"
+        <activity
+            android:name=".ui.profile.UserProfile"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/CustomThemeNAB" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomThemeNAB" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -120,13 +125,16 @@
         <activity
             android:name=".UserLecturesTabsActivity"
             android:label="@string/title_activity_user_lectures_tabs"
-            android:theme="@style/CustomActionBarTheme" 
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ViewScheduledLectureActivity"
             android:label="@string/title_activity_view_scheduled_lecture"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".CalendarActivity"
+            android:label="@string/title_activity_calendar" >
         </activity>
     </application>
 

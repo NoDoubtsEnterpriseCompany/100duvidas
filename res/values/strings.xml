@@ -2,8 +2,10 @@
 <resources>
 
     <!-- app configuration -->
-    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
-    <string name="port">443</string>
+    <!-- <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+    <string name="port">443</string> -->
+    <string name="host_name">http://192.168.25.5</string>
+    <string name="port">3000</string>
     <!-- button text -->
 
     <string name="empty"></string>
@@ -81,6 +83,8 @@
     <string name="teacher_text_view">Teacher:</string>
     <string name="price_text_view">Price:</string>
     <string name="number_subscribers_text_view">Number of Subscribers:</string>
+    <string name="lectures_oferred_user">GroupLectures/Lectures oferred by you</string>
+    <string name="lectures_registered_user">GroupLectures/Lectures that you are registered</string>
 
     <!-- Subject messages -->
     <string name="subject_added_message">Subject successfully added</string>
@@ -128,5 +132,6 @@
     <string name="invalid_user_pass">Invalid username/password combination. Check again</string>
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Sorry! We are facing some temporary problems connecting to our server</string>
+    <string name="title_activity_calendar">Calendar</string>
 
 </resources>

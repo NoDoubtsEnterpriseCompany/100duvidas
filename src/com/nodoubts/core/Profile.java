@@ -99,24 +99,8 @@ public class Profile implements Serializable {
 		this.city = city;
 	}
 	
-	public List<String> getGroupLecturesRegistered(){
-		return groupLecturesRegistered;
-	}
-	
-	public void setGroupLecturesRegistered(List<String> groupLectures){
-		this.groupLecturesRegistered = groupLectures;
-	}
-	
 	public List<String> getRatings(){
 		return ratings;
-	}
-	
-	public void setGroupLecturesCreated(List<String> groupLecturesCreated) {
-		this.groupLecturesCreated = groupLecturesCreated;
-	}
-	
-	public List<String> getGroupLecturesCreated() {
-		return groupLecturesCreated;
 	}
 
 }
