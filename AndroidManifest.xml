@@ -132,6 +132,8 @@
             android:label="@string/title_activity_view_scheduled_lecture"
             android:screenOrientation="portrait" >
         </activity>
+        <activity android:name=".ui.recommendation.RecommendationListActivity"></activity>
+        <activity android:name=".ui.recommendation.RegisterRecommendationActivity"></activity>
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar" >
