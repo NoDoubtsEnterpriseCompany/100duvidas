@@ -2,6 +2,7 @@
 <resources>
     <string-array name="user_opts">
         <item>Add subject</item>
+        <item>Add recommendation</item>
         <item>Edit Profile</item>        
     </string-array>
 </resources>

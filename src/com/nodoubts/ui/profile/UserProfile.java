@@ -44,6 +44,7 @@ import android.widget.TextView;
 import com.nodoubts.R;
 import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.recommendation.RecommendationListActivity;
 import com.nodoubts.ui.search.SearchActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
 import com.nodoubts.ui.util.CircularImageView;
@@ -277,6 +278,11 @@ public class UserProfile extends FragmentActivity {
 				startActivity(activity);
 				break;
 			case 1:
+				activity = new Intent(context, RecommendationListActivity.class);
+				activity.putExtra("user", user);
+				startActivity(activity);
+				break;
+			case 2:
 				activity = new Intent(context, EditProfileActivity.class);
 				activity.putExtra("user", user);
 				startActivity(activity);
