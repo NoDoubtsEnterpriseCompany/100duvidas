@@ -42,10 +42,10 @@ public class RegisterUserActivity extends Activity{
 						user.getEmail().trim().equals("") ||
 						user.getPassword().trim().equals("") ||
 						user.getProfile().getName().equals("")) {
-					Toast.makeText(RegisterUserActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
+					Toast.makeText(RegisterUserActivity.this, getResources().getString(R.string.fields_not_filled), Toast.LENGTH_SHORT).show();
 					return false;
 				}else if (user.getPassword().length() < 6){
-					Toast.makeText(RegisterUserActivity.this, "Please create a password with at least 6 characters", Toast.LENGTH_SHORT).show();
+					Toast.makeText(RegisterUserActivity.this, getResources().getString(R.string.invalid_password_format), Toast.LENGTH_SHORT).show();
 					return false;
 				}
 				return true;

@@ -86,6 +86,7 @@
 
     <!-- Subject messages -->
     <string name="subject_added_message">Subject successfully added</string>
+    <string name="fields_not_filled"> All fields must be filled</string>
 
     <!-- Lecture strings -->
     <string name="lecture_confirmation_label">Confirmation</string>
@@ -97,6 +98,7 @@
     <string name="lecture_confirm_btn">Confirm</string>
     <string name="empty_date_hint">Data can\'t be empty</string>
     <string name="lecture_scheduled_hint">Lecture scheduled!</string>
+    <string name="rate_successfully">Rated Successfully</string>
 
     <!-- Profile string -->
     <string name="profile_city_label">City</string>
@@ -134,5 +136,6 @@
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Sorry! We are facing some temporary problems connecting to our server</string>
     <string name="title_activity_calendar">Calendar</string>
+    <string name ="invalid_password_format">Please create a password with at least 6 characters</string>
 
 </resources>

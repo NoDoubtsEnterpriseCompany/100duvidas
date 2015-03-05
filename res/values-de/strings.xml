@@ -83,9 +83,10 @@
     <string name="number_subscribers_text_view">Anzahl der Teilnehmer:</string>
     <string name="lectures_oferred_user">Vortrag/Gruppe Vortrag die von Ihnen</string>
     <string name="lectures_registered_user">Vortrag/Gruppe Vortrag in der Sie sich registriert haben</string>
-    
+
     <!-- Subject messages -->
     <string name="subject_added_message">Lehrveranstaltung erfolgreich hinzugefügt</string>
+    <string name="fields_not_filled"> Alle Felder müssen ausgefüllt werden</string>
 
     <!-- Lecture strings -->
     <string name="lecture_confirmation_label">Bestätigung</string>
@@ -97,6 +98,7 @@
     <string name="lecture_confirm_btn">Bestätigen</string>
     <string name="empty_date_hint">Datum darf nicht leer sein</string>
     <string name="lecture_scheduled_hint">Vortrag geplant!</string>
+    <string name="rate_successfully">Erfolgreich bewertet</string>
 
     <!-- Profile string -->
     <string name="profile_city_label">Stadt</string>
@@ -131,5 +133,6 @@
     <string name="invalid_user_pass">Ungültig Benutzername / Passwort-Kombination.Nochmals prüfen</string>
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Es tut uns leid! Wir stehen vor einige temporäre Probleme mit der Verbindung zu unserem Server</string>
+    <string name="invalid_password_format">Erstellen Sie ein Passwort mit mindestens 6 Zeichen</string>
 
 </resources>

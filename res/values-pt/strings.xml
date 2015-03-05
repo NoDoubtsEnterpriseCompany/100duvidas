@@ -86,6 +86,7 @@
 
     <!-- Subject messages -->
     <string name="subject_added_message">Disciplina adicionada com sucesso</string>
+    <string name="fields_not_filled"> Todos os campos devem ser preenchidos</string>
 
     <!-- Lecture strings -->
     <string name="lecture_confirmation_label">Confirmação</string>
@@ -106,6 +107,7 @@
     <string name="profile_refer_btn">Recomendar</string>
     <string name="profile_pic_label">Foto</string>
     <string name="opts_open">Opções</string>
+     <string name="rate_successfully">Avaliado com Sucesso</string>
 
     <!-- Group Lecture Errors -->
     <string name="addressEmpty">Endereço não pode ser vazio</string>
@@ -131,5 +133,6 @@
     <string name="invalid_user_pass">Usuário/senha inválidos. Verifique novamente!</string>
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Desculpe! Estamos enfrentando algum problema de conexão temporário com o nosso servidor!</string>
+    <string name="invalid_password_format">Por favor insira uma senha com, no mínimo, 6 caracteres</string>
 
 </resources>

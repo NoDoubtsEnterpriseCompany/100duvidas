@@ -62,7 +62,6 @@ public class EditProfileActivity extends Activity {
 
 	public void onRadioButtonClicked(View view) {
 		// Is the button now checked?
-		System.out.println("TA ENTRNANDO NO RADIO");
 		boolean checked = ((RadioButton) view).isChecked();
 
 		// Check which radio button was clicked

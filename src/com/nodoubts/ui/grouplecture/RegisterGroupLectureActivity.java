@@ -1,4 +1,4 @@
-package com.nodoubts.ui.rating;
+package com.nodoubts.ui.grouplecture;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

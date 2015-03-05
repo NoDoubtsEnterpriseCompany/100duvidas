@@ -29,8 +29,8 @@ import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
 import com.nodoubts.serverclient.lecture.LectureController;
 import com.nodoubts.serverclient.lecture.LectureService;
+import com.nodoubts.ui.grouplecture.RegisterGroupLectureActivity;
 import com.nodoubts.ui.profile.UserProfile;
-import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
 
 public class LecturesOferredFragment extends Fragment {
 
