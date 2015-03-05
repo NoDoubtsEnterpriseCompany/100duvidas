@@ -1,4 +1,4 @@
-package com.nodoubts.ui.subject;
+package com.nodoubts.ui.recommendation;
 
 
 import android.app.Activity;
@@ -17,57 +17,58 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nodoubts.R;
-import com.nodoubts.core.Subject;
+import com.nodoubts.core.Recommendation;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
-import com.nodoubts.serverclient.subject.SubjectController;
-import com.nodoubts.serverclient.subject.SubjectService;
+import com.nodoubts.serverclient.recommendation.RecommendationController;
+import com.nodoubts.serverclient.recommendation.RecommendationService;
 import com.nodoubts.ui.profile.UserProfile;
 
-public class RegisterSubjectActivity extends Activity {
+public class RegisterRecommendationActivity extends Activity {
 	
 	Button addButton;
-	SubjectService subjectService;
+	RecommendationService recommendationService;
 	User user;
 	EditText nameEt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register_subject);
+		setContentView(R.layout.activity_register_recommendation);
 		
-		subjectService = new SubjectController();
-		addButton = (Button) findViewById(R.id.btn_add_subject);
+		recommendationService = new RecommendationController();
+		addButton = (Button) findViewById(R.id.btn_add_recommendation);
 		if(getIntent().getSerializableExtra("user") != null ){
 			user = (User) getIntent().getSerializableExtra("user");
 		}
 		
-		nameEt = (EditText) findViewById(R.id.new_subject_name);
+		nameEt = (EditText) findViewById(R.id.new_recommendation_name);
 		nameEt.requestFocus();
 		
 		
 		addButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Subject subject = getSubject();
-				if(isSubjectValid(subject))
-					new RegisterNewSubject().execute(subject);
+				Recommendation recommendation = getRecommendation();
+				if(isRecommendationValid(recommendation))
+					new RegisterNewRecommendation().execute(recommendation);
 			}
 			
-			private boolean isSubjectValid(Subject subject) {
-				String name = subject.getSubjectName();
+			private boolean isRecommendationValid(Recommendation recommendation) {
+				String name = recommendation.getTeacherUserName();
 					if(name == null || name.isEmpty()){
-						Toast.makeText(RegisterSubjectActivity.this, getResources().getString(R.string.fields_not_filled), Toast.LENGTH_SHORT).show();
+						//TODO: Remove hardcoded error messages
+						Toast.makeText(RegisterRecommendationActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
 						return false;
 					}
 				return true;
 			}
 			
-			private Subject getSubject(){
+			private Recommendation getRecommendation(){
 				
 				String name = nameEt.getText().toString();
-				String description = ((EditText) findViewById(R.id.new_subject_description)).getText().toString();
-				return new Subject(name, description);
+				String description = ((EditText) findViewById(R.id.new_recommendation_description)).getText().toString();
+				return new Recommendation(name, description);
 			}
 		});
 
@@ -98,22 +99,23 @@ public class RegisterSubjectActivity extends Activity {
 	   this.finish();
     }
 	
-	protected class RegisterNewSubject extends AsyncTask<Subject,Void, Object>{
+	protected class RegisterNewRecommendation extends AsyncTask<Recommendation,Void, Object>{
 		
 		ProgressDialog progressDialog;
 
 	 	@Override
 			protected void onPreExecute() {
 				super.onPreExecute();
-				this.progressDialog = new ProgressDialog(RegisterSubjectActivity.this);
+				this.progressDialog = new ProgressDialog(RegisterRecommendationActivity.this);
 				this.progressDialog.setProgressStyle(progressDialog.THEME_DEVICE_DEFAULT_LIGHT);
 				this.progressDialog.show();
 			}
 	 	
 		@Override
-		protected Object doInBackground(Subject... params) {
+		protected Object doInBackground(Recommendation... params) {
 			try {
-				return subjectService.addSubject(params[0]);
+				user = (User) (getIntent().getExtras().get("user"));
+				return recommendationService.addRecommendation(params[0], user);
 			} catch (ApplicationViewException e) {
 				return e;
 			}
@@ -123,16 +125,16 @@ public class RegisterSubjectActivity extends Activity {
 		@Override
 		protected void onPostExecute(Object result) {
 			if(result instanceof String){
-				Toast.makeText(RegisterSubjectActivity.this, 
-						getResources().getString(R.string.subject_registered_ok), Toast.LENGTH_LONG).show();
-				Intent intent = new Intent(RegisterSubjectActivity.this, UserProfile.class);
+				Toast.makeText(RegisterRecommendationActivity.this, 
+						getResources().getString(R.string.recommendation_registered_ok), Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(RegisterRecommendationActivity.this, UserProfile.class);
 				intent.putExtra("user", user);
 				startActivity(intent);
 				finish();
 			}else if(result instanceof Exception){
-				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterSubjectActivity.this);
+				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterRecommendationActivity.this);
 				if(((Exception) result).getMessage().contains("11000")){
-					builder.setMessage(R.string.existing_subject);
+					builder.setMessage(R.string.existing_recommendation);
 				}else{
 					builder.setMessage(((Exception)result).getMessage());
 				}

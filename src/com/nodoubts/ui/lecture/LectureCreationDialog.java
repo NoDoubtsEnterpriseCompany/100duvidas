@@ -59,7 +59,7 @@ public class LectureCreationDialog extends DialogFragment {
 							.toString(), (User) getArguments().get("user"));
 					dismiss();
 				}else{
-					Toast.makeText(getActivity().getApplicationContext(), "The price is invalid", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.invalidPrice), Toast.LENGTH_SHORT).show();
 				}
 			}
 		});

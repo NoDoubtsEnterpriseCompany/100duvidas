@@ -46,6 +46,7 @@ import com.nodoubts.CalendarActivity;
 import com.nodoubts.MainActivity;
 import com.nodoubts.R;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.recommendation.RecommendationListActivity;
 import com.nodoubts.serverclient.util.SessionManager;
 import com.nodoubts.ui.search.SearchActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
@@ -158,6 +159,7 @@ public class UserProfile extends FragmentActivity {
 
 	private void addUserOptions() {
 		userOptions.add(new DrawerItem(context.getString(R.string.opts_add_subject), android.R.drawable.ic_menu_add));
+		userOptions.add(new DrawerItem(getString(R.string.opts_recommend), android.R.drawable.ic_menu_add));
 		userOptions.add(new DrawerItem(context.getString(R.string.opts_edit_profile), android.R.drawable.ic_menu_edit));
 		userOptions.add(new DrawerItem(context.getString(R.string.opts_logout), android.R.drawable.ic_menu_close_clear_cancel));
 	}
@@ -298,11 +300,16 @@ public class UserProfile extends FragmentActivity {
 				startActivity(activity);
 				break;
 			case 1:
+				activity = new Intent(context, RecommendationListActivity.class);
+				activity.putExtra("user", user);
+				startActivity(activity);
+				break;
+			case 2:
 				activity = new Intent(context, EditProfileActivity.class);
 				activity.putExtra("user", user);
 				startActivityForResult(activity, 1);
 				break;
-			case 2:
+			case 3:
 				logout();
 				break;
 			}

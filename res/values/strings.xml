@@ -2,8 +2,8 @@
 <resources>
 
     <!-- app configuration -->
-    <string name="host_name">http://192.168.0.101</string>
-    <string name="port">3000</string>
+    <string name="host_name">https://salty-hamlet-5817.herokuapp.com</string>
+    <string name="port">443</string>
     <!-- button text -->
 
     <string name="empty"></string>
@@ -15,6 +15,7 @@
     <string name="search_professor_btn">Search</string>
     <string name="add">Add</string>
     <string name="add_subject">Create New Subject</string>
+    <string name="add_recommendation">Create New Recommendation</string>
     <string name="add_subject_to_profile">Add new Subject</string>
     <string name="rate_btn_ratingAct">Rate</string>
     <string name="enter_btn_label">Enter</string>
@@ -63,8 +64,10 @@
     <string name="user_registered_ok">User saved successfully</string>
     <string name="add_new_subject">Add new Subject</string>
     <string name="subject_registered_ok">Subject registred successfully</string>
+    <string name="recommendation_registered_ok">Recommendation registred successfully</string>
     <string name="group_lecture_registered_ok">Group Lecture registred successfully</string>
     <string name="existing_subject"> Subject already exists	</string>
+    <string name="existing_recommendation"> Recommendation already exists	</string>
     <string name="search_subject">Search for Subjects</string>
     <string name="search">Search</string>
     <string name="subject_description_label">Description:</string>
@@ -86,6 +89,7 @@
 
     <!-- Subject messages -->
     <string name="subject_added_message">Subject successfully added</string>
+    <string name="fields_not_filled"> All fields must be filled</string>
 
     <!-- Lecture strings -->
     <string name="lecture_confirmation_label">Confirmation</string>
@@ -97,6 +101,7 @@
     <string name="lecture_confirm_btn">Confirm</string>
     <string name="empty_date_hint">Data can\'t be empty</string>
     <string name="lecture_scheduled_hint">Lecture scheduled!</string>
+    <string name="rate_successfully">Rated Successfully</string>
 
     <!-- Profile string -->
     <string name="profile_city_label">City</string>
@@ -134,9 +139,11 @@
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Sorry! We are facing some temporary problems connecting to our server</string>
     <string name="title_activity_calendar">Calendar</string>
+    <string name ="invalid_password_format">Please create a password with at least 6 characters</string>
 
     <!-- Nav drawer options  -->
 	<string name="opts_add_subject">Add subject</string>
 	<string name="opts_edit_profile">Edit Profile</string>
+	<string name="opts_recommend">Recommend</string>
 	<string name="opts_logout">Logout</string>    
 </resources>

@@ -35,8 +35,8 @@ import android.widget.TextView;
 
 import com.nodoubts.R;
 import com.nodoubts.core.User;
+import com.nodoubts.ui.grouplecture.RegisterGroupLectureActivity;
 import com.nodoubts.ui.lecture.UserLectureListActivity;
-import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
 
 public class ProfessorProfileActivity extends Activity {
