@@ -4,11 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONObject;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,23 +21,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
 import com.nodoubts.R;
 import com.nodoubts.core.Recommendation;
 import com.nodoubts.core.SearchAdapter;
-import com.nodoubts.core.Subject;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.recommendation.RecommendationController;
 import com.nodoubts.serverclient.recommendation.RecommendationService;
-import com.nodoubts.serverclient.subject.SubjectController;
-import com.nodoubts.serverclient.subject.SubjectService;
-import com.nodoubts.serverclient.user.UserController;
-import com.nodoubts.serverclient.user.UserService;
 import com.nodoubts.ui.lecture.LectureCreationDialog;
-import com.nodoubts.ui.lecture.LectureCreationDialog.EditLectureListener;
-import com.nodoubts.ui.rating.RegisterGroupLectureActivity;
-import com.nodoubts.ui.search.SearchActivity;
 
 public class RecommendationListActivity extends FragmentActivity{
 
