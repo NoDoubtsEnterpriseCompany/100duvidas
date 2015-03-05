@@ -13,6 +13,9 @@ public class User implements SearchType{
 	private String password;
 	private String email;
 	private Profile profile;
+	
+	private transient List<SearchType> lecturesCreatedByUser;
+	private transient List<SearchType> lecturesRegisteredByUser;
 
 	public User(String username,String password,String email){
 		this.username = username;
@@ -21,7 +24,7 @@ public class User implements SearchType{
 		this.profile = new Profile(""); //TODO: remove this
 	}
 
-	public User(){}
+	public User(){this.profile = new Profile("");}
 
 	public User(String username,String password,String email,String name){
 		this.username = username;
@@ -94,5 +97,21 @@ public class User implements SearchType{
 	
 	public void set_id(String _id) {
 		this._id = _id;
+	}
+	
+	public List<SearchType> getLecturesCreatedByUser() {
+		return lecturesCreatedByUser;
+	}
+	
+	public void setLecturesCreatedByUser(List<SearchType> lecturesCreatedByUser) {
+		this.lecturesCreatedByUser = lecturesCreatedByUser;
+	}
+	
+	public List<SearchType> getLecturesRegisteredByUser() {
+		return lecturesRegisteredByUser;
+	}
+	
+	public void setLecturesRegisteredByUser(List<SearchType> lecturesRegisteredByUser) {
+		this.lecturesRegisteredByUser = lecturesRegisteredByUser;
 	}
 }

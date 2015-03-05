@@ -1,10 +1,11 @@
 package com.nodoubts.core;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.nodoubts.ui.user.ViewProfessorActivity;
 
-public class Lecture implements SearchType {
+public class Lecture implements SearchType, Serializable {
 	private static final long serialVersionUID = -30791561334913081L;
 	
 	protected String subject;

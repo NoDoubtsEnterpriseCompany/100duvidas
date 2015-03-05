@@ -48,6 +48,7 @@ public class GroupLecture implements Serializable, SearchType {
 	public void setStudentsRegistered(List<String> studentsRegistered) {
 		this.studentsRegistered = studentsRegistered;
 	}
+	
 	public Date getDate() {
 		return date;
 	}

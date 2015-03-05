@@ -1,61 +1,87 @@
 package com.nodoubts.ui.profile;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.nodoubts.R;
-import com.nodoubts.core.Profile;
 import com.nodoubts.core.User;
+import com.nodoubts.serverclient.user.UserController;
+import com.nodoubts.serverclient.user.UserService;
 
 public class EditProfileActivity extends Activity {
-	
+
 	Button saveBtn;
-	EditText name,email,city,street,number;
+	EditText name, city, street, number;
 	TextView t;
 	Intent returnIntent;
+	User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
-		
+
 		saveBtn = (Button) findViewById(R.id.save_btn);
 		name = (EditText) findViewById(R.id.name_edit_text);
-		email = (EditText) findViewById(R.id.email_edit_text);
 		city = (EditText) findViewById(R.id.city_edit_text);
-		street = (EditText) findViewById(R.id.street_edit_text);
-		number = (EditText) findViewById(R.id.number_edit_text);
-		
-		
-		
-		saveBtn.setOnClickListener(new View.OnClickListener() { 
-		    @Override
-		    public void onClick(View v) {
-		    	User user = (User) getIntent().getSerializableExtra("user");
-		    	Profile userProfile = user.getProfile();
-		    	
-		    	if(name.getText()!= null && !name.getText().toString().equals(getResources().getString(R.string.name))){
-		    		user.getProfile().setName(name.getText().toString());
-		    	}	    	
-		    	if(email.getText() != null && !email.getText().toString().equals(getResources().getString(R.string.email)))
-		    		user.setEmail(email.getText().toString());
-		    	if(city.getText() != null && !city.getText().toString().equals(getResources().getString(R.string.city)))
-		    		userProfile.setCity(city.getText().toString());
-		    	if(email.getText() != null && !email.getText().toString().equals(getResources().getString(R.string.email)))		    	
-		    		
-		    	returnIntent = new Intent();
-		    	returnIntent.putExtra("result", user);
-		    	setResult(RESULT_OK,returnIntent);
-		    	finish();
-		    }
+		user = (User) getIntent().getSerializableExtra("user");
+
+		saveBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+				
+			public void onClick(View v) {
+				if (name.getText() != null
+						&& !name.getText()
+								.toString()
+								.equals(getResources().getString(R.string.name))) {
+					user.getProfile().setName(name.getText().toString());
+				}
+				if (city.getText() != null
+						&& !city
+								.getText()
+								.toString()
+								.equals(getResources()
+										.getString(R.string.email)))
+					user.getProfile().setCity(city.getText().toString());
+
+				new SaveUser().execute(user);
+			}
 		});
+	}
+
+	public void onRadioButtonClicked(View view) {
+		// Is the button now checked?
+		System.out.println("TA ENTRNANDO NO RADIO");
+		boolean checked = ((RadioButton) view).isChecked();
+
+		// Check which radio button was clicked
+		switch (view.getId()) {
+		case R.id.male_radio_btn:
+			if (checked) {
+				user.getProfile().setGender(0);
+				break;
+			}
+		case R.id.female_radio_btn:
+			if (checked) {
+				user.getProfile().setGender(1);
+				break;
+			}
+		default:
+			user.getProfile().setGender(0);
+			break;
+
+		}
 	}
 
 	@Override
@@ -76,10 +102,43 @@ public class EditProfileActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-   @Override
-   public void onBackPressed() {
-	   super.onBackPressed();
-	   this.finish();
-   }
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		this.finish();
+	}
+
+	protected class SaveUser extends AsyncTask<User, Void, User> {
+
+		UserService userService = new UserController();
+		ProgressDialog progressDialog;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			this.progressDialog = new ProgressDialog(EditProfileActivity.this);
+			this.progressDialog
+					.setProgressStyle(AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			this.progressDialog.show();
+		}
+
+		@Override
+		protected User doInBackground(User... params) {
+			User user = params[0];
+			user.setPassword(null);
+			userService.actualizeUser(user);
+			return params[0];
+
+		}
+
+		@Override
+		protected void onPostExecute(User result) {
+			this.progressDialog.dismiss();
+			returnIntent = new Intent();
+			returnIntent.putExtra("result", result);
+			setResult(RESULT_OK, returnIntent);
+			finish();
+		}
+	}
 }

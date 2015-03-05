@@ -1,8 +1,5 @@
 package com.nodoubts;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.os.Bundle;
@@ -12,13 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nodoubts.core.LecturesCreatedAdapter;
-import com.nodoubts.core.SearchType;
 
 public class UserLecturesTabsActivity extends FragmentActivity {
 
 	LecturesCreatedAdapter lecturesCreatedAdapter;
 	ViewPager mViewPager;
-	List<SearchType> lecturesCreated = new ArrayList<SearchType>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +24,7 @@ public class UserLecturesTabsActivity extends FragmentActivity {
 				getSupportFragmentManager());
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(lecturesCreatedAdapter);
-
+		
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 

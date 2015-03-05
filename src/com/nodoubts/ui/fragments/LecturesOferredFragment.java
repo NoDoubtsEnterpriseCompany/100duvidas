@@ -71,37 +71,8 @@ public class LecturesOferredFragment extends Fragment {
 		});
 		context = rootView.getContext();
 		//TODO: badsmell- remove static access to user 
-		new RequestGroupLecturesTask().execute(UserProfile.user);
+		SearchAdapter<SearchType> lecturesAdapter = new SearchAdapter<SearchType>(context, UserProfile.user.getLecturesCreatedByUser());
+		listOferred.setAdapter(lecturesAdapter);
 		return rootView;
-	}
-
-	private class RequestGroupLecturesTask extends
-			AsyncTask<User, Void, List<SearchType>> {
-
-		ProgressDialog dialog;
-		
-		@Override
-		protected void onPreExecute() {
-			dialog = new ProgressDialog(context);
-			this.dialog.setProgressStyle(dialog.THEME_DEVICE_DEFAULT_LIGHT);
-			this.dialog.show();
-		}
-		
-		@Override
-		protected List<SearchType> doInBackground(User... params) {
-			User user = params[0];
-			GroupLectureService groupLectureService = new GroupLectureController();
-			LectureService lectureService = new LectureController();
-			lecturesCreated.addAll(lectureService.getScheduledLecturesFromTeacher(user.get_id()));
-			lecturesCreated.addAll(groupLectureService.getGroupLecturesByUser(user.getUsername()));
-			return lecturesCreated;
-		}
-		
-		@Override
-		protected void onPostExecute(List<SearchType> result) {
-			dialog.dismiss();
-			SearchAdapter<SearchType> lecturesAdapter = new SearchAdapter<SearchType>(context, result);
-			listOferred.setAdapter(lecturesAdapter);
-		}
 	}
 }

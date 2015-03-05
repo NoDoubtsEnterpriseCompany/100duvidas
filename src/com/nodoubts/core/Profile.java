@@ -11,8 +11,10 @@ public class Profile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String age;
-	private String city;
+	private int gender;
 	private String profilePic;
+	private String city;
+
 	private String degree;
 	private String speciality;
 	private List<String> subjects;
@@ -49,6 +51,13 @@ public class Profile implements Serializable {
 	}
 	public String getAge() {
 		return age;
+	}
+	public String getCity() {
+		return city;
+	}
+	
+	public void setCity(String city) {
+		this.city = city;
 	}
 	public String getDegree() {
 		return degree;
@@ -92,31 +101,15 @@ public class Profile implements Serializable {
 	public void setSubjects(List<String> subjects) {
 		this.subjects = subjects;
 	}
-	public String getCity() {
-		return city;
+	public int getGender() {
+		return this.gender;
 	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	
-	public List<String> getGroupLecturesRegistered(){
-		return groupLecturesRegistered;
-	}
-	
-	public void setGroupLecturesRegistered(List<String> groupLectures){
-		this.groupLecturesRegistered = groupLectures;
+	public void setGender(int gender) {
+		this.gender= gender;
 	}
 	
 	public List<String> getRatings(){
 		return ratings;
-	}
-	
-	public void setGroupLecturesCreated(List<String> groupLecturesCreated) {
-		this.groupLecturesCreated = groupLecturesCreated;
-	}
-	
-	public List<String> getGroupLecturesCreated() {
-		return groupLecturesCreated;
 	}
 
 }
