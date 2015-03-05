@@ -22,7 +22,6 @@ import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.subject.SubjectController;
 import com.nodoubts.serverclient.subject.SubjectService;
-import com.nodoubts.ui.profile.ProfessorProfileActivity;
 import com.nodoubts.ui.profile.UserProfile;
 
 public class RegisterSubjectActivity extends Activity {

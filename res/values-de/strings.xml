@@ -132,4 +132,9 @@
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Es tut uns leid! Wir stehen vor einige temporäre Probleme mit der Verbindung zu unserem Server</string>
 
+     <!-- Nav drawer options  -->
+    <string name="opts_add_subject">Betreff hinzufügen</string>
+	<string name="opts_edit_profile">Profil bearbeiten</string>
+	<string name="opts_logout">Logout</string>
+    
 </resources>

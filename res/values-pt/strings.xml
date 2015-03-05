@@ -131,5 +131,10 @@
     <string name="invalid_user_pass">Usuário/senha inválidos. Verifique novamente!</string>
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Desculpe! Estamos enfrentando algum problema de conexão temporário com o nosso servidor!</string>
+   
+    <!-- Nav drawer options  -->
+    <string name="opts_add_subject">Adicionar Aula</string>
+	<string name="opts_edit_profile">Editar Perfil</string>
+	<string name="opts_logout">Deslogar</string>
 
 </resources>

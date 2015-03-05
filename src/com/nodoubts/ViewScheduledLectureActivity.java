@@ -2,13 +2,11 @@ package com.nodoubts;
 
 import java.text.SimpleDateFormat;
 
-import com.nodoubts.core.ScheduledLecture;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.nodoubts.core.ScheduledLecture;
 
 public class ViewScheduledLectureActivity extends Activity {
 

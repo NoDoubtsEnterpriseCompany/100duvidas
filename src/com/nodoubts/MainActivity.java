@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.Session;
 import com.google.gson.JsonObject;
 import com.nodoubts.core.User;
 import com.nodoubts.serverclient.ServerController;
 import com.nodoubts.serverclient.ServerService;
 import com.nodoubts.serverclient.user.UserController;
+import com.nodoubts.serverclient.util.SessionManager;
 import com.nodoubts.ui.fragments.FbLoginFragment.FbLoginCallback;
 import com.nodoubts.ui.profile.UserProfile;
 import com.nodoubts.ui.user.RegisterUserActivity;
@@ -29,6 +31,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 	EditText passEditText;
 	Button loginBtn;
 	Button registerBtn;
+	private SessionManager sessionManager;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,11 +42,13 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 			getSupportFragmentManager().beginTransaction().commit();
 		}
 
+		sessionManager = new SessionManager(getApplicationContext());
 		userController = new UserController();
 		serverController = ServerController.getInstance();
 		userNameEditText = (EditText) findViewById(R.id.email);
 		passEditText = (EditText) findViewById(R.id.passwordEditText);
 		loginBtn = (Button) findViewById(R.id.loginbtn);
+		
 		loginBtn.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -116,6 +121,7 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 				Intent homeScreen = new Intent(getApplicationContext(),
 						UserProfile.class);
 				if (user != null) {
+					sessionManager.createLoginSession("", user.getUsername());
 					homeScreen.putExtra("user", user);
 					startActivity(homeScreen);
 				}else{
@@ -143,20 +149,19 @@ public class MainActivity extends FragmentActivity implements FbLoginCallback {
 
 	@Override
 	public void fbLoggedIn(User user) {
-
-		getSupportFragmentManager()
-				.beginTransaction()
-				.remove(getSupportFragmentManager().findFragmentById(
-						R.id.FbLoginFragment)).commit();
-		getSupportFragmentManager().popBackStack();
-
-		Intent homeScreen = new Intent(this, UserProfile.class);
-		homeScreen.putExtra("user", user);
-		startActivity(homeScreen);
-		finish();
+		
+		sessionManager.createLoginSession(Session.getActiveSession().getAccessToken(), user.getEmail());
+		
+		if(sessionManager.isLoggedIn()){
+			Intent homeScreen = new Intent(this, UserProfile.class);
+			homeScreen.putExtra("user", user);
+			startActivity(homeScreen);
+			finish();
+		}
 	}
 
 	@Override
 	public void fbLoggedOut() {
+		sessionManager.logoutUser();
 	}
 }

@@ -2,6 +2,7 @@ package com.nodoubts.ui.profile;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,20 +35,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.facebook.Session;
 import com.nodoubts.CalendarActivity;
+import com.nodoubts.MainActivity;
 import com.nodoubts.R;
-import com.nodoubts.UserLecturesTabsActivity;
 import com.nodoubts.core.User;
+import com.nodoubts.serverclient.util.SessionManager;
 import com.nodoubts.ui.search.SearchActivity;
 import com.nodoubts.ui.subject.SubjectListActivity;
 import com.nodoubts.ui.util.CircularImageView;
+import com.nodoubts.ui.util.CustomDrawerAdapter;
+import com.nodoubts.ui.util.DrawerItem;
 
 public class UserProfile extends FragmentActivity {
 
@@ -58,10 +62,11 @@ public class UserProfile extends FragmentActivity {
 	private ProgressBar waitSpinner;
 	private RatingBar rating;
 	private ImageButton scheduleBtn, searchBtn;
-	private String[] userOptions;
+	private List<DrawerItem> userOptions;
 	private DrawerLayout optsDrawerLayout;
 	private ListView optsDrawerList;
 	private ActionBarDrawerToggle optsDrawerToggle;
+	private SessionManager sessionManager;
 
 	private Context context;
 
@@ -78,11 +83,14 @@ public class UserProfile extends FragmentActivity {
 		rating = (RatingBar) findViewById(R.id.profile_rating);
 		scheduleBtn = (ImageButton) findViewById(R.id.profile_schedule_btn);
 		searchBtn = (ImageButton) findViewById(R.id.profile_search_btn);
+		sessionManager = new SessionManager(getApplicationContext());
 		context = this;
 		rating.setEnabled(false);
 		user = (User) getIntent().getSerializableExtra("user");
 
-		userOptions = getResources().getStringArray(R.array.user_opts);
+		userOptions = new ArrayList<DrawerItem>();
+		addUserOptions();
+		
 		optsDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		optsDrawerList = (ListView) findViewById(R.id.left_drawer);
 		
@@ -118,9 +126,10 @@ public class UserProfile extends FragmentActivity {
 		};
 		optsDrawerLayout.setDrawerListener(optsDrawerToggle);
 
+		CustomDrawerAdapter adapter = new CustomDrawerAdapter(context, R.layout.custom_drawer_item, userOptions);
+		
 		// Set the adapter for the list view
-		optsDrawerList.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.search_adapter, R.id.search_obj_name, userOptions));
+		optsDrawerList.setAdapter(adapter);
 		// Set the list's click listener
 		optsDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -145,6 +154,12 @@ public class UserProfile extends FragmentActivity {
 		});
 
 		updateData();
+	}
+
+	private void addUserOptions() {
+		userOptions.add(new DrawerItem(context.getString(R.string.opts_add_subject), android.R.drawable.ic_menu_add));
+		userOptions.add(new DrawerItem(context.getString(R.string.opts_edit_profile), android.R.drawable.ic_menu_edit));
+		userOptions.add(new DrawerItem(context.getString(R.string.opts_logout), android.R.drawable.ic_menu_close_clear_cancel));
 	}
 
 	@Override
@@ -287,10 +302,19 @@ public class UserProfile extends FragmentActivity {
 				activity.putExtra("user", user);
 				startActivityForResult(activity, 1);
 				break;
+			case 2:
+				logout();
+				break;
 			}
 
 			optsDrawerList.setItemChecked(position, true);
 			optsDrawerLayout.closeDrawer(optsDrawerList);
+		}
+
+		private void logout() {
+			Session.getActiveSession().close();
+	    	sessionManager.logoutUser();
+    		finish();
 		}
 	}
 }

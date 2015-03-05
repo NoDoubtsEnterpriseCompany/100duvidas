@@ -25,6 +25,7 @@ import com.nodoubts.core.Profile;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
+import com.nodoubts.serverclient.util.SessionManager;
 
 /**
  * Created by jeymisson on 12/4/14.
@@ -33,6 +34,7 @@ public class FbLoginFragment extends Fragment {
     private static final String TAG = "FbLoginFragment";
     private UiLifecycleHelper uiHelper;
     private Session mSession;
+    private SessionManager sessionManager;
     
     public interface FbLoginCallback{
     	public void fbLoggedIn(User user);
@@ -49,6 +51,7 @@ public class FbLoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sessionManager = new SessionManager(getActivity());
         uiHelper = new UiLifecycleHelper(getActivity(), callback);
         uiHelper.onCreate(savedInstanceState);
     }
@@ -66,19 +69,20 @@ public class FbLoginFragment extends Fragment {
     }
 
 	private void onSessionStateChange(Session session, SessionState state, Exception exception) {
-        if (state.isOpened()) {
-        	if(mSession==null || isSessionChanged(session)){
-        		mSession = session;
-	            	Request.newMeRequest(session, new GraphUserCallback() {				
-					@Override
-					public void onCompleted(GraphUser fbUser, Response response) {
-						LoginTask fbLoginTask = new LoginTask();
-						fbLoginTask.execute(fbUser);
-					}
-				}).executeAsync();
-        	}
-        } else if (state.isClosed()) {
-        }
+		if(!sessionManager.isLoggedIn()){
+	        if (state.isOpened()) {
+	        	if(mSession==null || isSessionChanged(session)){
+	        		mSession = session;
+		            	Request.newMeRequest(session, new GraphUserCallback() {				
+						@Override
+						public void onCompleted(GraphUser fbUser, Response response) {
+							LoginTask fbLoginTask = new LoginTask();
+							fbLoginTask.execute(fbUser);
+						}
+					}).executeAsync();
+	        	}
+	        }
+		}
     }
 	
     

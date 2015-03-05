@@ -13,18 +13,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nodoubts.R;
+import com.nodoubts.SplashActivity;
 import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
+import com.nodoubts.serverclient.util.SessionManager;
 import com.nodoubts.ui.profile.UserProfile;
 
 public class RegisterUserActivity extends Activity{
+	
+	private SessionManager sessionManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_user);
+		
+		sessionManager = new SessionManager(getApplicationContext());
 		
 		Button createUserBtn = (Button) findViewById(R.id.createUserBtn);
 		createUserBtn.setOnClickListener(new OnClickListener() {
@@ -100,9 +106,10 @@ public class RegisterUserActivity extends Activity{
 			if(result instanceof String){
 				Toast.makeText(RegisterUserActivity.this, 
 						getResources().getString(R.string.user_registered_ok), Toast.LENGTH_LONG).show();
-				Intent homeScreen = new Intent(getApplicationContext(),UserProfile.class);
-				homeScreen.putExtra("user", user);
-				startActivity(homeScreen);
+				sessionManager.createLoginSession("", user.getUsername());
+				Intent splashScreen = new Intent(getApplicationContext(), SplashActivity.class);
+				startActivity(splashScreen);
+				finish();
 			}else if(result instanceof Exception){
 				AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserActivity.this);
 				builder.setMessage(R.string.existing_user);

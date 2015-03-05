@@ -30,8 +30,13 @@ public class UserController implements UserService {
 
 	@Override
 	public User findUser(String username) throws ApplicationViewException {
-		StringBuilder builder = new StringBuilder("/users/user/")
-				.append(username);
+		StringBuilder builder = new StringBuilder("/users/user?");
+		
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
+		params.add(new BasicNameValuePair("username", username));
+		String paramsStr = URLEncodedUtils.format(params, "utf-8");
+		builder.append(paramsStr);
+		
 		String json = serverService.get(builder.toString());
 		User user = null;
 		Gson gson = new Gson();
@@ -48,23 +53,7 @@ public class UserController implements UserService {
 	}
 
 	public User findUserByEmail(String email) throws ApplicationViewException {
-		List<NameValuePair> params = new LinkedList<NameValuePair>();
-		params.add(new BasicNameValuePair("email", email));
-		String paramsStr = URLEncodedUtils.format(params, "utf-8");
-
-		String query = "/users/user?".concat(paramsStr);
-
-		String response = serverService.get(query.toString());
-		User user = null;
-		Gson gson = new Gson();
-		try {
-			JSONObject jsonObject = new JSONObject(response);
-			user = gson.fromJson(jsonObject.getString("result"), User.class);
-		} catch (JSONException e) {
-			Log.e("UserControler", e.getMessage());
-		}
-		return user;
-
+		return findUser(email);
 	}
 
 	/*
