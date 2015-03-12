@@ -76,9 +76,10 @@
     <string name="teacher_text_view">Professor:</string>
     <string name="price_text_view">Preço:</string>
     <string name="number_subscribers_text_view">Número de inscritos:</string>
-    <string name="lectures_oferred_user">Turmas/Aulas oferecidas por você</string>
+    <string name="lectures_oferred_user">Datas com Turmas/Aulas</string>
     <string name="lectures_registered_user">Turmas/Aulas nas quais você está registrado</string>
-
+	<string name="no_lectures">Nenhuma aula nesta data</string>
+    
     <!-- Subject messages -->
     <string name="subject_added_message">Disciplina adicionada com sucesso</string>
     <string name="fields_not_filled"> Todos os campos devem ser preenchidos</string>
@@ -132,6 +133,7 @@
    
     <!-- Nav drawer options  -->
     <string name="opts_add_subject">Adicionar Aula</string>
+    <string name="opts_add_grouplecture">Nova Turma</string>
 	<string name="opts_edit_profile">Editar Perfil</string>
 	<string name="opts_recommend">Recomendar</string>
 	<string name="opts_logout">Deslogar</string>

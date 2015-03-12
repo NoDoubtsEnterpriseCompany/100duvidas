@@ -76,9 +76,10 @@
     <string name="teacher_text_view">Lehrer:</string>
     <string name="price_text_view">Preis:</string>
     <string name="number_subscribers_text_view">Anzahl der Teilnehmer:</string>
-    <string name="lectures_oferred_user">Vortrag/Gruppe Vortrag die von Ihnen</string>
+    <string name="lectures_oferred_user">Termine mit Vortrag/Gruppe</string>
     <string name="lectures_registered_user">Vortrag/Gruppe Vortrag in der Sie sich registriert haben</string>
-
+	<string name="no_lectures">Keine Klasse an diesem Tag</string>
+    
     <!-- Subject messages -->
     <string name="subject_added_message">Lehrveranstaltung erfolgreich hinzugefügt</string>
     <string name="fields_not_filled"> Alle Felder müssen ausgefüllt werden</string>
@@ -132,6 +133,7 @@
 
      <!-- Nav drawer options  -->
     <string name="opts_add_subject">Betreff hinzufügen</string>
+    <string name="opts_add_grouplecture">Neue Gruppe Vortrag</string>
 	<string name="opts_edit_profile">Profil bearbeiten</string>
 	<string name="opts_logout">Logout</string>
     

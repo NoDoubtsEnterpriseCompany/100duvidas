@@ -28,6 +28,7 @@ import com.nodoubts.core.User;
 import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.grouplecture.GroupLectureController;
 import com.nodoubts.serverclient.grouplecture.GroupLectureService;
+import com.nodoubts.ui.profile.UserProfile;
 import com.nodoubts.ui.subject.SubjectListActivity;
 
 public class RegisterGroupLectureActivity extends Activity {
@@ -226,6 +227,7 @@ public class RegisterGroupLectureActivity extends Activity {
 						Toast.LENGTH_LONG).show();
 				Intent intent = new Intent(RegisterGroupLectureActivity.this,
 						UserLecturesTabsActivity.class);
+				UserProfile.user.getLecturesCreatedByUser().add(this.groupLecture);
 				intent.putExtra("user", user);
 				startActivity(intent);
 				finish();

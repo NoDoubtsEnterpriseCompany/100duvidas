@@ -10,12 +10,4 @@
         android:layout_width="fill_parent">
     </ListView>
     
-    <Button 
-        android:id="@+id/create_new_group_lecture_btn"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/createGroupLecture"
-        />
-
 </LinearLayout>

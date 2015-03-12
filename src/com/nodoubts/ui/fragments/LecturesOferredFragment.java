@@ -1,12 +1,7 @@
 package com.nodoubts.ui.fragments;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,17 +19,11 @@ import com.nodoubts.ViewScheduledLectureActivity;
 import com.nodoubts.core.ScheduledLecture;
 import com.nodoubts.core.SearchAdapter;
 import com.nodoubts.core.SearchType;
-import com.nodoubts.core.User;
-import com.nodoubts.serverclient.grouplecture.GroupLectureController;
-import com.nodoubts.serverclient.grouplecture.GroupLectureService;
-import com.nodoubts.serverclient.lecture.LectureController;
-import com.nodoubts.serverclient.lecture.LectureService;
 import com.nodoubts.ui.grouplecture.RegisterGroupLectureActivity;
 import com.nodoubts.ui.profile.UserProfile;
 
 public class LecturesOferredFragment extends Fragment {
 
-	List<SearchType> lecturesCreated = new ArrayList<SearchType>();
 	ListView listOferred;
 	Context context;
 	
@@ -48,24 +37,13 @@ public class LecturesOferredFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				SearchType lecture = lecturesCreated.get(position);
+				SearchType lecture = UserProfile.user.getLecturesCreatedByUser().get(position);
 				Intent intent = new Intent(context, lecture.getActivityClass());
 				if (lecture instanceof ScheduledLecture) {
 					intent.putExtra(ViewScheduledLectureActivity.SCHEDULED_LECTURE_SELECTED, lecture);
 				} else {
 					intent.putExtra("groupLectureSelected", lecture);
 				}
-				startActivity(intent);
-			}
-		});
-		Button btnNewGroup = (Button) rootView.findViewById(R.id.create_new_group_lecture_btn);
-		btnNewGroup.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(context, RegisterGroupLectureActivity.class);
-				intent.putExtra("user", UserProfile.user);
-				//TODO: badsmell- remove static access to user 
 				startActivity(intent);
 			}
 		});
