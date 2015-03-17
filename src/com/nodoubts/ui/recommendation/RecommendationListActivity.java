@@ -86,10 +86,11 @@ public class RecommendationListActivity extends FragmentActivity{
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					final int position, long id) {
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-						self);
 				
 				recommendation = (Recommendation) myAdpater.getItem(position);
+				
+				Toast.makeText(getApplicationContext(), (String)recommendation.getDescription(), 
+						   Toast.LENGTH_LONG).show();
 			}
 		});
 		

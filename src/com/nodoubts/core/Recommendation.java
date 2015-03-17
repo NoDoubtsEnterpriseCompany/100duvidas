@@ -5,7 +5,7 @@ import com.nodoubts.ui.subject.SubjectActivity;
 public class Recommendation implements SearchType {
 	private static final long serialVersionUID = 3364823434353276045L;
 	private String _id;
-	private String teacherUserName;
+	private String teacherUsername;
 	private String description;
 	
 	public String getId() {
@@ -25,22 +25,22 @@ public class Recommendation implements SearchType {
 	}
 	
 	public Recommendation(String userName, String description){
-		this.teacherUserName = userName;
+		this.teacherUsername = userName;
 		this.description = description;
 	}
 	
 
-	public String getTeacherUserName() {
-		return teacherUserName;
+	public String getTeacherUsername() {
+		return teacherUsername;
 	}
 
-	public void setTeacherUserName(String userName) {
-		this.teacherUserName = userName;
+	public void setTeacherUsername(String userName) {
+		this.teacherUsername = userName;
 	}
 	
 	@Override
 	public String toString() {
-		return description;
+		return teacherUsername;
 	}
 
 

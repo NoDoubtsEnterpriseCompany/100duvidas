@@ -55,7 +55,7 @@ public class RegisterRecommendationActivity extends Activity {
 			}
 			
 			private boolean isRecommendationValid(Recommendation recommendation) {
-				String name = recommendation.getTeacherUserName();
+				String name = recommendation.getTeacherUsername();
 					if(name == null || name.isEmpty()){
 						//TODO: Remove hardcoded error messages
 						Toast.makeText(RegisterRecommendationActivity.this, "All fields must be filled", Toast.LENGTH_SHORT).show();
