@@ -17,12 +17,13 @@ import android.widget.TextView;
 import com.nodoubts.R;
 import com.nodoubts.core.User;
 import com.nodoubts.serverclient.user.UserController;
+import com.nodoubts.serverclient.user.UserGenderEnum;
 import com.nodoubts.serverclient.user.UserService;
 
 public class EditProfileActivity extends Activity {
 
 	Button saveBtn;
-	EditText name, city, street, number;
+	EditText nameField, cityField, street, number;
 	TextView t;
 	Intent returnIntent;
 	User user;
@@ -33,27 +34,39 @@ public class EditProfileActivity extends Activity {
 		setContentView(R.layout.activity_edit_profile);
 
 		saveBtn = (Button) findViewById(R.id.save_btn);
-		name = (EditText) findViewById(R.id.name_edit_text);
-		city = (EditText) findViewById(R.id.city_edit_text);
+		nameField = (EditText) findViewById(R.id.name_edit_text);
+		cityField = (EditText) findViewById(R.id.city_edit_text);
 		user = (User) getIntent().getSerializableExtra("user");
 
+		if(user!=null){
+			nameField.setText(user.getName());
+			cityField.setText(user.getProfile().getCity());
+			if(user.getProfile().getGender() == UserGenderEnum.MALE.getValue()){
+				RadioButton genderBtn = (RadioButton) findViewById(R.id.male_radio_btn);
+				genderBtn.setChecked(true);
+			}else if(user.getProfile().getGender() == UserGenderEnum.FEMALE.getValue()){
+				RadioButton genderBtn = (RadioButton) findViewById(R.id.female_radio_btn);
+				genderBtn.setChecked(true);
+			}
+		}
+		
 		saveBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 				
 			public void onClick(View v) {
-				if (name.getText() != null
-						&& !name.getText()
+				if (nameField.getText() != null
+						&& !nameField.getText()
 								.toString()
 								.equals(getResources().getString(R.string.name))) {
-					user.getProfile().setName(name.getText().toString());
+					user.getProfile().setName(nameField.getText().toString());
 				}
-				if (city.getText() != null
-						&& !city
+				if (cityField.getText() != null
+						&& !cityField
 								.getText()
 								.toString()
 								.equals(getResources()
 										.getString(R.string.email)))
-					user.getProfile().setCity(city.getText().toString());
+					user.getProfile().setCity(cityField.getText().toString());
 
 				new SaveUser().execute(user);
 			}

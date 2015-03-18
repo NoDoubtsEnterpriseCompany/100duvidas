@@ -36,7 +36,6 @@ import com.nodoubts.serverclient.user.UserService;
 import com.nodoubts.ui.grouplecture.RegisterGroupLectureActivity;
 import com.nodoubts.ui.lecture.LectureCreationDialog;
 import com.nodoubts.ui.lecture.LectureCreationDialog.EditLectureListener;
-import com.nodoubts.ui.search.SearchActivity;
 
 public class SubjectListActivity extends FragmentActivity implements EditLectureListener {
 
@@ -135,6 +134,7 @@ public class SubjectListActivity extends FragmentActivity implements EditLecture
 		    	addSubjectScreen.putExtra("user", user);
 		    	addSubjectScreen.putExtra("isGroupLectureCreation", isGroupLectureCreation);
 		    	startActivity(addSubjectScreen);
+		    	finish();
 		    }
 		});
 	}
