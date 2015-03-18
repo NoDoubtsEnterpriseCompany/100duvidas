@@ -1,5 +1,6 @@
 package com.nodoubts.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.nodoubts.ui.user.ViewProfessorActivity;
@@ -100,6 +101,9 @@ public class User implements SearchType{
 	}
 	
 	public List<SearchType> getLecturesCreatedByUser() {
+		if (this.lecturesCreatedByUser == null) {
+			setLecturesCreatedByUser(new ArrayList<SearchType>());
+		}
 		return lecturesCreatedByUser;
 	}
 	
@@ -108,6 +112,9 @@ public class User implements SearchType{
 	}
 	
 	public List<SearchType> getLecturesRegisteredByUser() {
+		if (this.lecturesRegisteredByUser == null) {
+			setLecturesRegisteredByUser(new ArrayList<SearchType>());
+		}
 		return lecturesRegisteredByUser;
 	}
 	
