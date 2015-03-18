@@ -130,6 +130,7 @@
     <string name="title_activity_view_scheduled_lecture">ViewScheduledLectureActivity</string>
     <string name="conectivity_problems">Desculpe! Estamos enfrentando algum problema de conexão temporário com o nosso servidor!</string>
 	<string name="invalid_password_format">Por favor insira uma senha com, no mínimo, 6 caracteres</string>
+	<string name="invalid_email_format">Formato de email inválido</string>
    
     <!-- Nav drawer options  -->
     <string name="opts_add_subject">Adicionar Aula</string>

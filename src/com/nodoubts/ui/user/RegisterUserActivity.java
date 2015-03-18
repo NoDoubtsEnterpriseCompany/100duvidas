@@ -1,5 +1,8 @@
 package com.nodoubts.ui.user;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -19,7 +22,6 @@ import com.nodoubts.exceptions.ApplicationViewException;
 import com.nodoubts.serverclient.user.UserController;
 import com.nodoubts.serverclient.user.UserService;
 import com.nodoubts.serverclient.util.SessionManager;
-import com.nodoubts.ui.profile.UserProfile;
 
 public class RegisterUserActivity extends Activity{
 	
@@ -54,8 +56,13 @@ public class RegisterUserActivity extends Activity{
 					Toast.makeText(RegisterUserActivity.this, getResources().getString(R.string.invalid_password_format), Toast.LENGTH_SHORT).show();
 					return false;
 				}
+				if(!isValidEmail(user.getEmail())){
+					Toast.makeText(RegisterUserActivity.this, getResources().getString(R.string.invalid_email_format), Toast.LENGTH_SHORT).show();
+					return false;
+				};
 				return true;
 			}
+
 
 			private User extractUser() {
 				String username = ((EditText) findViewById(R.id.register_username)).getText().toString();
@@ -69,6 +76,13 @@ public class RegisterUserActivity extends Activity{
 		});
 	}
 	
+	private boolean isValidEmail(String email) {
+		String regex = "^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\\.[a-zA-Z](-?[a-zA-Z0-9])*)+$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(email);
+		return m.matches();
+	}
+
 	@Override
 	public void onBackPressed() {
 	   super.onBackPressed();
