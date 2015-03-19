@@ -49,8 +49,7 @@
         android:layout_below="@id/register_name"
         android:layout_alignLeft="@id/register_name"
         android:ems="10" 
-        android:hint="@string/username"
-        android:imeOptions= "actionNext"/>
+        android:hint="@string/username"/>
     
     <EditText
         android:id="@+id/register_email"
@@ -60,8 +59,7 @@
         android:layout_alignLeft="@id/register_name"
         android:ems="10"
         android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
-        android:imeOptions= "actionNext"/>
+        android:inputType="textEmailAddress"/>
     
     <EditText
         android:id="@+id/register_passwordToRegister"
@@ -72,7 +70,7 @@
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:imeOptions= "actionNext"/>
+        android:imeOptions= "actionDone"/>
 
     <Button
         android:id="@+id/createUserBtn"
