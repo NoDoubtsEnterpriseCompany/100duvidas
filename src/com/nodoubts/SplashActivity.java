@@ -95,6 +95,7 @@ public class SplashActivity extends FragmentActivity implements Runnable, FbLogi
 		if(sessionManager.isLoggedIn()){
 			Intent homeScreen = new Intent(this, UserProfile.class);
 			homeScreen.putExtra("user", user);
+			homeScreen.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  
 			startActivity(homeScreen);
 			finish();
 		}

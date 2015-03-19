@@ -3,6 +3,7 @@ package com.nodoubts.ui.fragments;
 import java.util.Arrays;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -145,6 +146,19 @@ public class FbLoginFragment extends Fragment {
     }
     
     private class LoginTask extends AsyncTask<GraphUser, Void, Object>{
+
+    	ProgressDialog progressDialog;
+    	
+    	@Override
+    	protected void onPreExecute() {
+    		super.onPreExecute();
+    		this.progressDialog = new ProgressDialog(
+					getActivity());
+    		this.progressDialog
+			.setProgressStyle(progressDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			this.progressDialog.show();
+    	}
+    	
 		@Override
 		protected Object doInBackground(GraphUser... arg0) {
 			GraphUser fbUser = arg0[0];
@@ -173,6 +187,7 @@ public class FbLoginFragment extends Fragment {
 		}
 		@Override
 		protected void onPostExecute(Object result) {
+			this.progressDialog.hide();
 			if(result instanceof User){
 				FbLoginCallback fbLoginCallback = (FbLoginCallback) getActivity();
 				fbLoginCallback.fbLoggedIn((User)result);

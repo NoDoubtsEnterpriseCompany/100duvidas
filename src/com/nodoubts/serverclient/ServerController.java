@@ -134,7 +134,7 @@ public class ServerController implements ServerService{
 	 
 	            // Headers to inform server about the type of the content   
 	            httpPost.setHeader("Accept", "application/json");
-	            httpPost.setHeader("Content-type", "application/json");
+	            httpPost.setHeader("Content-type", "application/json;charset=UTF-8");
 			}
 
 			httpResponse = httpClient.execute(httpPost);
@@ -170,7 +170,7 @@ public class ServerController implements ServerService{
 	 
 	            // Headers to inform server about the type of the content   
 	            httpPut.setHeader("Accept", "application/json");
-	            httpPut.setHeader("Content-type", "application/json");
+	            httpPut.setHeader("Content-type", "application/json;charset=UTF-8");
 			}
 
 			httpResponse = httpClient.execute(httpPut);

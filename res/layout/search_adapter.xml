@@ -11,20 +11,20 @@
         android:gravity="center_vertical" 
         android:layout_marginTop="5dp">
 
-        <ImageView
-            android:id="@+id/search_obj_img"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.01"
-            android:src="@android:drawable/ic_menu_report_image" />
+<!--         <ImageView -->
+<!--             android:id="@+id/search_obj_img" -->
+<!--             android:layout_width="60dp" -->
+<!--             android:layout_height="50dp" -->
+<!--             android:layout_weight="0.01" -->
+<!--             android:src="@android:drawable/ic_menu_report_image" /> -->
 
         <TextView
             android:id="@+id/search_obj_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
             android:layout_weight="0.09"
+            android:layout_marginLeft="5dp"
             android:text="Medium Text"
-            android:layout_marginLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>

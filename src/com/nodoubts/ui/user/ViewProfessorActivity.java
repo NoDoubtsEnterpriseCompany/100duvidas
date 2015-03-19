@@ -70,6 +70,7 @@ public class ViewProfessorActivity extends Activity {
 							ScheduleLectureActivity.class);
 					scheduleLecureIntent.putExtra("lecture", lecture);
 					startActivity(scheduleLecureIntent);
+					finish();
 				}
 			});
 
