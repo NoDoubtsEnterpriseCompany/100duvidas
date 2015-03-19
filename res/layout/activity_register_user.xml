@@ -37,7 +37,8 @@
         android:layout_below="@id/register_user"
         android:ems="10" 
         android:hint="@string/name"
-        android:imeOptions= "actionNext">
+        android:inputType="text"
+        android:imeOptions="actionNext">
 
         <requestFocus />
     </EditText>
@@ -49,6 +50,7 @@
         android:layout_below="@id/register_name"
         android:layout_alignLeft="@id/register_name"
         android:ems="10" 
+        android:inputType="text"
         android:hint="@string/username"/>
     
     <EditText
@@ -70,7 +72,7 @@
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:imeOptions= "actionDone"/>
+        android:imeOptions="actionDone"/>
 
     <Button
         android:id="@+id/createUserBtn"
